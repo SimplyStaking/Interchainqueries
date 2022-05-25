@@ -38,7 +38,7 @@ func (k msgServer) SubmitICQResult(
 		return nil, sdkerrors.Wrapf(types.ErrResultNotSubmitted, "(%d) periodic query is likely broken", msg.PeriodicId)
 	}
 
-	// Retrieve the given ICQ instance that we want to service to validate it's existence
+	// Retrieve the given ICQ instance that we want to service to validate its existence
 	icqInstance, found := k.GetPendingICQInstance(ctx, msg.QueryId)
 	if !found {
 		return nil, sdkerrors.Wrapf(types.ErrICQNotFound, "(%d) not found", msg.QueryId)
@@ -55,7 +55,7 @@ func (k msgServer) SubmitICQResult(
 			icqInstance.PeriodicId, msg.PeriodicId)
 	}
 
-	// Retreive the consensus state to validate the proofs
+	// Retrieve the consensus state to validate the proofs
 	consensusState, found := k.clientKeeper.GetClientConsensusState(ctx, periodicICQ.ClientId, msg.Height)
 	if !found {
 		return nil, sdkerrors.Wrapf(types.ErrClientConsensusNotFound, "(%d) not found at height (%d)",
@@ -114,6 +114,7 @@ func (k msgServer) SubmitICQResult(
 				"height: (%d) already has a value submitted", msg.Height)
 		}
 		lastDataPointId = lastDataPoint.Id
+
 		// We create the new key to store the data point under
 		splitResult := strings.Split(periodicResult.LastResultId, "/")
 		lastResultId, err := strconv.ParseUint(splitResult[1], 10, 64)
