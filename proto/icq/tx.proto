@@ -1,0 +1,29 @@
+syntax = "proto3";
+package simplyvc.interchainqueries.icq;
+import "tendermint/crypto/proof.proto";
+import "ibc/core/client/v1/client.proto";
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "github.com/simplyvc/interchainqueries/x/icq/types";
+
+// Msg defines the Msg service.
+service Msg {
+    rpc SubmitICQResult(MsgSubmitICQResult) returns (MsgSubmitICQResultResponse);
+    // this line is used by starport scaffolding # proto/tx/rpc
+}
+
+// MsgSubmitICQResult represents a message type to fulfil a query request.
+message MsgSubmitICQResult {
+    string chain_id = 1;
+    uint64 query_id = 2;
+    bytes result = 3;
+    ibc.core.client.v1.Height height = 4;
+    string from_address = 5;
+    tendermint.crypto.ProofOps proof = 6; 
+    uint64 periodic_id = 7;
+}
+
+message MsgSubmitICQResultResponse {}
+
+// this line is used by starport scaffolding # proto/tx/message

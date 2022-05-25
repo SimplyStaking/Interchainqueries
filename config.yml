@@ -1,0 +1,19 @@
+accounts:
+  - name: alice
+    coins: [ "200000000000stake" ]
+    mnemonic: dinner crash nurse casino baby fold race cheese elite column sausage sleep close royal rain over mechanic minimum outdoor conduct cash wagon frog evidence
+    # address: icq1vtfzrk6f4m6kxt6ehyqt9j5su5hvcz5q9rhs6s
+  - name: bob
+    coins: [ "100000000000stake" ]
+    mnemonic: voyage rail fat orange visit possible improve grape festival left tent endorse planet main canyon close dragon feel list mechanic abandon sun bullet strong
+    # address: icq1g3v3a2c5qk8fw8zqjmvcnsn02k2ulrkg52vnsg
+validator:
+  name: alice
+  staked: "100000000stake"
+client:
+  openapi:
+    path: "docs/static/openapi.yml"
+faucet:
+  name: bob
+  coins: [ "100000stake" ]
+
