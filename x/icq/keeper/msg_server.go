@@ -47,7 +47,7 @@ func (k msgServer) SubmitICQResult(
 	// Retrieve the periodic ICQ for the full details of the query
 	periodicICQ, found := k.GetPeriodicICQ(ctx, msg.PeriodicId)
 	if !found {
-		return nil, sdkerrors.Wrapf(types.ErrICQNotFound, "(%d) not found", msg.PeriodicId)
+		return nil, sdkerrors.Wrapf(types.ErrPeriodicICQNotFound, "(%d) not found", msg.PeriodicId)
 	}
 
 	if icqInstance.PeriodicId != msg.PeriodicId {
