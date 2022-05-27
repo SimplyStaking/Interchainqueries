@@ -2,6 +2,7 @@
 
 The Interchain Queries (ICQ) module leverages the existing relayer infrastructure, with some custom changes, to enable two connected chains to query data from eachothers' state. The module only needs to be imported by the chain that wishes to perform queries. The relayer is expected to parse queries from the requesting chain, perform them on the chain indicated in the query, and pass the result back to the requesting chain. This document will describe the Cosmos SDK module aspect of Interchain Queries. For the relayer aspect, refer to the [Relayer document](./Relayer.md).
 
+
 - [ICQ Module](#icq-module)
   - [Concepts](#concepts)
   - [State](#state)
@@ -20,7 +21,7 @@ The Interchain Queries (ICQ) module leverages the existing relayer infrastructur
 - `PendingICQRequest`: This is the message that will be retrieved by the relayer. The data is a combination of the `PendingICQInstance` and `PeriodicICQ` to have the full message available to the relayer without storing duplicate data in the blockchain.
 - `ICQResult`: stores the `last_result_id` of the last result submitted by the relayer in response to a specific periodic query. There is one `ICQResult` per `PeriodicICQ` and it stores the `periodic_id`. The `last_result_id` points to `DataPointResult` which stores the last result.
 - `DataPointResult`: Stores a result of a serviced `PendingICQInstance`.
-- `ICQTimeouts`: this is created per `PeriodicICQ` we increment the amount of timeouts that occur for that periodic query as well as the last source chain height that the timeout occured at. If the [BeginBlock](#beginblock) notices that the timeout height was reached it will expire a `PendingICQInstances`. If the relayer submits a late result, this is completely ignored.
+- `ICQTimeouts`: this is created per `PeriodicICQ` we increment the amount of timeouts that occur for that periodic query as well as the last source chain height that the timeout occured at. If the [BeginBlock](#beginblock) notices that the timeout height was reached it will expire a `PendingICQInstance`s. If the relayer submits a late result, this is completely ignored.
 
 ## State
 
@@ -41,6 +42,13 @@ List of `PeriodicICQ`, each with:
 List of `PendingICQInstance`, each based on an `PeriodicICQ` instance:
 
 - **Id** (`uint64`): basic unique identifier
+- **TimeoutHeight** (`uint64`): height at which a result for this query will be considered invalid, calculated by adding _periodic_'s timeout height padding to the current height
+- **TargetHeight** (`uint64`): from _periodic_
+- **PeriodicId** (`uint64`): ID of _periodic_
+
+List of `PendingICQRequest`, each based on an `PeriodicICQ` and `PendingICQInstance`:
+
+- **Id** (`uint64`): basic unique identifier
 - **Path** (`uint64`): from _periodic_
 - **TimeoutHeight** (`uint64`): height at which a result for this query will be considered invalid, calculated by adding _periodic_'s timeout height padding to the current height
 - **TargetHeight** (`uint64`): from _periodic_
@@ -48,13 +56,6 @@ List of `PendingICQInstance`, each based on an `PeriodicICQ` instance:
 - **Creator** (`uint64`): from _periodic_
 - **ChainId** (`uint64`): from _periodic_
 - **QueryParameters** (`uint64`): from _periodic_
-- **PeriodicId** (`uint64`): ID of _periodic_
-
-List of `PendingICQRequest`, each based on an `PeriodicICQ` and `PendingICQInstance`:
-
-- **Id** (`uint64`): basic unique identifier
-- **TimeoutHeight** (`uint64`): height at which a result for this query will be considered invalid, calculated by adding _periodic_'s timeout height padding to the current height
-- **TargetHeight** (`uint64`): from _periodic_
 - **PeriodicId** (`uint64`): ID of _periodic_
 
 List of `ICQResult`, each based on an `PeriodicICQ` instance:

@@ -2,13 +2,11 @@ accounts:
   - name: alice
     coins: [ "100000000000stake" ]
     mnemonic: clutch script morning bacon knock unique impact update aisle morning okay outer witness liquid ordinary direct mention dove arrow witness speed satisfy work any
-    # address if cosmos prefix: cosmos1gp04jgaqvpa5pwndra6a78e05glgllw96rq8lg
-    # address if icq prefix: icq1gp04jgaqvpa5pwndra6a78e05glgllw9eakp4p
+    # address: icq1gp04jgaqvpa5pwndra6a78e05glgllw98yv9df
   - name: relayer
     coins: [ "100000000000stake" ]
     mnemonic: record gift you once hip style during joke field prize dust unique length more pencil transfer quit train device arrive energy sort steak upset
-    # address if cosmos prefix: cosmos1mjk79fjjgpplak5wq838w0yd982gzkyfrk07am
-    # address if icq prefix: icq1mjk79fjjgpplak5wq838w0yd982gzkyfqgechj
+    # address: icq17dtl0mjt3t77kpuhg2edqzjpszulwhgzp4faq3
 validator:
   name: alice
   staked: "100000000stake"

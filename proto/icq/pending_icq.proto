@@ -3,11 +3,9 @@ package simplyvc.interchainqueries.icq;
 
 option go_package = "github.com/simplyvc/interchainqueries/x/icq/types";
 
-/**
-  PendingICQInstance is one instance of a request query. This is done to remove
-  duplicate fields, we keep a pointer of the periodic query in this instance
-  so we can trace back to all the requested fields.
-**/
+// PendingICQInstance is one instance of a request query. This is done to remove
+// duplicate fields, we keep a pointer of the periodic query in this instance
+// so we can trace back to all the requested fields.
 message PendingICQInstance {
   uint64 id = 1;
   uint64 timeout_height = 2;
@@ -15,10 +13,8 @@ message PendingICQInstance {
   uint64 periodic_id = 4;
 }
 
-/**
-  PendingICQRequest is the full request we combine Periodic Query Data as well
-  as the PendingICQ data, so that relayers can process the requests.
-**/
+// PendingICQRequest is the full request we combine Periodic Query Data as well
+// as the PendingICQ data, so that relayers can process the requests.
 message PendingICQRequest {
   uint64 id = 1;
   string path = 2; 

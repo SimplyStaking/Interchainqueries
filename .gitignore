@@ -4,14 +4,6 @@ secret.yml
 /.idea/
 /chain/
 
-/data/test-1/*
-/data/test-1/*/*
-!/data/test-1/.gitkeep
-
-/data/test-2/*
-/data/test-2/*/*
-!/data/test-2/.gitkeep
-
 /data/source-chain/*
 /data/source-chain/*/*
 !/data/source-chain/.gitkeep

@@ -40,7 +40,7 @@ An example periodic query which will query the balance of an account on the targ
     QueryParameters:      append(banktypes.CreateAccountBalancesPrefix(add1), []byte("stake")...),
     BlockRepeat:          uint64(10),
     LastHeightExecuted:   uint64(ctx.BlockHeight()),
-    ResultLength:         uint64(10),
+    MaxResults:         uint64(10),
   }
   k.AppendPeriodicICQ(ctx, icqPeriodic)
 ```
@@ -52,14 +52,14 @@ var balance sdk.Coin
 cdc.MustUnmarshal(data, &balance)
 ```
 
-Which will be converted to a balance of Xstake tokens.
+Which will be converted to a balance of _X_ stake tokens.
 
 
 ## Research Resources
 
 - [IBC Queries Discussion](https://github.com/cosmos/ibc/discussions/605)
 - [Cross-chain query spec draft](https://github.com/cosmos/ibc/pull/735)
-- [Defundd query module](https://github.com/defund-labs/defund/tree/main/x/query)
-- [Defundd relayer](https://github.com/defund-labs/relayer)
+- [Defund query module](https://github.com/defund-labs/defund/tree/main/x/query)
+- [Defund relayer](https://github.com/defund-labs/relayer)
 - [Quicksilver relayer](https://github.com/ingenuity-build/interchain-queries)
 - [Quicksilver interchainquery module](https://github.com/ingenuity-build/quicksilver/tree/main/x/interchainquery)
