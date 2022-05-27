@@ -140,12 +140,12 @@ func (k Keeper) RemoveAllDataPointResults(ctx sdk.Context, periodicId uint64) {
 
 	// Infinite loop to delete all DataPoints until they are no longer found
 	for {
-		lastDataPoint, found := k.GetDataPointResult(ctx, lastResultId)
+		prevDataPoint, found := k.GetDataPointResult(ctx, lastResultId)
 		if !found {
 			return
 		}
-		lastResultId = lastDataPoint.LastDataPointId
-		k.RemoveDataPointResult(ctx, lastDataPoint.Id)
+		lastResultId = prevDataPoint.PrevDataPointId
+		k.RemoveDataPointResult(ctx, prevDataPoint.Id)
 	}
 }
 

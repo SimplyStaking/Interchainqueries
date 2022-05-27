@@ -69,7 +69,7 @@ List of `DataPointResult`, each based on an `PendingICQInstance` and a `MsgSubmi
 - **LocalHeight** (`uint64`): local height at which result was recorded, i.e. upon _MsgSubmitICQResult_ handling
 - **TargetHeight** (`uint64`): the height at which the result was retrieved from the target chain
 - **Data** (`[]byte`): encoded query result from _MsgSubmitICQResult_
-- **LastDataPointId**: (`string`): id of the previous _datapointresult_ linking them all together
+- **PrevDataPointId**: (`string`): id of the previous _datapointresult_ linking them all together
 
 List of `ICQTimeouts`, each based on an `PeriodicICQ` instance:
 

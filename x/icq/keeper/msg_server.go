@@ -97,30 +97,30 @@ func (k msgServer) SubmitICQResult(
 
 	// Set this as the last dataPoint and overwrite later based on conditions
 	dataPointId := strconv.FormatUint(msg.PeriodicId, 10) + "/1"
-	lastDataPointId := dataPointId
+	prevDataPointId := dataPointId
 
 	// If the periodic result is not found, it means it's the first result
 	periodicResult, found := k.GetICQResult(ctx, msg.PeriodicId)
 	if found {
 
 		// This should be found otherwise the initial periodic query doesn't exist
-		lastDataPoint, _ := k.GetDataPointResult(ctx, periodicResult.LastResultId)
-		if lastDataPoint.TargetHeight >= msg.Height.RevisionHeight {
+		prevDataPoint, _ := k.GetDataPointResult(ctx, periodicResult.LastResultId)
+		if prevDataPoint.TargetHeight >= msg.Height.RevisionHeight {
 			return nil, sdkerrors.Wrapf(types.ErrDuplicateHeightSubmissions,
 				"height: (%d) already has a value submitted", msg.Height)
 		}
-		lastDataPointId = lastDataPoint.Id
+		prevDataPointId = prevDataPoint.Id
 
 		// We create the new key to store the data point under
 		splitResult := strings.Split(periodicResult.LastResultId, "/")
-		lastResultId, err := strconv.ParseUint(splitResult[1], 10, 64)
+		prevResultId, err := strconv.ParseUint(splitResult[1], 10, 64)
 		if err != nil {
 			return nil, sdkerrors.Wrapf(types.ErrDataPointKeyBroken, "periodic id: (%s)", msg.PeriodicId)
 		}
 
-		// If the lastResult is at the max amount of results for the periodic query we need to restart the loop
-		if lastResultId != periodicICQ.MaxResults {
-			dataPointId = strconv.FormatUint(msg.PeriodicId, 10) + "/" + strconv.FormatUint(lastResultId+1, 10)
+		// If the prevResultId is at the max amount of results for the periodic query we need to restart the loop
+		if prevResultId != periodicICQ.MaxResults {
+			dataPointId = strconv.FormatUint(msg.PeriodicId, 10) + "/" + strconv.FormatUint(prevResultId+1, 10)
 		}
 	}
 
@@ -129,7 +129,7 @@ func (k msgServer) SubmitICQResult(
 		LocalHeight:     currHeight,
 		TargetHeight:    msg.Height.RevisionHeight,
 		Data:            msg.Result,
-		LastDataPointId: lastDataPointId,
+		PrevDataPointId: prevDataPointId,
 	})
 
 	k.SetICQResult(ctx, types.ICQResult{

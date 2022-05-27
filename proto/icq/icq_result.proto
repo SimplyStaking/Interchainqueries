@@ -8,7 +8,7 @@ message DataPointResult {
   uint64 local_height = 2;
   uint64 target_height = 3;
   bytes  data = 4; 
-  string last_data_point_id = 5;
+  string prev_data_point_id = 5;
 }
 
 message ICQResult {
