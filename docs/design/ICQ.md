@@ -19,8 +19,8 @@ The Interchain Queries (ICQ) module leverages the existing relayer infrastructur
 - `PeriodicICQ`: describes a periodic data request and serves as a template for instances of such periodic queries. The _periodic_ includes all details about what data is required and which chain it should be queried from. It also specifies how often the query should take place (i.e. the period length) and timeout parameters.
 - `PendingICQInstance`: an instance of a periodic query that can be seen as a pending query. An instance is created at every period, as specified by the _periodic_, and this instance is deleted once a result is submitted or it timesout. These query instances are picked up by the custom relayer and fulfilled according to the details in the request.
 - `PendingICQRequest`: This is the message that will be retrieved by the relayer. The data is a combination of the `PendingICQInstance` and `PeriodicICQ` to have the full message available to the relayer without storing duplicate data in the blockchain.
-- `PeriodicLastDataPointId`: stores the `last_result_id` of the last result submitted by the relayer in response to a specific periodic query. There is one `PeriodicLastDataPointId` per `PeriodicICQ` and its stored under the `periodic_id` as a `string` and doesn't have it's own `message` type. The `last_result_id` points to `DataPointResult` which stores the last result.
-- `DataPointResult`: Stores a result of a serviced `PendingICQInstance`.
+- `PeriodicLastDataPointId`: stores the `last_result_id` of the last result submitted by the relayer in response to a specific periodic query. There is one `PeriodicLastDataPointId` per `PeriodicICQ` and its stored under the `periodic_id` as a `string` and doesn't have it's own `message` type. The `last_result_id` points to `DataPoint` unique `Id` which stores the last result.
+- `DataPoint`: Stores a result of a serviced `PendingICQInstance`.
 - `ICQTimeouts`: this is created per `PeriodicICQ` we increment the amount of timeouts that occur for that periodic query as well as the last source chain height that the timeout occured at. If the [BeginBlock](#beginblock) notices that the timeout height was reached it will expire a `PendingICQInstance`s. If the relayer submits a late result, this is completely ignored.
 
 ## State
@@ -33,7 +33,7 @@ List of `PeriodicICQ`, each with:
 - **TargetHeight** (`uint64`):The height of the chain we are querying, this is usually set to `0` to always query the heighest height of the target chain.
 - **ClientId** (`string`): IBC client Id of the target chain e.g `07-tendermint-0`
 - **Creator** (`string`): string identifying the creator of this query (not necessarily an address), e.g. a module's name
-- **ChainId** (`string`): chain ID of the data source where data should be queried from
+- **ChainId** (`string`): chain ID of the data source where data should be queried from, this is purely for viewing purposes and not used anywhere
 - **QueryParameters** (`[]byte`): query parameters, e.g. `append(banktypes.CreateAccountBalancesPrefix(add1), []byte("stake")...)`
 - **BlockRepeat** (`uint64`): the period length, e.g. 10 blocks
 - **LastHeightExecuted** (`uint64`): the last local height at which this interchain query was invoked
@@ -59,16 +59,16 @@ List of `PendingICQRequest`, each based on an `PeriodicICQ` and `PendingICQInsta
 
 List of `PeriodicLastDataPointId`, each based on an `PeriodicICQ` instance, only stored as a string not struct:
 
-- **LastResultId** (`string`): matches the ID of the last _datapointresult_ stored under the __periodic__ query id
+- **LastResultId** (`string`): matches the ID of the last _datapoint_ stored under the __periodic__ query id
 
-List of `DataPointResult`, each based on an `PendingICQInstance` and a `MsgSubmitICQResult` instance:
+List of `DataPoint`, each based on an `PendingICQInstance` and populated by `MsgSubmitICQResult` tx:
 
 
 - **Id** (`string`): basic unique identifier
 - **LocalHeight** (`uint64`): local height at which result was recorded, i.e. upon _MsgSubmitICQResult_ handling
 - **TargetHeight** (`uint64`): the height at which the result was retrieved from the target chain
 - **Data** (`[]byte`): encoded query result from _MsgSubmitICQResult_
-- **PrevDataPointId**: (`string`): id of the previous _datapointresult_ linking them all together
+- **PrevDataPointId**: (`string`): id of the previous _datapoint_ linking them all together
 
 List of `ICQTimeouts`, each based on an `PeriodicICQ` instance:
 
@@ -80,7 +80,7 @@ For all the above values, a count is also stored.
 
 ## Transactions
 
-`MsgSubmitICQResult`: used by relayer to submit an interchain query result. If the result arrives too late (i.e. timeout) it is ignored. `PeriodicLastDataPointId` is updated as well as `DataPointResult` is created or updated depending on if the max results limit is reached.
+`MsgSubmitICQResult`: used by relayer to submit an interchain query result. If the result arrives too late (i.e. timeout) it is ignored. `PeriodicLastDataPointId` is updated as well as `DataPoint` is created or updated depending on if the max results limit is reached.
 
 - **QueryId** (`uint64`): matches the ID of _query_ that this result is for
 - **Result** (`[]byte`): encoded query result
