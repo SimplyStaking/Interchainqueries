@@ -22,7 +22,6 @@ message PendingICQRequest {
   uint64 target_height = 4; 
   string client_id = 5; 
   string creator = 6;
-  string chain_id = 7;
-  bytes query_parameters = 8;
-  uint64 periodic_id = 9;
+  bytes query_parameters = 7;
+  uint64 periodic_id = 8;
 }

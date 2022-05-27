@@ -16,10 +16,9 @@ var _ sdk.Msg = &MsgSubmitICQResult{}
 
 // NewMsgSubmitICQResult - construct a msg to fulfil query request.
 //nolint:interfacer
-func NewMsgSubmitICQResult(chain_id string, result []byte, from_address sdk.Address, proof *crypto.ProofOps,
+func NewMsgSubmitICQResult(result []byte, from_address sdk.Address, proof *crypto.ProofOps,
 	periodic_id, query_id uint64, height *ibcclienttypes.Height) *MsgSubmitICQResult {
 	return &MsgSubmitICQResult{
-		ChainId:     chain_id,
 		QueryId:     query_id,
 		Result:      result,
 		Height:      height,

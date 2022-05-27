@@ -127,7 +127,6 @@ func NewPendingICQRequest(
 		TargetHeight:    pendingICQ.TargetHeight,
 		ClientId:        periodicICQ.ClientId,
 		Creator:         periodicICQ.Creator,
-		ChainId:         periodicICQ.ChainId,
 		QueryParameters: periodicICQ.QueryParameters,
 		PeriodicId:      periodicICQ.Id,
 	}
