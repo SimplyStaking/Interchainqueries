@@ -54,7 +54,7 @@ func (k msgServer) SubmitICQResult(
 	// Retrieve the consensus state to validate the proofs
 	consensusState, found := k.clientKeeper.GetClientConsensusState(ctx, periodicICQ.ClientId, msg.Height)
 	if !found {
-		return nil, sdkerrors.Wrapf(types.ErrClientConsensusNotFound, "(%d) not found at height (%d)",
+		return nil, sdkerrors.Wrapf(types.ErrClientConsensusNotFound, "(%s) not found at height (%d)",
 			periodicICQ.ClientId, msg.Height.RevisionHeight)
 	}
 
