@@ -36,5 +36,7 @@ func GetQueryCmd(_ string) *cobra.Command {
 	cmd.AddCommand(CmdListDataPoints())
 	cmd.AddCommand(CmdShowDataPoint())
 
+	cmd.AddCommand(CmdListDataPointsForPeriodic())
+
 	return cmd
 }

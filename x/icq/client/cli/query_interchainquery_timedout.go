@@ -46,7 +46,7 @@ func CmdListPendingICQRequestsTimeouts() *cobra.Command {
 
 func CmdShowPendingICQRequestTimeouts() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-interchainquery-timeouts [id]",
+		Use:   "show-icq-timeouts [id]",
 		Short: "shows the timeouts of a periodic interchainquery",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {

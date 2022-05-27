@@ -46,7 +46,7 @@ func CmdListPendingICQRequests() *cobra.Command {
 
 func CmdShowPendingICQRequest() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-pending-interchainquery [id]",
+		Use:   "show-pending-icq [id]",
 		Short: "shows a pending interchainquery",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
