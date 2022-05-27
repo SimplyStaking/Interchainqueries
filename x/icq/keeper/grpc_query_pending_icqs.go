@@ -41,7 +41,7 @@ func (k Keeper) PendingICQRequestAll(
 		}
 		pendingICQRequests = append(
 			pendingICQRequests,
-			CreatePendingICQRequest(pendingICQ, periodicICQ),
+			NewPendingICQRequest(pendingICQ, periodicICQ),
 		)
 		return nil
 	})
@@ -73,5 +73,5 @@ func (k Keeper) PendingICQRequest(
 	}
 
 	return &types.QueryGetPendingICQRequestResponse{
-		PendingICQRequest: CreatePendingICQRequest(pendingICQ, periodicICQ)}, nil
+		PendingICQRequest: NewPendingICQRequest(pendingICQ, periodicICQ)}, nil
 }

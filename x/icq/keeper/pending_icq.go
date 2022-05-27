@@ -116,7 +116,7 @@ func (k Keeper) RemoveAllICQInstancesForPeriodic(ctx sdk.Context, periodicId uin
 	}
 }
 
-func CreatePendingICQRequest(
+func NewPendingICQRequest(
 	pendingICQ types.PendingICQInstance,
 	periodicICQ types.PeriodicICQ,
 ) types.PendingICQRequest {
@@ -138,9 +138,4 @@ func GetPendingICQIDBytes(id uint64) []byte {
 	bz := make([]byte, 8)
 	binary.BigEndian.PutUint64(bz, id)
 	return bz
-}
-
-// GetICQIDFromBytes returns ID in uint64 format from a byte array
-func GetICQIDFromBytes(bz []byte) uint64 {
-	return binary.BigEndian.Uint64(bz)
 }
