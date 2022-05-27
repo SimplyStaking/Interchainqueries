@@ -54,7 +54,6 @@ List of `PendingICQRequest`, each based on an `PeriodicICQ` and `PendingICQInsta
 - **TargetHeight** (`uint64`): from _periodic_
 - **ClientId** (`uint64`): from _periodic_
 - **Creator** (`uint64`): from _periodic_
-- **ChainId** (`uint64`): from _periodic_
 - **QueryParameters** (`uint64`): from _periodic_
 - **PeriodicId** (`uint64`): ID of _periodic_
 
@@ -84,7 +83,6 @@ For all the above values, a count is also stored.
 
 `MsgSubmitICQResult`: used by relayer to submit an interchain query result. If the result arrives too late (i.e. timeout) it is ignored. `ICQResult` is updated as well as `DataPointResult` is created or updated depending on if the max results limit is reached.
 
-- **ChainId** (`string`): chain ID of the data source where data was queried from
 - **QueryId** (`uint64`): matches the ID of _query_ that this result is for
 - **Result** (`[]byte`): encoded query result
 - **Height** (` ibc.core.client.v1.Height`): the height at which the result was retrieved from the target chain
