@@ -34,10 +34,6 @@ func (k msgServer) SubmitICQResult(
 	ctx := sdk.UnwrapSDKContext(goCtx)
 	currHeight := uint64(ctx.BlockHeight())
 
-	if msg.Result == nil {
-		return nil, sdkerrors.Wrapf(types.ErrResultNotSubmitted, "(%d) periodic query is likely broken", msg.PeriodicId)
-	}
-
 	// Retrieve the given ICQ instance that we want to service to validate its existence
 	icqInstance, found := k.GetPendingICQInstance(ctx, msg.QueryId)
 	if !found {

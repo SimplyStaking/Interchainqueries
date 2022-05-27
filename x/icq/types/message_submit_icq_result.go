@@ -40,6 +40,11 @@ func (msg MsgSubmitICQResult) ValidateBasic() error {
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
+
+	if msg.Result == nil {
+		return sdkerrors.Wrapf(ErrResultNotSubmitted, "(%d) periodic query is likely broken", msg.PeriodicId)
+	}
+
 	return nil
 }
 
