@@ -13,7 +13,7 @@ ICQ can perform periodic queries from a source chain to a target chain. The quer
 ## Get started
 
 ```
-starport chain serve -c config-ica-1.yml
+starport chain serve -c config-icq-1.yml
 ```
 
 `serve` command installs dependencies, builds, initializes, and starts your blockchain in development.

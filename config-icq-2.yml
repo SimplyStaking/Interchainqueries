@@ -16,11 +16,3 @@ init:
     minimum-gas-prices: "0.001stake"
 genesis:
   chain_id: "target-chain"
-  app_state:
-    interchainaccounts:
-      host_genesis_state:
-        params:
-          allow_messages:
-            - "/cosmos.bank.v1beta1.MsgSend"
-            - "/ibc.applications.transfer.v1.MsgTransfer"
-            - "/simplyvc.interchainqueries.tradinghost.MsgTrade"
