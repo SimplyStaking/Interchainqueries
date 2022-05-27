@@ -7,14 +7,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/spf13/cobra"
 
-	// "github.com/cosmos/cosmos-sdk/client/flags"
-	// sdk "github.com/cosmos/cosmos-sdk/types"
-
 	"github.com/simplyvc/interchainqueries/x/icq/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module
-func GetQueryCmd(queryRoute string) *cobra.Command {
+func GetQueryCmd(_ string) *cobra.Command {
 	// Group icq queries under a subcommand
 	cmd := &cobra.Command{
 		Use:                        types.ModuleName,
@@ -26,15 +23,18 @@ func GetQueryCmd(queryRoute string) *cobra.Command {
 
 	cmd.AddCommand(CmdListPendingICQRequests())
 	cmd.AddCommand(CmdShowPendingICQRequest())
-	cmd.AddCommand(CmdListPendingICQRequestsResult())
-	cmd.AddCommand(CmdShowPendingICQRequestResult())
+
+	cmd.AddCommand(CmdListPeriodicICQLastDataPointIds())
+	cmd.AddCommand(CmdShowPeriodicICQLastDataPointId())
+
 	cmd.AddCommand(CmdListPendingICQRequestsTimeouts())
 	cmd.AddCommand(CmdShowPendingICQRequestTimeouts())
-	cmd.AddCommand(CmdListPendingICQRequestsPeriodic())
-	cmd.AddCommand(CmdShowPendingICQRequestPeriodic())
-	cmd.AddCommand(CmdListDataPointResult())
-	cmd.AddCommand(CmdShowDataPointResult())
-	// this line is used by starport scaffolding # 1
+
+	cmd.AddCommand(CmdListPeriodicICQs())
+	cmd.AddCommand(CmdShowPeriodicICQ())
+
+	cmd.AddCommand(CmdListDataPoints())
+	cmd.AddCommand(CmdShowDataPoint())
 
 	return cmd
 }

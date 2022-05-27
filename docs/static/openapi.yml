@@ -29521,15 +29521,15 @@ paths:
         - Query
   /simplyvc/interchainqueries/icq/interchainquery_result:
     get:
-      summary: Queries a list of ICQResult items.
-      operationId: SimplyvcInterchainqueriesIcqICQResultAll
+      summary: Queries a list of PeriodicLastDataPointId items.
+      operationId: SimplyvcInterchainqueriesIcqPeriodicLastDataPointIdAll
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
             properties:
-              ICQResult:
+              PeriodicLastDataPointId:
                 type: array
                 items:
                   type: object
@@ -29809,15 +29809,15 @@ paths:
         - Query
   '/simplyvc/interchainqueries/icq/interchainquery_result/{id}':
     get:
-      summary: Queries a ICQResult by id.
-      operationId: SimplyvcInterchainqueriesIcqICQResult
+      summary: Queries a PeriodicLastDataPointId by id.
+      operationId: SimplyvcInterchainqueriesIcqPeriodicLastDataPointId
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
             properties:
-              ICQResult:
+              PeriodicLastDataPointId:
                 type: object
                 properties:
                   periodic_id:
@@ -50910,7 +50910,7 @@ definitions:
       result_length:
         type: string
         format: uint64
-  simplyvc.interchainqueries.icq.ICQResult:
+  simplyvc.interchainqueries.icq.PeriodicLastDataPointId:
     type: object
     properties:
       periodic_id:
@@ -51073,10 +51073,10 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
-  simplyvc.interchainqueries.icq.QueryAllICQResultResponse:
+  simplyvc.interchainqueries.icq.QueryAllPeriodicLastDataPointIdResponse:
     type: object
     properties:
-      ICQResult:
+      PeriodicLastDataPointId:
         type: array
         items:
           type: object
@@ -51270,10 +51270,10 @@ definitions:
           result_length:
             type: string
             format: uint64
-  simplyvc.interchainqueries.icq.QueryGetICQResultResponse:
+  simplyvc.interchainqueries.icq.QueryGetPeriodicLastDataPointIdResponse:
     type: object
     properties:
-      ICQResult:
+      PeriodicLastDataPointId:
         type: object
         properties:
           periodic_id:

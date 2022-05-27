@@ -25,10 +25,10 @@ const (
 	PendingICQInstanceKey      = "PendingICQInstance-value-"
 	PendingICQInstanceCountKey = "PendingICQInstance-count-"
 
-	ICQResultKey      = "ICQResult-value-"
-	ICQResultCountKey = "ICQResult-count-"
+	PeriodicLastDataPointIdKey      = "PeriodicLastDataPointId-value-"
+	PeriodicLastDataPointIdCountKey = "PeriodicLastDataPointId-count-"
 
-	DataPointResultKey = "DataPointResult-value-"
+	DataPointKey = "DataPoint-value-"
 
 	ICQTimeoutsKey = "ICQTimeouts-value-"
 

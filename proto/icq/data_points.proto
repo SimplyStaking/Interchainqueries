@@ -3,15 +3,10 @@ package simplyvc.interchainqueries.icq;
 
 option go_package = "github.com/simplyvc/interchainqueries/x/icq/types";
 
-message DataPointResult {
+message DataPoint {
   string id = 1;
   uint64 local_height = 2;
   uint64 target_height = 3;
   bytes  data = 4; 
   string prev_data_point_id = 5;
-}
-
-message ICQResult {
-  uint64 periodic_id = 1;
-  string last_result_id = 2;
 }

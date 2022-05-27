@@ -100,11 +100,11 @@ func (k msgServer) SubmitICQResult(
 	prevDataPointId := dataPointId
 
 	// If the periodic result is not found, it means it's the first result
-	periodicResult, found := k.GetICQResult(ctx, msg.PeriodicId)
+	periodicResult, found := k.GetPeriodicLastDataPointId(ctx, msg.PeriodicId)
 	if found {
 
 		// This should be found otherwise the initial periodic query doesn't exist
-		prevDataPoint, _ := k.GetDataPointResult(ctx, periodicResult.LastResultId)
+		prevDataPoint, _ := k.GetDataPoint(ctx, periodicResult)
 		if prevDataPoint.TargetHeight >= msg.Height.RevisionHeight {
 			return nil, sdkerrors.Wrapf(types.ErrDuplicateHeightSubmissions,
 				"height: (%d) already has a value submitted", msg.Height)
@@ -112,7 +112,7 @@ func (k msgServer) SubmitICQResult(
 		prevDataPointId = prevDataPoint.Id
 
 		// We create the new key to store the data point under
-		splitResult := strings.Split(periodicResult.LastResultId, "/")
+		splitResult := strings.Split(periodicResult, "/")
 		prevResultId, err := strconv.ParseUint(splitResult[1], 10, 64)
 		if err != nil {
 			return nil, sdkerrors.Wrapf(types.ErrDataPointKeyBroken, "periodic id: (%s)", msg.PeriodicId)
@@ -124,7 +124,7 @@ func (k msgServer) SubmitICQResult(
 		}
 	}
 
-	k.SetDataPointResult(ctx, types.DataPointResult{
+	k.SetDataPoint(ctx, types.DataPoint{
 		Id:              dataPointId,
 		LocalHeight:     currHeight,
 		TargetHeight:    msg.Height.RevisionHeight,
@@ -132,10 +132,7 @@ func (k msgServer) SubmitICQResult(
 		PrevDataPointId: prevDataPointId,
 	})
 
-	k.SetICQResult(ctx, types.ICQResult{
-		PeriodicId:   msg.PeriodicId,
-		LastResultId: dataPointId,
-	})
+	k.SetPeriodicLastDataPointId(ctx, msg.PeriodicId, dataPointId)
 
 	k.RemovePendingICQInstance(ctx, msg.QueryId)
 

@@ -32,7 +32,9 @@ func NewMsgSubmitICQResult(result []byte, from_address sdk.Address, proof *crypt
 func (msg MsgSubmitICQResult) Route() string { return RouterKey }
 
 // Type Implements Msg.
-func (msg MsgSubmitICQResult) Type() string { return TypeMsgSubmitICQResult }
+func (msg MsgSubmitICQResult) Type() string {
+	return TypeMsgSubmitICQResult
+}
 
 // ValidateBasic Implements Msg.
 func (msg MsgSubmitICQResult) ValidateBasic() error {

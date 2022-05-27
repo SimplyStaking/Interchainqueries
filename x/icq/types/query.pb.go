@@ -214,22 +214,24 @@ func (m *QueryAllPendingICQRequestResponse) GetPagination() *query.PageResponse 
 	return nil
 }
 
-type QueryGetICQResultRequest struct {
+type QueryGetPeriodicLastDataPointIdRequest struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (m *QueryGetICQResultRequest) Reset()         { *m = QueryGetICQResultRequest{} }
-func (m *QueryGetICQResultRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryGetICQResultRequest) ProtoMessage()    {}
-func (*QueryGetICQResultRequest) Descriptor() ([]byte, []int) {
+func (m *QueryGetPeriodicLastDataPointIdRequest) Reset() {
+	*m = QueryGetPeriodicLastDataPointIdRequest{}
+}
+func (m *QueryGetPeriodicLastDataPointIdRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetPeriodicLastDataPointIdRequest) ProtoMessage()    {}
+func (*QueryGetPeriodicLastDataPointIdRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_62e8b96125860947, []int{4}
 }
-func (m *QueryGetICQResultRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetPeriodicLastDataPointIdRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetICQResultRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetPeriodicLastDataPointIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetICQResultRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetPeriodicLastDataPointIdRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -239,41 +241,43 @@ func (m *QueryGetICQResultRequest) XXX_Marshal(b []byte, deterministic bool) ([]
 		return b[:n], nil
 	}
 }
-func (m *QueryGetICQResultRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetICQResultRequest.Merge(m, src)
+func (m *QueryGetPeriodicLastDataPointIdRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetPeriodicLastDataPointIdRequest.Merge(m, src)
 }
-func (m *QueryGetICQResultRequest) XXX_Size() int {
+func (m *QueryGetPeriodicLastDataPointIdRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetICQResultRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetICQResultRequest.DiscardUnknown(m)
+func (m *QueryGetPeriodicLastDataPointIdRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetPeriodicLastDataPointIdRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetICQResultRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetPeriodicLastDataPointIdRequest proto.InternalMessageInfo
 
-func (m *QueryGetICQResultRequest) GetId() uint64 {
+func (m *QueryGetPeriodicLastDataPointIdRequest) GetId() uint64 {
 	if m != nil {
 		return m.Id
 	}
 	return 0
 }
 
-type QueryGetICQResultResponse struct {
-	ICQResult ICQResult `protobuf:"bytes,1,opt,name=ICQResult,proto3" json:"ICQResult"`
+type QueryGetPeriodicLastDataPointIdResponse struct {
+	LastDataPointId string `protobuf:"bytes,1,opt,name=LastDataPointId,proto3" json:"LastDataPointId,omitempty"`
 }
 
-func (m *QueryGetICQResultResponse) Reset()         { *m = QueryGetICQResultResponse{} }
-func (m *QueryGetICQResultResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryGetICQResultResponse) ProtoMessage()    {}
-func (*QueryGetICQResultResponse) Descriptor() ([]byte, []int) {
+func (m *QueryGetPeriodicLastDataPointIdResponse) Reset() {
+	*m = QueryGetPeriodicLastDataPointIdResponse{}
+}
+func (m *QueryGetPeriodicLastDataPointIdResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetPeriodicLastDataPointIdResponse) ProtoMessage()    {}
+func (*QueryGetPeriodicLastDataPointIdResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_62e8b96125860947, []int{5}
 }
-func (m *QueryGetICQResultResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetPeriodicLastDataPointIdResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetICQResultResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetPeriodicLastDataPointIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetICQResultResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetPeriodicLastDataPointIdResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -283,41 +287,43 @@ func (m *QueryGetICQResultResponse) XXX_Marshal(b []byte, deterministic bool) ([
 		return b[:n], nil
 	}
 }
-func (m *QueryGetICQResultResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetICQResultResponse.Merge(m, src)
+func (m *QueryGetPeriodicLastDataPointIdResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetPeriodicLastDataPointIdResponse.Merge(m, src)
 }
-func (m *QueryGetICQResultResponse) XXX_Size() int {
+func (m *QueryGetPeriodicLastDataPointIdResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetICQResultResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetICQResultResponse.DiscardUnknown(m)
+func (m *QueryGetPeriodicLastDataPointIdResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetPeriodicLastDataPointIdResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetICQResultResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetPeriodicLastDataPointIdResponse proto.InternalMessageInfo
 
-func (m *QueryGetICQResultResponse) GetICQResult() ICQResult {
+func (m *QueryGetPeriodicLastDataPointIdResponse) GetLastDataPointId() string {
 	if m != nil {
-		return m.ICQResult
+		return m.LastDataPointId
 	}
-	return ICQResult{}
+	return ""
 }
 
-type QueryAllICQResultRequest struct {
+type QueryAllPeriodicLastDataPointIdRequest struct {
 	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
-func (m *QueryAllICQResultRequest) Reset()         { *m = QueryAllICQResultRequest{} }
-func (m *QueryAllICQResultRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryAllICQResultRequest) ProtoMessage()    {}
-func (*QueryAllICQResultRequest) Descriptor() ([]byte, []int) {
+func (m *QueryAllPeriodicLastDataPointIdRequest) Reset() {
+	*m = QueryAllPeriodicLastDataPointIdRequest{}
+}
+func (m *QueryAllPeriodicLastDataPointIdRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllPeriodicLastDataPointIdRequest) ProtoMessage()    {}
+func (*QueryAllPeriodicLastDataPointIdRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_62e8b96125860947, []int{6}
 }
-func (m *QueryAllICQResultRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryAllPeriodicLastDataPointIdRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryAllICQResultRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryAllPeriodicLastDataPointIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryAllICQResultRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryAllPeriodicLastDataPointIdRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -327,42 +333,44 @@ func (m *QueryAllICQResultRequest) XXX_Marshal(b []byte, deterministic bool) ([]
 		return b[:n], nil
 	}
 }
-func (m *QueryAllICQResultRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllICQResultRequest.Merge(m, src)
+func (m *QueryAllPeriodicLastDataPointIdRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllPeriodicLastDataPointIdRequest.Merge(m, src)
 }
-func (m *QueryAllICQResultRequest) XXX_Size() int {
+func (m *QueryAllPeriodicLastDataPointIdRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryAllICQResultRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllICQResultRequest.DiscardUnknown(m)
+func (m *QueryAllPeriodicLastDataPointIdRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllPeriodicLastDataPointIdRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryAllICQResultRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryAllPeriodicLastDataPointIdRequest proto.InternalMessageInfo
 
-func (m *QueryAllICQResultRequest) GetPagination() *query.PageRequest {
+func (m *QueryAllPeriodicLastDataPointIdRequest) GetPagination() *query.PageRequest {
 	if m != nil {
 		return m.Pagination
 	}
 	return nil
 }
 
-type QueryAllICQResultResponse struct {
-	ICQResult  []ICQResult         `protobuf:"bytes,1,rep,name=ICQResult,proto3" json:"ICQResult"`
-	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+type QueryAllPeriodicLastDataPointIdResponse struct {
+	LastDataPointId []string            `protobuf:"bytes,1,rep,name=LastDataPointId,proto3" json:"LastDataPointId,omitempty"`
+	Pagination      *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
-func (m *QueryAllICQResultResponse) Reset()         { *m = QueryAllICQResultResponse{} }
-func (m *QueryAllICQResultResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryAllICQResultResponse) ProtoMessage()    {}
-func (*QueryAllICQResultResponse) Descriptor() ([]byte, []int) {
+func (m *QueryAllPeriodicLastDataPointIdResponse) Reset() {
+	*m = QueryAllPeriodicLastDataPointIdResponse{}
+}
+func (m *QueryAllPeriodicLastDataPointIdResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllPeriodicLastDataPointIdResponse) ProtoMessage()    {}
+func (*QueryAllPeriodicLastDataPointIdResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_62e8b96125860947, []int{7}
 }
-func (m *QueryAllICQResultResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryAllPeriodicLastDataPointIdResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryAllICQResultResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryAllPeriodicLastDataPointIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryAllICQResultResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryAllPeriodicLastDataPointIdResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -372,48 +380,48 @@ func (m *QueryAllICQResultResponse) XXX_Marshal(b []byte, deterministic bool) ([
 		return b[:n], nil
 	}
 }
-func (m *QueryAllICQResultResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllICQResultResponse.Merge(m, src)
+func (m *QueryAllPeriodicLastDataPointIdResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllPeriodicLastDataPointIdResponse.Merge(m, src)
 }
-func (m *QueryAllICQResultResponse) XXX_Size() int {
+func (m *QueryAllPeriodicLastDataPointIdResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryAllICQResultResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllICQResultResponse.DiscardUnknown(m)
+func (m *QueryAllPeriodicLastDataPointIdResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllPeriodicLastDataPointIdResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryAllICQResultResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryAllPeriodicLastDataPointIdResponse proto.InternalMessageInfo
 
-func (m *QueryAllICQResultResponse) GetICQResult() []ICQResult {
+func (m *QueryAllPeriodicLastDataPointIdResponse) GetLastDataPointId() []string {
 	if m != nil {
-		return m.ICQResult
+		return m.LastDataPointId
 	}
 	return nil
 }
 
-func (m *QueryAllICQResultResponse) GetPagination() *query.PageResponse {
+func (m *QueryAllPeriodicLastDataPointIdResponse) GetPagination() *query.PageResponse {
 	if m != nil {
 		return m.Pagination
 	}
 	return nil
 }
 
-type QueryGetDataPointResultRequest struct {
+type QueryGetDataPointRequest struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (m *QueryGetDataPointResultRequest) Reset()         { *m = QueryGetDataPointResultRequest{} }
-func (m *QueryGetDataPointResultRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryGetDataPointResultRequest) ProtoMessage()    {}
-func (*QueryGetDataPointResultRequest) Descriptor() ([]byte, []int) {
+func (m *QueryGetDataPointRequest) Reset()         { *m = QueryGetDataPointRequest{} }
+func (m *QueryGetDataPointRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetDataPointRequest) ProtoMessage()    {}
+func (*QueryGetDataPointRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_62e8b96125860947, []int{8}
 }
-func (m *QueryGetDataPointResultRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetDataPointRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetDataPointResultRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetDataPointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetDataPointResultRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetDataPointRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -423,41 +431,41 @@ func (m *QueryGetDataPointResultRequest) XXX_Marshal(b []byte, deterministic boo
 		return b[:n], nil
 	}
 }
-func (m *QueryGetDataPointResultRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetDataPointResultRequest.Merge(m, src)
+func (m *QueryGetDataPointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetDataPointRequest.Merge(m, src)
 }
-func (m *QueryGetDataPointResultRequest) XXX_Size() int {
+func (m *QueryGetDataPointRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetDataPointResultRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetDataPointResultRequest.DiscardUnknown(m)
+func (m *QueryGetDataPointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetDataPointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetDataPointResultRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetDataPointRequest proto.InternalMessageInfo
 
-func (m *QueryGetDataPointResultRequest) GetId() string {
+func (m *QueryGetDataPointRequest) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-type QueryGetDataPointResultResponse struct {
-	DataPointResult DataPointResult `protobuf:"bytes,1,opt,name=DataPointResult,proto3" json:"DataPointResult"`
+type QueryGetDataPointResponse struct {
+	DataPoint DataPoint `protobuf:"bytes,1,opt,name=DataPoint,proto3" json:"DataPoint"`
 }
 
-func (m *QueryGetDataPointResultResponse) Reset()         { *m = QueryGetDataPointResultResponse{} }
-func (m *QueryGetDataPointResultResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryGetDataPointResultResponse) ProtoMessage()    {}
-func (*QueryGetDataPointResultResponse) Descriptor() ([]byte, []int) {
+func (m *QueryGetDataPointResponse) Reset()         { *m = QueryGetDataPointResponse{} }
+func (m *QueryGetDataPointResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetDataPointResponse) ProtoMessage()    {}
+func (*QueryGetDataPointResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_62e8b96125860947, []int{9}
 }
-func (m *QueryGetDataPointResultResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetDataPointResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetDataPointResultResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetDataPointResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetDataPointResultResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetDataPointResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -467,41 +475,41 @@ func (m *QueryGetDataPointResultResponse) XXX_Marshal(b []byte, deterministic bo
 		return b[:n], nil
 	}
 }
-func (m *QueryGetDataPointResultResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetDataPointResultResponse.Merge(m, src)
+func (m *QueryGetDataPointResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetDataPointResponse.Merge(m, src)
 }
-func (m *QueryGetDataPointResultResponse) XXX_Size() int {
+func (m *QueryGetDataPointResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetDataPointResultResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetDataPointResultResponse.DiscardUnknown(m)
+func (m *QueryGetDataPointResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetDataPointResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetDataPointResultResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetDataPointResponse proto.InternalMessageInfo
 
-func (m *QueryGetDataPointResultResponse) GetDataPointResult() DataPointResult {
+func (m *QueryGetDataPointResponse) GetDataPoint() DataPoint {
 	if m != nil {
-		return m.DataPointResult
+		return m.DataPoint
 	}
-	return DataPointResult{}
+	return DataPoint{}
 }
 
-type QueryAllDataPointResultRequest struct {
+type QueryAllDataPointRequest struct {
 	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
-func (m *QueryAllDataPointResultRequest) Reset()         { *m = QueryAllDataPointResultRequest{} }
-func (m *QueryAllDataPointResultRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryAllDataPointResultRequest) ProtoMessage()    {}
-func (*QueryAllDataPointResultRequest) Descriptor() ([]byte, []int) {
+func (m *QueryAllDataPointRequest) Reset()         { *m = QueryAllDataPointRequest{} }
+func (m *QueryAllDataPointRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllDataPointRequest) ProtoMessage()    {}
+func (*QueryAllDataPointRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_62e8b96125860947, []int{10}
 }
-func (m *QueryAllDataPointResultRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryAllDataPointRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryAllDataPointResultRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryAllDataPointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryAllDataPointResultRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryAllDataPointRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -511,42 +519,42 @@ func (m *QueryAllDataPointResultRequest) XXX_Marshal(b []byte, deterministic boo
 		return b[:n], nil
 	}
 }
-func (m *QueryAllDataPointResultRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllDataPointResultRequest.Merge(m, src)
+func (m *QueryAllDataPointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllDataPointRequest.Merge(m, src)
 }
-func (m *QueryAllDataPointResultRequest) XXX_Size() int {
+func (m *QueryAllDataPointRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryAllDataPointResultRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllDataPointResultRequest.DiscardUnknown(m)
+func (m *QueryAllDataPointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllDataPointRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryAllDataPointResultRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryAllDataPointRequest proto.InternalMessageInfo
 
-func (m *QueryAllDataPointResultRequest) GetPagination() *query.PageRequest {
+func (m *QueryAllDataPointRequest) GetPagination() *query.PageRequest {
 	if m != nil {
 		return m.Pagination
 	}
 	return nil
 }
 
-type QueryAllDataPointResultResponse struct {
-	DataPointResult []DataPointResult   `protobuf:"bytes,1,rep,name=DataPointResult,proto3" json:"DataPointResult"`
-	Pagination      *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+type QueryAllDataPointResponse struct {
+	DataPoint  []DataPoint         `protobuf:"bytes,1,rep,name=DataPoint,proto3" json:"DataPoint"`
+	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
-func (m *QueryAllDataPointResultResponse) Reset()         { *m = QueryAllDataPointResultResponse{} }
-func (m *QueryAllDataPointResultResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryAllDataPointResultResponse) ProtoMessage()    {}
-func (*QueryAllDataPointResultResponse) Descriptor() ([]byte, []int) {
+func (m *QueryAllDataPointResponse) Reset()         { *m = QueryAllDataPointResponse{} }
+func (m *QueryAllDataPointResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllDataPointResponse) ProtoMessage()    {}
+func (*QueryAllDataPointResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_62e8b96125860947, []int{11}
 }
-func (m *QueryAllDataPointResultResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryAllDataPointResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryAllDataPointResultResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryAllDataPointResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryAllDataPointResultResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryAllDataPointResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -556,28 +564,124 @@ func (m *QueryAllDataPointResultResponse) XXX_Marshal(b []byte, deterministic bo
 		return b[:n], nil
 	}
 }
-func (m *QueryAllDataPointResultResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllDataPointResultResponse.Merge(m, src)
+func (m *QueryAllDataPointResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllDataPointResponse.Merge(m, src)
 }
-func (m *QueryAllDataPointResultResponse) XXX_Size() int {
+func (m *QueryAllDataPointResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryAllDataPointResultResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllDataPointResultResponse.DiscardUnknown(m)
+func (m *QueryAllDataPointResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllDataPointResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryAllDataPointResultResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryAllDataPointResponse proto.InternalMessageInfo
 
-func (m *QueryAllDataPointResultResponse) GetDataPointResult() []DataPointResult {
+func (m *QueryAllDataPointResponse) GetDataPoint() []DataPoint {
 	if m != nil {
-		return m.DataPointResult
+		return m.DataPoint
 	}
 	return nil
 }
 
-func (m *QueryAllDataPointResultResponse) GetPagination() *query.PageResponse {
+func (m *QueryAllDataPointResponse) GetPagination() *query.PageResponse {
 	if m != nil {
 		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllDataPointsForPeriodicRequest struct {
+	Id         uint64             `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pagination *query.PageRequest `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllDataPointsForPeriodicRequest) Reset()         { *m = QueryAllDataPointsForPeriodicRequest{} }
+func (m *QueryAllDataPointsForPeriodicRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllDataPointsForPeriodicRequest) ProtoMessage()    {}
+func (*QueryAllDataPointsForPeriodicRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_62e8b96125860947, []int{12}
+}
+func (m *QueryAllDataPointsForPeriodicRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllDataPointsForPeriodicRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllDataPointsForPeriodicRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllDataPointsForPeriodicRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllDataPointsForPeriodicRequest.Merge(m, src)
+}
+func (m *QueryAllDataPointsForPeriodicRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllDataPointsForPeriodicRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllDataPointsForPeriodicRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllDataPointsForPeriodicRequest proto.InternalMessageInfo
+
+func (m *QueryAllDataPointsForPeriodicRequest) GetId() uint64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *QueryAllDataPointsForPeriodicRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllDataPointsForPeriodicResponse struct {
+	DataPoint []DataPoint `protobuf:"bytes,1,rep,name=DataPoint,proto3" json:"DataPoint"`
+}
+
+func (m *QueryAllDataPointsForPeriodicResponse) Reset()         { *m = QueryAllDataPointsForPeriodicResponse{} }
+func (m *QueryAllDataPointsForPeriodicResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllDataPointsForPeriodicResponse) ProtoMessage()    {}
+func (*QueryAllDataPointsForPeriodicResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_62e8b96125860947, []int{13}
+}
+func (m *QueryAllDataPointsForPeriodicResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllDataPointsForPeriodicResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllDataPointsForPeriodicResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllDataPointsForPeriodicResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllDataPointsForPeriodicResponse.Merge(m, src)
+}
+func (m *QueryAllDataPointsForPeriodicResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllDataPointsForPeriodicResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllDataPointsForPeriodicResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllDataPointsForPeriodicResponse proto.InternalMessageInfo
+
+func (m *QueryAllDataPointsForPeriodicResponse) GetDataPoint() []DataPoint {
+	if m != nil {
+		return m.DataPoint
 	}
 	return nil
 }
@@ -590,7 +694,7 @@ func (m *QueryGetICQTimeoutsRequest) Reset()         { *m = QueryGetICQTimeoutsR
 func (m *QueryGetICQTimeoutsRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryGetICQTimeoutsRequest) ProtoMessage()    {}
 func (*QueryGetICQTimeoutsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_62e8b96125860947, []int{12}
+	return fileDescriptor_62e8b96125860947, []int{14}
 }
 func (m *QueryGetICQTimeoutsRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -634,7 +738,7 @@ func (m *QueryGetICQTimeoutsResponse) Reset()         { *m = QueryGetICQTimeouts
 func (m *QueryGetICQTimeoutsResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryGetICQTimeoutsResponse) ProtoMessage()    {}
 func (*QueryGetICQTimeoutsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_62e8b96125860947, []int{13}
+	return fileDescriptor_62e8b96125860947, []int{15}
 }
 func (m *QueryGetICQTimeoutsResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -678,7 +782,7 @@ func (m *QueryAllICQTimeoutsRequest) Reset()         { *m = QueryAllICQTimeoutsR
 func (m *QueryAllICQTimeoutsRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryAllICQTimeoutsRequest) ProtoMessage()    {}
 func (*QueryAllICQTimeoutsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_62e8b96125860947, []int{14}
+	return fileDescriptor_62e8b96125860947, []int{16}
 }
 func (m *QueryAllICQTimeoutsRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -723,7 +827,7 @@ func (m *QueryAllICQTimeoutsResponse) Reset()         { *m = QueryAllICQTimeouts
 func (m *QueryAllICQTimeoutsResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryAllICQTimeoutsResponse) ProtoMessage()    {}
 func (*QueryAllICQTimeoutsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_62e8b96125860947, []int{15}
+	return fileDescriptor_62e8b96125860947, []int{17}
 }
 func (m *QueryAllICQTimeoutsResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -774,7 +878,7 @@ func (m *QueryGetPeriodicICQRequest) Reset()         { *m = QueryGetPeriodicICQR
 func (m *QueryGetPeriodicICQRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryGetPeriodicICQRequest) ProtoMessage()    {}
 func (*QueryGetPeriodicICQRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_62e8b96125860947, []int{16}
+	return fileDescriptor_62e8b96125860947, []int{18}
 }
 func (m *QueryGetPeriodicICQRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -818,7 +922,7 @@ func (m *QueryGetPeriodicICQResponse) Reset()         { *m = QueryGetPeriodicICQ
 func (m *QueryGetPeriodicICQResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryGetPeriodicICQResponse) ProtoMessage()    {}
 func (*QueryGetPeriodicICQResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_62e8b96125860947, []int{17}
+	return fileDescriptor_62e8b96125860947, []int{19}
 }
 func (m *QueryGetPeriodicICQResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -862,7 +966,7 @@ func (m *QueryAllPeriodicICQRequest) Reset()         { *m = QueryAllPeriodicICQR
 func (m *QueryAllPeriodicICQRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryAllPeriodicICQRequest) ProtoMessage()    {}
 func (*QueryAllPeriodicICQRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_62e8b96125860947, []int{18}
+	return fileDescriptor_62e8b96125860947, []int{20}
 }
 func (m *QueryAllPeriodicICQRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -907,7 +1011,7 @@ func (m *QueryAllPeriodicICQResponse) Reset()         { *m = QueryAllPeriodicICQ
 func (m *QueryAllPeriodicICQResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryAllPeriodicICQResponse) ProtoMessage()    {}
 func (*QueryAllPeriodicICQResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_62e8b96125860947, []int{19}
+	return fileDescriptor_62e8b96125860947, []int{21}
 }
 func (m *QueryAllPeriodicICQResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -955,14 +1059,16 @@ func init() {
 	proto.RegisterType((*QueryGetPendingICQRequestResponse)(nil), "simplyvc.interchainqueries.icq.QueryGetPendingICQRequestResponse")
 	proto.RegisterType((*QueryAllPendingICQRequest)(nil), "simplyvc.interchainqueries.icq.QueryAllPendingICQRequest")
 	proto.RegisterType((*QueryAllPendingICQRequestResponse)(nil), "simplyvc.interchainqueries.icq.QueryAllPendingICQRequestResponse")
-	proto.RegisterType((*QueryGetICQResultRequest)(nil), "simplyvc.interchainqueries.icq.QueryGetICQResultRequest")
-	proto.RegisterType((*QueryGetICQResultResponse)(nil), "simplyvc.interchainqueries.icq.QueryGetICQResultResponse")
-	proto.RegisterType((*QueryAllICQResultRequest)(nil), "simplyvc.interchainqueries.icq.QueryAllICQResultRequest")
-	proto.RegisterType((*QueryAllICQResultResponse)(nil), "simplyvc.interchainqueries.icq.QueryAllICQResultResponse")
-	proto.RegisterType((*QueryGetDataPointResultRequest)(nil), "simplyvc.interchainqueries.icq.QueryGetDataPointResultRequest")
-	proto.RegisterType((*QueryGetDataPointResultResponse)(nil), "simplyvc.interchainqueries.icq.QueryGetDataPointResultResponse")
-	proto.RegisterType((*QueryAllDataPointResultRequest)(nil), "simplyvc.interchainqueries.icq.QueryAllDataPointResultRequest")
-	proto.RegisterType((*QueryAllDataPointResultResponse)(nil), "simplyvc.interchainqueries.icq.QueryAllDataPointResultResponse")
+	proto.RegisterType((*QueryGetPeriodicLastDataPointIdRequest)(nil), "simplyvc.interchainqueries.icq.QueryGetPeriodicLastDataPointIdRequest")
+	proto.RegisterType((*QueryGetPeriodicLastDataPointIdResponse)(nil), "simplyvc.interchainqueries.icq.QueryGetPeriodicLastDataPointIdResponse")
+	proto.RegisterType((*QueryAllPeriodicLastDataPointIdRequest)(nil), "simplyvc.interchainqueries.icq.QueryAllPeriodicLastDataPointIdRequest")
+	proto.RegisterType((*QueryAllPeriodicLastDataPointIdResponse)(nil), "simplyvc.interchainqueries.icq.QueryAllPeriodicLastDataPointIdResponse")
+	proto.RegisterType((*QueryGetDataPointRequest)(nil), "simplyvc.interchainqueries.icq.QueryGetDataPointRequest")
+	proto.RegisterType((*QueryGetDataPointResponse)(nil), "simplyvc.interchainqueries.icq.QueryGetDataPointResponse")
+	proto.RegisterType((*QueryAllDataPointRequest)(nil), "simplyvc.interchainqueries.icq.QueryAllDataPointRequest")
+	proto.RegisterType((*QueryAllDataPointResponse)(nil), "simplyvc.interchainqueries.icq.QueryAllDataPointResponse")
+	proto.RegisterType((*QueryAllDataPointsForPeriodicRequest)(nil), "simplyvc.interchainqueries.icq.QueryAllDataPointsForPeriodicRequest")
+	proto.RegisterType((*QueryAllDataPointsForPeriodicResponse)(nil), "simplyvc.interchainqueries.icq.QueryAllDataPointsForPeriodicResponse")
 	proto.RegisterType((*QueryGetICQTimeoutsRequest)(nil), "simplyvc.interchainqueries.icq.QueryGetICQTimeoutsRequest")
 	proto.RegisterType((*QueryGetICQTimeoutsResponse)(nil), "simplyvc.interchainqueries.icq.QueryGetICQTimeoutsResponse")
 	proto.RegisterType((*QueryAllICQTimeoutsRequest)(nil), "simplyvc.interchainqueries.icq.QueryAllICQTimeoutsRequest")
@@ -976,65 +1082,70 @@ func init() {
 func init() { proto.RegisterFile("icq/query.proto", fileDescriptor_62e8b96125860947) }
 
 var fileDescriptor_62e8b96125860947 = []byte{
-	// 921 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x98, 0xcd, 0x6e, 0xeb, 0x44,
-	0x14, 0xc7, 0x33, 0x49, 0x41, 0xea, 0x14, 0xb5, 0x30, 0x2a, 0xa8, 0x04, 0xe4, 0x82, 0x17, 0x7c,
-	0xb4, 0xc8, 0x6e, 0x5a, 0x15, 0xd2, 0x54, 0x6d, 0x49, 0x0b, 0x54, 0x08, 0x21, 0xa5, 0x81, 0x15,
-	0x9b, 0xc8, 0xb1, 0x47, 0xee, 0x20, 0xc7, 0xe3, 0xc4, 0x4e, 0x45, 0x84, 0xd8, 0x74, 0xc9, 0x0a,
-	0x89, 0x27, 0xe0, 0x19, 0x58, 0xb2, 0x44, 0x48, 0x95, 0x2a, 0x74, 0x7b, 0xd5, 0xcd, 0x5d, 0x5d,
-	0x5d, 0xb5, 0xf7, 0x41, 0xae, 0x3c, 0x1e, 0x37, 0x8e, 0x3f, 0x62, 0xc7, 0x71, 0x77, 0xd5, 0x99,
-	0x39, 0x67, 0xce, 0xef, 0xfc, 0x67, 0x72, 0x4e, 0x0d, 0x57, 0x88, 0xda, 0x97, 0xfb, 0x43, 0x3c,
-	0x18, 0x49, 0xd6, 0x80, 0x3a, 0x14, 0x09, 0x36, 0xe9, 0x59, 0xc6, 0xe8, 0x42, 0x95, 0x88, 0xe9,
-	0xe0, 0x81, 0x7a, 0xae, 0x10, 0xd3, 0x5d, 0x27, 0xd8, 0x96, 0x88, 0xda, 0xaf, 0xae, 0xea, 0x54,
-	0xa7, 0x6c, 0xab, 0xec, 0xfe, 0xe5, 0x79, 0x55, 0xdf, 0xd7, 0x29, 0xd5, 0x0d, 0x2c, 0x2b, 0x16,
-	0x91, 0x15, 0xd3, 0xa4, 0x8e, 0xe2, 0x10, 0x6a, 0xda, 0x7c, 0x75, 0x43, 0xa5, 0x76, 0x8f, 0xda,
-	0x72, 0x57, 0xb1, 0xb1, 0x77, 0x98, 0x7c, 0x51, 0xeb, 0x62, 0x47, 0xa9, 0xc9, 0x96, 0xa2, 0x13,
-	0x93, 0x6d, 0xe6, 0x7b, 0x57, 0xdd, 0x84, 0x88, 0xda, 0xef, 0x0c, 0xb0, 0x3d, 0x34, 0x1c, 0x6e,
-	0x7d, 0xc7, 0xb7, 0x3a, 0xa4, 0x87, 0xe9, 0xd0, 0xb1, 0x83, 0x76, 0x0b, 0x0f, 0x08, 0xd5, 0x88,
-	0xda, 0x21, 0x6a, 0x9f, 0xdb, 0xdf, 0xf6, 0xec, 0xa6, 0x46, 0x4c, 0x7d, 0x6c, 0x16, 0x37, 0xe1,
-	0xbb, 0x67, 0xee, 0xf1, 0xa7, 0xd8, 0x69, 0x79, 0x8b, 0xdf, 0x9e, 0x9c, 0xb5, 0x71, 0x7f, 0x88,
-	0x6d, 0x07, 0x2d, 0xc3, 0x32, 0xd1, 0xd6, 0xc0, 0x07, 0xe0, 0x93, 0x85, 0x76, 0x99, 0x68, 0xe2,
-	0xef, 0x00, 0x7e, 0x98, 0xb8, 0xbb, 0x8d, 0x6d, 0x8b, 0x9a, 0x36, 0x46, 0x18, 0xbe, 0x15, 0x59,
-	0x64, 0x41, 0x96, 0xb6, 0x6b, 0xd2, 0xf4, 0x5a, 0x4a, 0x11, 0xc7, 0xe3, 0x85, 0xab, 0xe7, 0xeb,
-	0xa5, 0x76, 0x34, 0xa2, 0xa8, 0xf2, 0xcc, 0x9b, 0x86, 0x11, 0xcd, 0xfc, 0x1b, 0x08, 0xc7, 0x75,
-	0xe4, 0x87, 0x7f, 0x24, 0x79, 0x45, 0x97, 0xdc, 0xa2, 0x4b, 0x9e, 0xc2, 0xbc, 0xe8, 0x52, 0x4b,
-	0xd1, 0xb1, 0xcf, 0x11, 0xf0, 0x14, 0x6f, 0x7d, 0xe2, 0xb8, 0x53, 0xd2, 0x88, 0x2b, 0xc5, 0x12,
-	0xa3, 0xd3, 0x09, 0xa8, 0x32, 0x83, 0xfa, 0x38, 0x15, 0xca, 0xcb, 0x71, 0x82, 0x6a, 0x03, 0xae,
-	0xf9, 0x32, 0xb2, 0xf0, 0xee, 0xb5, 0x4a, 0xd2, 0xfc, 0xe7, 0xf1, 0x05, 0x09, 0xec, 0xe5, 0xe0,
-	0xdf, 0xc3, 0xc5, 0x07, 0x23, 0xaf, 0xf2, 0xa7, 0x69, 0xc0, 0x0f, 0x0e, 0x1c, 0x74, 0x1c, 0x41,
-	0xec, 0xf2, 0xbc, 0x9a, 0x86, 0x11, 0xc9, 0xab, 0x28, 0x45, 0xff, 0x06, 0xe3, 0x7b, 0x93, 0x0a,
-	0x54, 0x99, 0x0f, 0xa8, 0x38, 0xc5, 0xb6, 0xa0, 0xe0, 0xab, 0xf0, 0x95, 0xe2, 0x28, 0x2d, 0x4a,
-	0x4c, 0x27, 0x49, 0xb7, 0x45, 0xa6, 0xdb, 0x25, 0x80, 0xeb, 0x89, 0x2e, 0x9c, 0xb6, 0x03, 0x57,
-	0x42, 0x4b, 0xbc, 0xb0, 0x72, 0x1a, 0x73, 0xc8, 0x8d, 0x93, 0x87, 0xa3, 0x89, 0xe7, 0x3c, 0xed,
-	0xa6, 0x61, 0x24, 0xa4, 0x5d, 0x94, 0xac, 0xd7, 0x3e, 0x6e, 0xdc, 0x51, 0xd3, 0x70, 0x2b, 0xc5,
-	0xe1, 0x16, 0x27, 0xf7, 0x67, 0xb0, 0x1a, 0x78, 0x74, 0x3f, 0xf2, 0x5f, 0xf8, 0xa4, 0x27, 0x3a,
-	0x80, 0xef, 0xc5, 0xee, 0xe6, 0xd8, 0x3f, 0xc0, 0xa5, 0x80, 0x99, 0xd7, 0x78, 0x33, 0xc3, 0xad,
-	0xf6, 0x5d, 0x38, 0x6e, 0x30, 0x8a, 0xa8, 0xf1, 0x0c, 0xbd, 0x57, 0x14, 0xce, 0xb0, 0x28, 0x55,
-	0xff, 0x01, 0x1c, 0x2d, 0x7c, 0x4c, 0x12, 0x5a, 0x65, 0x7e, 0xb4, 0x47, 0x51, 0xb1, 0xc5, 0x1b,
-	0xf2, 0x94, 0xe6, 0x1a, 0x50, 0x71, 0x62, 0xf7, 0x18, 0x35, 0x60, 0xce, 0xaa, 0x62, 0xc0, 0xc5,
-	0x47, 0x0d, 0x98, 0x82, 0x2a, 0xc6, 0x64, 0xf8, 0x18, 0x2a, 0x66, 0x42, 0xab, 0xcc, 0x8f, 0x56,
-	0x98, 0x8a, 0xdb, 0x7f, 0xbd, 0x09, 0x5f, 0x63, 0xd9, 0xa3, 0x5b, 0x10, 0xd3, 0xe7, 0xd1, 0x5e,
-	0x5a, 0xa2, 0x89, 0x13, 0x53, 0xb5, 0x99, 0xdb, 0xd5, 0xcf, 0x54, 0xfc, 0xf2, 0xf2, 0xf6, 0xe5,
-	0x9f, 0xe5, 0x06, 0xaa, 0xcb, 0x7e, 0x28, 0x39, 0x12, 0x4a, 0x0e, 0x8d, 0x7e, 0x9d, 0x81, 0x17,
-	0x44, 0xfe, 0x95, 0x68, 0xbf, 0xa1, 0xa7, 0x00, 0xae, 0x46, 0xe2, 0x37, 0x0d, 0x23, 0x23, 0x58,
-	0xdc, 0x60, 0x94, 0x11, 0x6c, 0xda, 0x4c, 0x25, 0xee, 0x33, 0xb0, 0x5d, 0xb4, 0x93, 0x03, 0x0c,
-	0xfd, 0x07, 0x02, 0x7d, 0x1c, 0xd5, 0xb3, 0x96, 0x39, 0x3c, 0x74, 0x54, 0xf7, 0x72, 0x78, 0xf2,
-	0xfc, 0x4f, 0x58, 0xfe, 0x07, 0x68, 0x3f, 0x2d, 0xff, 0x49, 0xeb, 0x88, 0x4f, 0xf9, 0x9e, 0x36,
-	0xff, 0x02, 0xf8, 0xc6, 0x43, 0x68, 0x57, 0x93, 0x7a, 0xd6, 0xc2, 0xe6, 0x44, 0x89, 0x1b, 0x8a,
-	0xc4, 0x43, 0x86, 0x52, 0x47, 0x9f, 0xe7, 0x43, 0x71, 0x6f, 0x58, 0xa4, 0x55, 0x1e, 0x66, 0xad,
-	0x6c, 0xfc, 0xdc, 0x50, 0x3d, 0xca, 0xed, 0xcf, 0xa1, 0x0e, 0x18, 0xd4, 0x17, 0x68, 0x37, 0x0d,
-	0x4a, 0x53, 0x1c, 0xc5, 0x72, 0x03, 0x4c, 0x28, 0xf3, 0x04, 0x40, 0x14, 0x0a, 0xed, 0xea, 0x73,
-	0x98, 0xb5, 0xca, 0x73, 0x61, 0x25, 0xcf, 0x38, 0x62, 0x9d, 0x61, 0x6d, 0xa3, 0xad, 0x59, 0xb1,
-	0xd0, 0xff, 0x60, 0xa2, 0x99, 0xa2, 0xc6, 0x0c, 0x77, 0x3f, 0xd4, 0xff, 0xab, 0xfb, 0xb9, 0x7c,
-	0x39, 0xc2, 0xd7, 0x0c, 0xe1, 0x08, 0x1d, 0xcc, 0x7a, 0xdd, 0xdc, 0xff, 0x84, 0x35, 0x3a, 0xe4,
-	0x0a, 0x5d, 0x03, 0xb8, 0x1c, 0x08, 0xef, 0xaa, 0xd3, 0x98, 0xe1, 0x0d, 0xe4, 0x43, 0x8a, 0x9f,
-	0x53, 0xb2, 0xff, 0x4a, 0x27, 0x21, 0x31, 0x75, 0x82, 0xed, 0xad, 0x91, 0xbd, 0x75, 0x84, 0xfb,
-	0x7a, 0x76, 0x75, 0x62, 0x9a, 0x75, 0x7e, 0x75, 0xfc, 0x6f, 0x12, 0x63, 0x75, 0x02, 0xe1, 0x67,
-	0x52, 0x27, 0x37, 0x52, 0xfc, 0xfc, 0x91, 0x5f, 0x1d, 0x1f, 0xe9, 0xf8, 0xbb, 0xab, 0x3b, 0x01,
-	0xdc, 0xdc, 0x09, 0xe0, 0xc5, 0x9d, 0x00, 0xfe, 0xb8, 0x17, 0x4a, 0x37, 0xf7, 0x42, 0xe9, 0xd9,
-	0xbd, 0x50, 0xfa, 0xa9, 0xa6, 0x13, 0xe7, 0x7c, 0xd8, 0x95, 0x54, 0xda, 0x9b, 0x16, 0xfd, 0x17,
-	0x16, 0xdf, 0x19, 0x59, 0xd8, 0xee, 0xbe, 0xce, 0xbe, 0xcc, 0xec, 0xbc, 0x0a, 0x00, 0x00, 0xff,
-	0xff, 0x92, 0x8b, 0x04, 0x44, 0x89, 0x12, 0x00, 0x00,
+	// 1007 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x98, 0xcf, 0x6f, 0xdc, 0x44,
+	0x14, 0xc7, 0x33, 0xbb, 0x05, 0x29, 0x53, 0xd4, 0x8a, 0x51, 0x81, 0x60, 0xd0, 0x02, 0x16, 0xb4,
+	0x69, 0x83, 0x6c, 0xb6, 0x15, 0x90, 0x1f, 0x42, 0x65, 0xd3, 0x34, 0x51, 0xf8, 0x21, 0x92, 0x2d,
+	0x27, 0x2e, 0x96, 0xd7, 0x1e, 0xb9, 0x83, 0xbc, 0x1e, 0xef, 0x7a, 0x36, 0x62, 0x85, 0xe0, 0xc0,
+	0x91, 0x13, 0x12, 0xff, 0x01, 0xff, 0x02, 0x12, 0x42, 0xe2, 0x8e, 0x2a, 0x21, 0xa4, 0xa2, 0x5c,
+	0x38, 0x21, 0x94, 0x70, 0xe0, 0x5f, 0x40, 0x5c, 0x2a, 0x8f, 0xc7, 0xeb, 0xd9, 0xb5, 0xbd, 0xf6,
+	0x7a, 0x9d, 0x5b, 0x34, 0x33, 0xef, 0xcd, 0xf7, 0xf3, 0xbe, 0xcf, 0xeb, 0xe7, 0xc0, 0xab, 0xc4,
+	0x1a, 0xe8, 0x83, 0x11, 0x1e, 0x8e, 0x35, 0x7f, 0x48, 0x19, 0x45, 0xad, 0x80, 0xf4, 0x7d, 0x77,
+	0x7c, 0x62, 0x69, 0xc4, 0x63, 0x78, 0x68, 0x3d, 0x34, 0x89, 0x17, 0xee, 0x13, 0x1c, 0x68, 0xc4,
+	0x1a, 0x28, 0xd7, 0x1c, 0xea, 0x50, 0x7e, 0x54, 0x0f, 0xff, 0x8a, 0xa2, 0x94, 0x97, 0x1d, 0x4a,
+	0x1d, 0x17, 0xeb, 0xa6, 0x4f, 0x74, 0xd3, 0xf3, 0x28, 0x33, 0x19, 0xa1, 0x5e, 0x20, 0x76, 0x6f,
+	0x59, 0x34, 0xe8, 0xd3, 0x40, 0xef, 0x99, 0x01, 0x8e, 0x2e, 0xd3, 0x4f, 0xda, 0x3d, 0xcc, 0xcc,
+	0xb6, 0xee, 0x9b, 0x0e, 0xf1, 0xf8, 0x61, 0x71, 0xf6, 0xb9, 0x50, 0x90, 0x6d, 0x32, 0xd3, 0xf0,
+	0x29, 0xf1, 0x58, 0x9c, 0xe2, 0xf9, 0x70, 0x99, 0x58, 0x03, 0x83, 0x91, 0x3e, 0xa6, 0xa3, 0xe9,
+	0x75, 0x1f, 0x0f, 0x09, 0xb5, 0x89, 0x65, 0x10, 0x6b, 0x20, 0xa7, 0xf1, 0xb1, 0x67, 0x13, 0xcf,
+	0x49, 0x96, 0xd5, 0x0d, 0xf8, 0xe2, 0x71, 0x78, 0xff, 0x01, 0x66, 0x47, 0xd1, 0xe6, 0xe1, 0xbd,
+	0xe3, 0x2e, 0x1e, 0x8c, 0x70, 0xc0, 0xd0, 0x15, 0xd8, 0x20, 0xf6, 0x1a, 0x78, 0x15, 0xac, 0x5f,
+	0xea, 0x36, 0x88, 0xad, 0x7e, 0x0b, 0xe0, 0x6b, 0xb9, 0xa7, 0xbb, 0x38, 0xf0, 0xa9, 0x17, 0x60,
+	0x84, 0xe1, 0xb3, 0xa9, 0x4d, 0x9e, 0xe4, 0xf2, 0xed, 0xb6, 0x36, 0xbf, 0x98, 0x5a, 0x2a, 0x70,
+	0xf7, 0xd2, 0xa3, 0xbf, 0x5e, 0x59, 0xe9, 0xa6, 0x33, 0xaa, 0x96, 0x50, 0xde, 0x71, 0xdd, 0xb4,
+	0xf2, 0x7d, 0x08, 0x93, 0x42, 0x8a, 0xcb, 0xaf, 0x6b, 0x51, 0xd5, 0xb5, 0xb0, 0xea, 0x5a, 0x64,
+	0xb1, 0xa8, 0xba, 0x76, 0x64, 0x3a, 0x38, 0xe6, 0x90, 0x22, 0xd5, 0xd3, 0x98, 0x38, 0xeb, 0x96,
+	0x22, 0xe2, 0x66, 0xbd, 0xc4, 0xe8, 0x60, 0x0a, 0xaa, 0xc1, 0xa1, 0x6e, 0x14, 0x42, 0x45, 0x1a,
+	0xa7, 0xa8, 0x36, 0xe1, 0xf5, 0xc4, 0xc6, 0xa8, 0x53, 0x3e, 0x32, 0x03, 0xb6, 0x67, 0x32, 0xf3,
+	0x28, 0xec, 0xb1, 0x43, 0x3b, 0xaf, 0x03, 0x1e, 0xc0, 0x1b, 0x85, 0x91, 0xa2, 0x28, 0xeb, 0xf0,
+	0xea, 0xcc, 0x16, 0xcf, 0xb3, 0xda, 0x9d, 0x5d, 0x56, 0x7d, 0x21, 0x87, 0xd7, 0x78, 0xae, 0x9c,
+	0xba, 0x6c, 0xfd, 0x01, 0x08, 0x8e, 0x79, 0x57, 0x0a, 0x0e, 0x2d, 0x8b, 0xa3, 0xb9, 0xbe, 0x2a,
+	0x7c, 0x9a, 0xdd, 0xac, 0xcf, 0xa5, 0x5b, 0x70, 0x2d, 0xae, 0xf5, 0x24, 0x7f, 0xda, 0x97, 0x55,
+	0xee, 0xcb, 0xe7, 0xc9, 0x63, 0x2c, 0x9d, 0x15, 0x04, 0x1f, 0xc3, 0xd5, 0xc9, 0xa2, 0x28, 0xda,
+	0xcd, 0xa2, 0xb6, 0x9c, 0x04, 0x08, 0xcc, 0x24, 0x83, 0xda, 0x13, 0xba, 0x3a, 0xae, 0x9b, 0xd2,
+	0x55, 0x97, 0x41, 0x3f, 0x82, 0xe4, 0xe9, 0x2e, 0x04, 0x6a, 0x2e, 0x07, 0x54, 0x9f, 0x63, 0x5f,
+	0xc3, 0xd7, 0x53, 0xa2, 0x83, 0x7d, 0x3a, 0x8c, 0x5b, 0x2c, 0xe7, 0xa9, 0x9a, 0xa9, 0x5a, 0xa3,
+	0x72, 0xd5, 0x4e, 0xe0, 0x1b, 0x05, 0xf7, 0x5f, 0x48, 0x01, 0xd5, 0x37, 0xa1, 0x12, 0x77, 0xdf,
+	0xe1, 0xbd, 0xe3, 0x4f, 0xc5, 0x0b, 0x29, 0xef, 0x37, 0x64, 0x08, 0x5f, 0xca, 0x3c, 0x2d, 0xb4,
+	0x3d, 0x80, 0x97, 0xa5, 0x65, 0xd1, 0x43, 0x1b, 0x45, 0xea, 0xa4, 0x10, 0xa1, 0x4f, 0xce, 0xa2,
+	0xda, 0x42, 0x61, 0xc7, 0x75, 0x33, 0x14, 0xd6, 0xd5, 0xb5, 0xbf, 0x00, 0x81, 0x36, 0x7b, 0x4d,
+	0x1e, 0x5a, 0x73, 0x79, 0xb4, 0xfa, 0xba, 0x57, 0x72, 0x31, 0x6e, 0x98, 0x39, 0xb3, 0x80, 0xe4,
+	0xe2, 0xd4, 0xe9, 0x04, 0x55, 0x5a, 0x2e, 0xeb, 0xa2, 0x14, 0x12, 0xa3, 0x4a, 0x4b, 0xb2, 0x8b,
+	0x19, 0x0a, 0x2f, 0xc2, 0xc5, 0x52, 0x68, 0xcd, 0xe5, 0xd1, 0x6a, 0x73, 0xf1, 0xf6, 0xaf, 0x08,
+	0x3e, 0xc5, 0xd5, 0xa3, 0x53, 0x90, 0x31, 0x96, 0xa0, 0xad, 0x22, 0xa1, 0xb9, 0x03, 0x9e, 0xd2,
+	0xa9, 0x1c, 0x1a, 0x2b, 0x55, 0xdf, 0xff, 0xe6, 0xf4, 0x9f, 0xef, 0x1b, 0xdb, 0x68, 0x53, 0x8f,
+	0x53, 0xe9, 0xa9, 0x54, 0xfa, 0xcc, 0xa4, 0x6a, 0x0c, 0xa3, 0x24, 0xfa, 0x97, 0xc4, 0xfe, 0x0a,
+	0xfd, 0x01, 0xe0, 0xb5, 0x54, 0xfe, 0x8e, 0xeb, 0x96, 0x04, 0xcb, 0x9a, 0xe3, 0x4a, 0x82, 0xcd,
+	0x1b, 0x01, 0xd5, 0x1d, 0x0e, 0xf6, 0x36, 0xba, 0x53, 0x01, 0x0c, 0xfd, 0x0f, 0xe0, 0x0b, 0x39,
+	0x63, 0x08, 0xda, 0x2f, 0x5f, 0xf4, 0x79, 0xa3, 0x93, 0x72, 0xb0, 0x74, 0x1e, 0x41, 0xfa, 0x09,
+	0x27, 0x3d, 0x44, 0x07, 0x45, 0xa4, 0xd3, 0xab, 0x63, 0xc3, 0x35, 0x03, 0x66, 0x24, 0x1f, 0x32,
+	0x06, 0xb1, 0x23, 0x47, 0xff, 0x03, 0x50, 0xc9, 0xb9, 0x34, 0xf4, 0x75, 0xbf, 0xbc, 0x39, 0x35,
+	0x14, 0xa0, 0x78, 0x20, 0x54, 0x3f, 0xe0, 0x05, 0xd8, 0x43, 0xbb, 0xcb, 0x17, 0x00, 0xfd, 0x0c,
+	0xa4, 0x37, 0x31, 0xda, 0x2c, 0xeb, 0xd1, 0xec, 0xdc, 0xa5, 0x6c, 0x55, 0x88, 0x14, 0x38, 0xef,
+	0x70, 0x9c, 0xb7, 0x90, 0x56, 0x84, 0x13, 0x2a, 0xe7, 0xc2, 0x23, 0xdb, 0x7e, 0x02, 0xf0, 0x99,
+	0x49, 0xb6, 0xd0, 0xa8, 0xcd, 0xb2, 0x05, 0xae, 0xa8, 0x3e, 0x6b, 0x14, 0x54, 0xdb, 0x5c, 0xfd,
+	0x06, 0xba, 0x59, 0x5a, 0x3d, 0xfa, 0x17, 0xc0, 0xb5, 0xbc, 0x09, 0x09, 0xed, 0x2d, 0x2c, 0x25,
+	0x63, 0xc0, 0x53, 0xee, 0x2f, 0x99, 0x45, 0xc0, 0xdd, 0xe5, 0x70, 0x5b, 0xe8, 0xdd, 0xd2, 0x70,
+	0x46, 0xfc, 0xe5, 0x1f, 0x79, 0xf4, 0x3b, 0x98, 0x9a, 0x38, 0xd0, 0x76, 0xd9, 0x36, 0x49, 0x0f,
+	0x49, 0xca, 0x4e, 0xa5, 0x58, 0x41, 0x72, 0x9f, 0x93, 0xdc, 0x45, 0xef, 0x2d, 0xfa, 0xcc, 0x30,
+	0xd2, 0xc7, 0x36, 0x1d, 0x89, 0x9e, 0xfb, 0x0d, 0xc0, 0x2b, 0x52, 0xfa, 0xb0, 0xeb, 0xb6, 0xcb,
+	0x96, 0xba, 0x32, 0x52, 0xf6, 0x30, 0x57, 0xfe, 0x55, 0x96, 0x87, 0xc4, 0xdd, 0x91, 0x67, 0x80,
+	0xed, 0x45, 0x7f, 0xa2, 0xa5, 0x57, 0xd8, 0x4e, 0xa5, 0xd8, 0x65, 0xdd, 0x99, 0xee, 0xb6, 0xd0,
+	0x1d, 0x29, 0xfd, 0x42, 0xee, 0x54, 0x46, 0xca, 0x1e, 0xd2, 0xaa, 0xbb, 0x13, 0x23, 0xed, 0x7e,
+	0xf8, 0xe8, 0xac, 0x05, 0x1e, 0x9f, 0xb5, 0xc0, 0xdf, 0x67, 0x2d, 0xf0, 0xdd, 0x79, 0x6b, 0xe5,
+	0xf1, 0x79, 0x6b, 0xe5, 0xcf, 0xf3, 0xd6, 0xca, 0x67, 0x6d, 0x87, 0xb0, 0x87, 0xa3, 0x9e, 0x66,
+	0xd1, 0xfe, 0xbc, 0xec, 0x5f, 0xf0, 0xfc, 0x6c, 0xec, 0xe3, 0xa0, 0xf7, 0x34, 0xff, 0x6f, 0xdb,
+	0x9d, 0x27, 0x01, 0x00, 0x00, 0xff, 0xff, 0xd5, 0x77, 0x88, 0x8e, 0x5e, 0x14, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1053,14 +1164,16 @@ type QueryClient interface {
 	PendingICQRequest(ctx context.Context, in *QueryGetPendingICQRequest, opts ...grpc.CallOption) (*QueryGetPendingICQRequestResponse, error)
 	// Queries a list of Pending ICQ Request items.
 	PendingICQRequestAll(ctx context.Context, in *QueryAllPendingICQRequest, opts ...grpc.CallOption) (*QueryAllPendingICQRequestResponse, error)
-	// Queries a ICQResult by id.
-	ICQResult(ctx context.Context, in *QueryGetICQResultRequest, opts ...grpc.CallOption) (*QueryGetICQResultResponse, error)
-	// Queries a list of ICQResult items.
-	ICQResultAll(ctx context.Context, in *QueryAllICQResultRequest, opts ...grpc.CallOption) (*QueryAllICQResultResponse, error)
-	// Queries a DataPointResult by id.
-	DataPointResult(ctx context.Context, in *QueryGetDataPointResultRequest, opts ...grpc.CallOption) (*QueryGetDataPointResultResponse, error)
+	// Queries the last data point ids for the periodic queries
+	PeriodicLastDataPointId(ctx context.Context, in *QueryGetPeriodicLastDataPointIdRequest, opts ...grpc.CallOption) (*QueryGetPeriodicLastDataPointIdResponse, error)
+	// Queries a list of last data points for periodic queries.
+	PeriodicLastDataPointIdAll(ctx context.Context, in *QueryAllPeriodicLastDataPointIdRequest, opts ...grpc.CallOption) (*QueryAllPeriodicLastDataPointIdResponse, error)
+	// Queries a DataPoint by id.
+	DataPoint(ctx context.Context, in *QueryGetDataPointRequest, opts ...grpc.CallOption) (*QueryGetDataPointResponse, error)
 	// Queries a list of DataPoint items.
-	DataPointResultAll(ctx context.Context, in *QueryAllDataPointResultRequest, opts ...grpc.CallOption) (*QueryAllDataPointResultResponse, error)
+	DataPointAll(ctx context.Context, in *QueryAllDataPointRequest, opts ...grpc.CallOption) (*QueryAllDataPointResponse, error)
+	// Queries a list of DataPoint items for a periodic id.
+	AllDataPointsForPeriodic(ctx context.Context, in *QueryAllDataPointsForPeriodicRequest, opts ...grpc.CallOption) (*QueryAllDataPointsForPeriodicResponse, error)
 	// Queries a Timedout ICQ by id.
 	ICQTimeouts(ctx context.Context, in *QueryGetICQTimeoutsRequest, opts ...grpc.CallOption) (*QueryGetICQTimeoutsResponse, error)
 	// Queries a list of ICQ Timedout items.
@@ -1097,36 +1210,45 @@ func (c *queryClient) PendingICQRequestAll(ctx context.Context, in *QueryAllPend
 	return out, nil
 }
 
-func (c *queryClient) ICQResult(ctx context.Context, in *QueryGetICQResultRequest, opts ...grpc.CallOption) (*QueryGetICQResultResponse, error) {
-	out := new(QueryGetICQResultResponse)
-	err := c.cc.Invoke(ctx, "/simplyvc.interchainqueries.icq.Query/ICQResult", in, out, opts...)
+func (c *queryClient) PeriodicLastDataPointId(ctx context.Context, in *QueryGetPeriodicLastDataPointIdRequest, opts ...grpc.CallOption) (*QueryGetPeriodicLastDataPointIdResponse, error) {
+	out := new(QueryGetPeriodicLastDataPointIdResponse)
+	err := c.cc.Invoke(ctx, "/simplyvc.interchainqueries.icq.Query/PeriodicLastDataPointId", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) ICQResultAll(ctx context.Context, in *QueryAllICQResultRequest, opts ...grpc.CallOption) (*QueryAllICQResultResponse, error) {
-	out := new(QueryAllICQResultResponse)
-	err := c.cc.Invoke(ctx, "/simplyvc.interchainqueries.icq.Query/ICQResultAll", in, out, opts...)
+func (c *queryClient) PeriodicLastDataPointIdAll(ctx context.Context, in *QueryAllPeriodicLastDataPointIdRequest, opts ...grpc.CallOption) (*QueryAllPeriodicLastDataPointIdResponse, error) {
+	out := new(QueryAllPeriodicLastDataPointIdResponse)
+	err := c.cc.Invoke(ctx, "/simplyvc.interchainqueries.icq.Query/PeriodicLastDataPointIdAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) DataPointResult(ctx context.Context, in *QueryGetDataPointResultRequest, opts ...grpc.CallOption) (*QueryGetDataPointResultResponse, error) {
-	out := new(QueryGetDataPointResultResponse)
-	err := c.cc.Invoke(ctx, "/simplyvc.interchainqueries.icq.Query/DataPointResult", in, out, opts...)
+func (c *queryClient) DataPoint(ctx context.Context, in *QueryGetDataPointRequest, opts ...grpc.CallOption) (*QueryGetDataPointResponse, error) {
+	out := new(QueryGetDataPointResponse)
+	err := c.cc.Invoke(ctx, "/simplyvc.interchainqueries.icq.Query/DataPoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) DataPointResultAll(ctx context.Context, in *QueryAllDataPointResultRequest, opts ...grpc.CallOption) (*QueryAllDataPointResultResponse, error) {
-	out := new(QueryAllDataPointResultResponse)
-	err := c.cc.Invoke(ctx, "/simplyvc.interchainqueries.icq.Query/DataPointResultAll", in, out, opts...)
+func (c *queryClient) DataPointAll(ctx context.Context, in *QueryAllDataPointRequest, opts ...grpc.CallOption) (*QueryAllDataPointResponse, error) {
+	out := new(QueryAllDataPointResponse)
+	err := c.cc.Invoke(ctx, "/simplyvc.interchainqueries.icq.Query/DataPointAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) AllDataPointsForPeriodic(ctx context.Context, in *QueryAllDataPointsForPeriodicRequest, opts ...grpc.CallOption) (*QueryAllDataPointsForPeriodicResponse, error) {
+	out := new(QueryAllDataPointsForPeriodicResponse)
+	err := c.cc.Invoke(ctx, "/simplyvc.interchainqueries.icq.Query/AllDataPointsForPeriodic", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1175,14 +1297,16 @@ type QueryServer interface {
 	PendingICQRequest(context.Context, *QueryGetPendingICQRequest) (*QueryGetPendingICQRequestResponse, error)
 	// Queries a list of Pending ICQ Request items.
 	PendingICQRequestAll(context.Context, *QueryAllPendingICQRequest) (*QueryAllPendingICQRequestResponse, error)
-	// Queries a ICQResult by id.
-	ICQResult(context.Context, *QueryGetICQResultRequest) (*QueryGetICQResultResponse, error)
-	// Queries a list of ICQResult items.
-	ICQResultAll(context.Context, *QueryAllICQResultRequest) (*QueryAllICQResultResponse, error)
-	// Queries a DataPointResult by id.
-	DataPointResult(context.Context, *QueryGetDataPointResultRequest) (*QueryGetDataPointResultResponse, error)
+	// Queries the last data point ids for the periodic queries
+	PeriodicLastDataPointId(context.Context, *QueryGetPeriodicLastDataPointIdRequest) (*QueryGetPeriodicLastDataPointIdResponse, error)
+	// Queries a list of last data points for periodic queries.
+	PeriodicLastDataPointIdAll(context.Context, *QueryAllPeriodicLastDataPointIdRequest) (*QueryAllPeriodicLastDataPointIdResponse, error)
+	// Queries a DataPoint by id.
+	DataPoint(context.Context, *QueryGetDataPointRequest) (*QueryGetDataPointResponse, error)
 	// Queries a list of DataPoint items.
-	DataPointResultAll(context.Context, *QueryAllDataPointResultRequest) (*QueryAllDataPointResultResponse, error)
+	DataPointAll(context.Context, *QueryAllDataPointRequest) (*QueryAllDataPointResponse, error)
+	// Queries a list of DataPoint items for a periodic id.
+	AllDataPointsForPeriodic(context.Context, *QueryAllDataPointsForPeriodicRequest) (*QueryAllDataPointsForPeriodicResponse, error)
 	// Queries a Timedout ICQ by id.
 	ICQTimeouts(context.Context, *QueryGetICQTimeoutsRequest) (*QueryGetICQTimeoutsResponse, error)
 	// Queries a list of ICQ Timedout items.
@@ -1203,17 +1327,20 @@ func (*UnimplementedQueryServer) PendingICQRequest(ctx context.Context, req *Que
 func (*UnimplementedQueryServer) PendingICQRequestAll(ctx context.Context, req *QueryAllPendingICQRequest) (*QueryAllPendingICQRequestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PendingICQRequestAll not implemented")
 }
-func (*UnimplementedQueryServer) ICQResult(ctx context.Context, req *QueryGetICQResultRequest) (*QueryGetICQResultResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ICQResult not implemented")
+func (*UnimplementedQueryServer) PeriodicLastDataPointId(ctx context.Context, req *QueryGetPeriodicLastDataPointIdRequest) (*QueryGetPeriodicLastDataPointIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PeriodicLastDataPointId not implemented")
 }
-func (*UnimplementedQueryServer) ICQResultAll(ctx context.Context, req *QueryAllICQResultRequest) (*QueryAllICQResultResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ICQResultAll not implemented")
+func (*UnimplementedQueryServer) PeriodicLastDataPointIdAll(ctx context.Context, req *QueryAllPeriodicLastDataPointIdRequest) (*QueryAllPeriodicLastDataPointIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PeriodicLastDataPointIdAll not implemented")
 }
-func (*UnimplementedQueryServer) DataPointResult(ctx context.Context, req *QueryGetDataPointResultRequest) (*QueryGetDataPointResultResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DataPointResult not implemented")
+func (*UnimplementedQueryServer) DataPoint(ctx context.Context, req *QueryGetDataPointRequest) (*QueryGetDataPointResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DataPoint not implemented")
 }
-func (*UnimplementedQueryServer) DataPointResultAll(ctx context.Context, req *QueryAllDataPointResultRequest) (*QueryAllDataPointResultResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DataPointResultAll not implemented")
+func (*UnimplementedQueryServer) DataPointAll(ctx context.Context, req *QueryAllDataPointRequest) (*QueryAllDataPointResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DataPointAll not implemented")
+}
+func (*UnimplementedQueryServer) AllDataPointsForPeriodic(ctx context.Context, req *QueryAllDataPointsForPeriodicRequest) (*QueryAllDataPointsForPeriodicResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AllDataPointsForPeriodic not implemented")
 }
 func (*UnimplementedQueryServer) ICQTimeouts(ctx context.Context, req *QueryGetICQTimeoutsRequest) (*QueryGetICQTimeoutsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ICQTimeouts not implemented")
@@ -1268,74 +1395,92 @@ func _Query_PendingICQRequestAll_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_ICQResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetICQResultRequest)
+func _Query_PeriodicLastDataPointId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetPeriodicLastDataPointIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).ICQResult(ctx, in)
+		return srv.(QueryServer).PeriodicLastDataPointId(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/simplyvc.interchainqueries.icq.Query/ICQResult",
+		FullMethod: "/simplyvc.interchainqueries.icq.Query/PeriodicLastDataPointId",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).ICQResult(ctx, req.(*QueryGetICQResultRequest))
+		return srv.(QueryServer).PeriodicLastDataPointId(ctx, req.(*QueryGetPeriodicLastDataPointIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_ICQResultAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllICQResultRequest)
+func _Query_PeriodicLastDataPointIdAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllPeriodicLastDataPointIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).ICQResultAll(ctx, in)
+		return srv.(QueryServer).PeriodicLastDataPointIdAll(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/simplyvc.interchainqueries.icq.Query/ICQResultAll",
+		FullMethod: "/simplyvc.interchainqueries.icq.Query/PeriodicLastDataPointIdAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).ICQResultAll(ctx, req.(*QueryAllICQResultRequest))
+		return srv.(QueryServer).PeriodicLastDataPointIdAll(ctx, req.(*QueryAllPeriodicLastDataPointIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_DataPointResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetDataPointResultRequest)
+func _Query_DataPoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetDataPointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).DataPointResult(ctx, in)
+		return srv.(QueryServer).DataPoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/simplyvc.interchainqueries.icq.Query/DataPointResult",
+		FullMethod: "/simplyvc.interchainqueries.icq.Query/DataPoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).DataPointResult(ctx, req.(*QueryGetDataPointResultRequest))
+		return srv.(QueryServer).DataPoint(ctx, req.(*QueryGetDataPointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_DataPointResultAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllDataPointResultRequest)
+func _Query_DataPointAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllDataPointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).DataPointResultAll(ctx, in)
+		return srv.(QueryServer).DataPointAll(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/simplyvc.interchainqueries.icq.Query/DataPointResultAll",
+		FullMethod: "/simplyvc.interchainqueries.icq.Query/DataPointAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).DataPointResultAll(ctx, req.(*QueryAllDataPointResultRequest))
+		return srv.(QueryServer).DataPointAll(ctx, req.(*QueryAllDataPointRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_AllDataPointsForPeriodic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllDataPointsForPeriodicRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).AllDataPointsForPeriodic(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/simplyvc.interchainqueries.icq.Query/AllDataPointsForPeriodic",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).AllDataPointsForPeriodic(ctx, req.(*QueryAllDataPointsForPeriodicRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1425,20 +1570,24 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Query_PendingICQRequestAll_Handler,
 		},
 		{
-			MethodName: "ICQResult",
-			Handler:    _Query_ICQResult_Handler,
+			MethodName: "PeriodicLastDataPointId",
+			Handler:    _Query_PeriodicLastDataPointId_Handler,
 		},
 		{
-			MethodName: "ICQResultAll",
-			Handler:    _Query_ICQResultAll_Handler,
+			MethodName: "PeriodicLastDataPointIdAll",
+			Handler:    _Query_PeriodicLastDataPointIdAll_Handler,
 		},
 		{
-			MethodName: "DataPointResult",
-			Handler:    _Query_DataPointResult_Handler,
+			MethodName: "DataPoint",
+			Handler:    _Query_DataPoint_Handler,
 		},
 		{
-			MethodName: "DataPointResultAll",
-			Handler:    _Query_DataPointResultAll_Handler,
+			MethodName: "DataPointAll",
+			Handler:    _Query_DataPointAll_Handler,
+		},
+		{
+			MethodName: "AllDataPointsForPeriodic",
+			Handler:    _Query_AllDataPointsForPeriodic_Handler,
 		},
 		{
 			MethodName: "ICQTimeouts",
@@ -1606,7 +1755,7 @@ func (m *QueryAllPendingICQRequestResponse) MarshalToSizedBuffer(dAtA []byte) (i
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetICQResultRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetPeriodicLastDataPointIdRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1616,12 +1765,12 @@ func (m *QueryGetICQResultRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetICQResultRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetPeriodicLastDataPointIdRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetICQResultRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetPeriodicLastDataPointIdRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1634,7 +1783,7 @@ func (m *QueryGetICQResultRequest) MarshalToSizedBuffer(dAtA []byte) (int, error
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetICQResultResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetPeriodicLastDataPointIdResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1644,30 +1793,27 @@ func (m *QueryGetICQResultResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetICQResultResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetPeriodicLastDataPointIdResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetICQResultResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetPeriodicLastDataPointIdResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	{
-		size, err := m.ICQResult.MarshalToSizedBuffer(dAtA[:i])
-		if err != nil {
-			return 0, err
-		}
-		i -= size
-		i = encodeVarintQuery(dAtA, i, uint64(size))
+	if len(m.LastDataPointId) > 0 {
+		i -= len(m.LastDataPointId)
+		copy(dAtA[i:], m.LastDataPointId)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.LastDataPointId)))
+		i--
+		dAtA[i] = 0xa
 	}
-	i--
-	dAtA[i] = 0xa
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryAllICQResultRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryAllPeriodicLastDataPointIdRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1677,12 +1823,12 @@ func (m *QueryAllICQResultRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryAllICQResultRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryAllPeriodicLastDataPointIdRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryAllICQResultRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryAllPeriodicLastDataPointIdRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1702,7 +1848,7 @@ func (m *QueryAllICQResultRequest) MarshalToSizedBuffer(dAtA []byte) (int, error
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryAllICQResultResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryAllPeriodicLastDataPointIdResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1712,12 +1858,12 @@ func (m *QueryAllICQResultResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryAllICQResultResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryAllPeriodicLastDataPointIdResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryAllICQResultResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryAllPeriodicLastDataPointIdResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1734,16 +1880,11 @@ func (m *QueryAllICQResultResponse) MarshalToSizedBuffer(dAtA []byte) (int, erro
 		i--
 		dAtA[i] = 0x12
 	}
-	if len(m.ICQResult) > 0 {
-		for iNdEx := len(m.ICQResult) - 1; iNdEx >= 0; iNdEx-- {
-			{
-				size, err := m.ICQResult[iNdEx].MarshalToSizedBuffer(dAtA[:i])
-				if err != nil {
-					return 0, err
-				}
-				i -= size
-				i = encodeVarintQuery(dAtA, i, uint64(size))
-			}
+	if len(m.LastDataPointId) > 0 {
+		for iNdEx := len(m.LastDataPointId) - 1; iNdEx >= 0; iNdEx-- {
+			i -= len(m.LastDataPointId[iNdEx])
+			copy(dAtA[i:], m.LastDataPointId[iNdEx])
+			i = encodeVarintQuery(dAtA, i, uint64(len(m.LastDataPointId[iNdEx])))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -1751,7 +1892,7 @@ func (m *QueryAllICQResultResponse) MarshalToSizedBuffer(dAtA []byte) (int, erro
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetDataPointResultRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetDataPointRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1761,12 +1902,12 @@ func (m *QueryGetDataPointResultRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetDataPointResultRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetDataPointRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetDataPointResultRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetDataPointRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1781,7 +1922,7 @@ func (m *QueryGetDataPointResultRequest) MarshalToSizedBuffer(dAtA []byte) (int,
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetDataPointResultResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetDataPointResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1791,18 +1932,18 @@ func (m *QueryGetDataPointResultResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetDataPointResultResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetDataPointResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetDataPointResultResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetDataPointResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	{
-		size, err := m.DataPointResult.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.DataPoint.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -1814,7 +1955,7 @@ func (m *QueryGetDataPointResultResponse) MarshalToSizedBuffer(dAtA []byte) (int
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryAllDataPointResultRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryAllDataPointRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1824,12 +1965,12 @@ func (m *QueryAllDataPointResultRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryAllDataPointResultRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryAllDataPointRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryAllDataPointResultRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryAllDataPointRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1849,7 +1990,7 @@ func (m *QueryAllDataPointResultRequest) MarshalToSizedBuffer(dAtA []byte) (int,
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryAllDataPointResultResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryAllDataPointResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1859,12 +2000,12 @@ func (m *QueryAllDataPointResultResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryAllDataPointResultResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryAllDataPointResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryAllDataPointResultResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryAllDataPointResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1881,10 +2022,87 @@ func (m *QueryAllDataPointResultResponse) MarshalToSizedBuffer(dAtA []byte) (int
 		i--
 		dAtA[i] = 0x12
 	}
-	if len(m.DataPointResult) > 0 {
-		for iNdEx := len(m.DataPointResult) - 1; iNdEx >= 0; iNdEx-- {
+	if len(m.DataPoint) > 0 {
+		for iNdEx := len(m.DataPoint) - 1; iNdEx >= 0; iNdEx-- {
 			{
-				size, err := m.DataPointResult[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				size, err := m.DataPoint[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllDataPointsForPeriodicRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllDataPointsForPeriodicRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllDataPointsForPeriodicRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.Id != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllDataPointsForPeriodicResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllDataPointsForPeriodicResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllDataPointsForPeriodicResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.DataPoint) > 0 {
+		for iNdEx := len(m.DataPoint) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.DataPoint[iNdEx].MarshalToSizedBuffer(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -2254,7 +2472,7 @@ func (m *QueryAllPendingICQRequestResponse) Size() (n int) {
 	return n
 }
 
-func (m *QueryGetICQResultRequest) Size() (n int) {
+func (m *QueryGetPeriodicLastDataPointIdRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2266,18 +2484,20 @@ func (m *QueryGetICQResultRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryGetICQResultResponse) Size() (n int) {
+func (m *QueryGetPeriodicLastDataPointIdResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = m.ICQResult.Size()
-	n += 1 + l + sovQuery(uint64(l))
+	l = len(m.LastDataPointId)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
 	return n
 }
 
-func (m *QueryAllICQResultRequest) Size() (n int) {
+func (m *QueryAllPeriodicLastDataPointIdRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2290,15 +2510,15 @@ func (m *QueryAllICQResultRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryAllICQResultResponse) Size() (n int) {
+func (m *QueryAllPeriodicLastDataPointIdResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if len(m.ICQResult) > 0 {
-		for _, e := range m.ICQResult {
-			l = e.Size()
+	if len(m.LastDataPointId) > 0 {
+		for _, s := range m.LastDataPointId {
+			l = len(s)
 			n += 1 + l + sovQuery(uint64(l))
 		}
 	}
@@ -2309,7 +2529,7 @@ func (m *QueryAllICQResultResponse) Size() (n int) {
 	return n
 }
 
-func (m *QueryGetDataPointResultRequest) Size() (n int) {
+func (m *QueryGetDataPointRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2322,18 +2542,18 @@ func (m *QueryGetDataPointResultRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryGetDataPointResultResponse) Size() (n int) {
+func (m *QueryGetDataPointResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = m.DataPointResult.Size()
+	l = m.DataPoint.Size()
 	n += 1 + l + sovQuery(uint64(l))
 	return n
 }
 
-func (m *QueryAllDataPointResultRequest) Size() (n int) {
+func (m *QueryAllDataPointRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2346,14 +2566,14 @@ func (m *QueryAllDataPointResultRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryAllDataPointResultResponse) Size() (n int) {
+func (m *QueryAllDataPointResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if len(m.DataPointResult) > 0 {
-		for _, e := range m.DataPointResult {
+	if len(m.DataPoint) > 0 {
+		for _, e := range m.DataPoint {
 			l = e.Size()
 			n += 1 + l + sovQuery(uint64(l))
 		}
@@ -2361,6 +2581,37 @@ func (m *QueryAllDataPointResultResponse) Size() (n int) {
 	if m.Pagination != nil {
 		l = m.Pagination.Size()
 		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllDataPointsForPeriodicRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Id != 0 {
+		n += 1 + sovQuery(uint64(m.Id))
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllDataPointsForPeriodicResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.DataPoint) > 0 {
+		for _, e := range m.DataPoint {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
 	}
 	return n
 }
@@ -2839,7 +3090,7 @@ func (m *QueryAllPendingICQRequestResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetICQResultRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryGetPeriodicLastDataPointIdRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2862,10 +3113,10 @@ func (m *QueryGetICQResultRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetICQResultRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetPeriodicLastDataPointIdRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetICQResultRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetPeriodicLastDataPointIdRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -2908,7 +3159,7 @@ func (m *QueryGetICQResultRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetICQResultResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryGetPeriodicLastDataPointIdResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2931,17 +3182,17 @@ func (m *QueryGetICQResultResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetICQResultResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetPeriodicLastDataPointIdResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetICQResultResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetPeriodicLastDataPointIdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ICQResult", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field LastDataPointId", wireType)
 			}
-			var msglen int
+			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowQuery
@@ -2951,24 +3202,23 @@ func (m *QueryGetICQResultResponse) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= int(b&0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			if msglen < 0 {
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
 				return ErrInvalidLengthQuery
 			}
-			postIndex := iNdEx + msglen
+			postIndex := iNdEx + intStringLen
 			if postIndex < 0 {
 				return ErrInvalidLengthQuery
 			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.ICQResult.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
+			m.LastDataPointId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -2991,7 +3241,7 @@ func (m *QueryGetICQResultResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryAllICQResultRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryAllPeriodicLastDataPointIdRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3014,10 +3264,10 @@ func (m *QueryAllICQResultRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllICQResultRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryAllPeriodicLastDataPointIdRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllICQResultRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryAllPeriodicLastDataPointIdRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -3077,7 +3327,7 @@ func (m *QueryAllICQResultRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryAllICQResultResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryAllPeriodicLastDataPointIdResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3100,17 +3350,17 @@ func (m *QueryAllICQResultResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllICQResultResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryAllPeriodicLastDataPointIdResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllICQResultResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryAllPeriodicLastDataPointIdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ICQResult", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field LastDataPointId", wireType)
 			}
-			var msglen int
+			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowQuery
@@ -3120,25 +3370,23 @@ func (m *QueryAllICQResultResponse) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				msglen |= int(b&0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			if msglen < 0 {
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
 				return ErrInvalidLengthQuery
 			}
-			postIndex := iNdEx + msglen
+			postIndex := iNdEx + intStringLen
 			if postIndex < 0 {
 				return ErrInvalidLengthQuery
 			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.ICQResult = append(m.ICQResult, ICQResult{})
-			if err := m.ICQResult[len(m.ICQResult)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
+			m.LastDataPointId = append(m.LastDataPointId, string(dAtA[iNdEx:postIndex]))
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -3197,7 +3445,7 @@ func (m *QueryAllICQResultResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetDataPointResultRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryGetDataPointRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3220,10 +3468,10 @@ func (m *QueryGetDataPointResultRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetDataPointResultRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetDataPointRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetDataPointResultRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetDataPointRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -3279,7 +3527,7 @@ func (m *QueryGetDataPointResultRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetDataPointResultResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryGetDataPointResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3302,15 +3550,15 @@ func (m *QueryGetDataPointResultResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetDataPointResultResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetDataPointResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetDataPointResultResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetDataPointResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field DataPointResult", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field DataPoint", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -3337,7 +3585,7 @@ func (m *QueryGetDataPointResultResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.DataPointResult.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.DataPoint.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -3362,7 +3610,7 @@ func (m *QueryGetDataPointResultResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryAllDataPointResultRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryAllDataPointRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3385,10 +3633,10 @@ func (m *QueryAllDataPointResultRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllDataPointResultRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryAllDataPointRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllDataPointResultRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryAllDataPointRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -3448,7 +3696,7 @@ func (m *QueryAllDataPointResultRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryAllDataPointResultResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryAllDataPointResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3471,15 +3719,15 @@ func (m *QueryAllDataPointResultResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllDataPointResultResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryAllDataPointResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllDataPointResultResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryAllDataPointResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field DataPointResult", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field DataPoint", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -3506,8 +3754,8 @@ func (m *QueryAllDataPointResultResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.DataPointResult = append(m.DataPointResult, DataPointResult{})
-			if err := m.DataPointResult[len(m.DataPointResult)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.DataPoint = append(m.DataPoint, DataPoint{})
+			if err := m.DataPoint[len(m.DataPoint)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -3544,6 +3792,195 @@ func (m *QueryAllDataPointResultResponse) Unmarshal(dAtA []byte) error {
 				m.Pagination = &query.PageResponse{}
 			}
 			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllDataPointsForPeriodicRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllDataPointsForPeriodicRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllDataPointsForPeriodicRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllDataPointsForPeriodicResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllDataPointsForPeriodicResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllDataPointsForPeriodicResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DataPoint", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.DataPoint = append(m.DataPoint, DataPoint{})
+			if err := m.DataPoint[len(m.DataPoint)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

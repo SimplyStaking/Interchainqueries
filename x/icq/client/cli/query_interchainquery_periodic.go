@@ -11,11 +11,11 @@ import (
 	"github.com/simplyvc/interchainqueries/x/icq/types"
 )
 
-func CmdListPendingICQRequestsPeriodic() *cobra.Command {
+func CmdListPeriodicICQs() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "list-interchainquery-periodic",
+		Use:   "list-periodic-icqs",
 		Short: "list all periodic interchainqueries",
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(cmd *cobra.Command, _ []string) error {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
 			pageReq, err := client.ReadPageRequest(cmd.Flags())
@@ -44,10 +44,10 @@ func CmdListPendingICQRequestsPeriodic() *cobra.Command {
 	return cmd
 }
 
-func CmdShowPendingICQRequestPeriodic() *cobra.Command {
+func CmdShowPeriodicICQ() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-interchainquery-periodic [id]",
-		Short: "shows a periodic interchainquery",
+		Use:   "show-periodic-icq [id]",
+		Short: "shows a periodic interchainquery for the specified id",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx := client.GetClientContextFromCmd(cmd)
