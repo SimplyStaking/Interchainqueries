@@ -1,0 +1,16 @@
+{
+    "type": "cosmos",
+    "value": {
+      "key": "default",
+      "chain-id": "source-chain",
+      "rpc-addr": "http://0.0.0.0:16657",
+      "account-prefix": "icq",
+      "keyring-backend": "test",
+      "gas-adjustment": 1.2,
+      "gas-prices": "0.01stake",
+      "debug": false,
+      "timeout": "20s",
+      "output-format": "json",
+      "sign-mode": "direct"
+    }
+  }

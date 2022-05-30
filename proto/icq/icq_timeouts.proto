@@ -1,0 +1,10 @@
+syntax = "proto3";
+package simplyvc.interchainqueries.icq;
+
+option go_package = "github.com/simplyvc/interchainqueries/x/icq/types";
+
+message ICQTimeouts {
+  uint64 periodic_id = 1;
+  uint64 timeouts = 2;
+  uint64 last_timeout_height = 3;
+}

@@ -1,0 +1,15 @@
+vue/node_modules
+vue/dist
+secret.yml
+/.idea/
+/chain/
+
+/data/source-chain/*
+/data/source-chain/*/*
+!/data/source-chain/.gitkeep
+
+/data/target-chain/*
+/data/target-chain/*/*
+!/data/target-chain/.gitkeep
+
+.vscode

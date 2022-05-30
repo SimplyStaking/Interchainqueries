@@ -1,0 +1,26 @@
+accounts:
+  - name: alice
+    coins: [ "100000000000stake" ]
+    mnemonic: clutch script morning bacon knock unique impact update aisle morning okay outer witness liquid ordinary direct mention dove arrow witness speed satisfy work any
+    # address: icq1gp04jgaqvpa5pwndra6a78e05glgllw98yv9df
+  - name: relayer
+    coins: [ "100000000000stake" ]
+    mnemonic: record gift you once hip style during joke field prize dust unique length more pencil transfer quit train device arrive energy sort steak upset
+    # address: icq17dtl0mjt3t77kpuhg2edqzjpszulwhgzp4faq3
+validator:
+  name: alice
+  staked: "100000000stake"
+init:
+  home: "./data/source-chain"
+  app:
+    minimum-gas-prices: "0.001stake"
+host:
+  rpc: "0.0.0.0:16657"
+  p2p: "0.0.0.0:16656"
+  prof: "0.0.0.0:6062"
+  grpc: "0.0.0.0:8090"
+  grpc-web: "0.0.0.0:8091"
+  api: "0.0.0.0:1316"
+  rosetta: "0.0.0.0:8080"
+genesis:
+  chain_id: "source-chain"

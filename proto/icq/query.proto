@@ -1,0 +1,169 @@
+syntax = "proto3";
+package simplyvc.interchainqueries.icq;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "icq/data_points.proto";
+import "icq/icq_timeouts.proto";
+import "icq/periodic_icq.proto";
+import "icq/pending_icq.proto";
+
+// this line is used by starport scaffolding # 1
+
+option go_package = "github.com/simplyvc/interchainqueries/x/icq/types";
+
+// Query defines the gRPC querier service.
+service Query { 
+	// Queries a Pending ICQ Request by id.
+	rpc PendingICQRequest(QueryGetPendingICQRequest) returns (QueryGetPendingICQRequestResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/pending_icq_request/{id}";
+	}
+
+	// Queries a list of Pending ICQ Request items.
+	rpc PendingICQRequestAll(QueryAllPendingICQRequest) returns (QueryAllPendingICQRequestResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/pending_icq_request";
+	}
+
+	// Queries the last data point ids for the periodic queries
+	rpc PeriodicLastDataPointId(QueryGetPeriodicLastDataPointIdRequest) returns (QueryGetPeriodicLastDataPointIdResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/interchainquery_last_data_point_id/{id}";
+	}
+
+	// Queries a list of last data points for periodic queries.
+	rpc PeriodicLastDataPointIdAll(QueryAllPeriodicLastDataPointIdRequest) returns (QueryAllPeriodicLastDataPointIdResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/interchainquery_last_data_point_id";
+	}
+
+	// Queries a DataPoint by id.
+	rpc DataPoint(QueryGetDataPointRequest) returns (QueryGetDataPointResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/datapoint/{id}";
+	}
+
+	// Queries a list of DataPoint items.
+	rpc DataPointAll(QueryAllDataPointRequest) returns (QueryAllDataPointResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/datapoint";
+	}
+
+	// Queries a list of DataPoint items for a periodic id.
+	rpc AllDataPointsForPeriodic(QueryAllDataPointsForPeriodicRequest) returns (QueryAllDataPointsForPeriodicResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/datapoint_periodic/{id}";
+	}
+
+	// Queries a Timedout ICQ by id.
+	rpc ICQTimeouts(QueryGetICQTimeoutsRequest) returns (QueryGetICQTimeoutsResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/interchainquery_timedout/{id}";
+	}
+
+	// Queries a list of ICQ Timedout items.
+	rpc ICQTimeoutsAll(QueryAllICQTimeoutsRequest) returns (QueryAllICQTimeoutsResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/interchainquery_timedout";
+	}
+
+	// Queries a periodic ICQ
+	rpc PeriodicICQ(QueryGetPeriodicICQRequest) returns (QueryGetPeriodicICQResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/interchainquery_periodic/{id}";
+	}
+
+	// Queries a list of all periodic ICQs
+	rpc PeriodicICQAll(QueryAllPeriodicICQRequest) returns (QueryAllPeriodicICQResponse) {
+		option (google.api.http).get = "/simplyvc/interchainqueries/icq/interchainquery_periodic";
+	}
+	// this line is used by starport scaffolding # 2
+}
+
+message QueryGetPendingICQRequest {
+	uint64 id = 1;
+}
+
+message QueryGetPendingICQRequestResponse {
+	PendingICQRequest PendingICQRequest = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllPendingICQRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllPendingICQRequestResponse {
+	repeated PendingICQRequest PendingICQRequest = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetPeriodicLastDataPointIdRequest {
+	uint64 id = 1;
+}
+
+message QueryGetPeriodicLastDataPointIdResponse {
+	string LastDataPointId = 1;
+}
+
+message QueryAllPeriodicLastDataPointIdRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllPeriodicLastDataPointIdResponse {
+	repeated string LastDataPointId = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetDataPointRequest {
+	string id = 1;
+}
+
+message QueryGetDataPointResponse {
+	DataPoint DataPoint = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllDataPointRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllDataPointResponse {
+	repeated DataPoint DataPoint = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryAllDataPointsForPeriodicRequest {
+	uint64 id = 1;
+	cosmos.base.query.v1beta1.PageRequest pagination = 2;
+}
+
+message QueryAllDataPointsForPeriodicResponse {
+	repeated DataPoint DataPoint = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetICQTimeoutsRequest {
+	uint64 id = 1;
+}
+
+message QueryGetICQTimeoutsResponse {
+	ICQTimeouts ICQTimeouts = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllICQTimeoutsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllICQTimeoutsResponse {
+	repeated ICQTimeouts ICQTimeouts = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetPeriodicICQRequest {
+	uint64 id = 1;
+}
+
+message QueryGetPeriodicICQResponse {
+	PeriodicICQ PeriodicICQ = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllPeriodicICQRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllPeriodicICQResponse {
+	repeated PeriodicICQ PeriodicICQ = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+// this line is used by starport scaffolding # 3

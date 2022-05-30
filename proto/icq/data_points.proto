@@ -1,0 +1,12 @@
+syntax = "proto3";
+package simplyvc.interchainqueries.icq;
+
+option go_package = "github.com/simplyvc/interchainqueries/x/icq/types";
+
+message DataPoint {
+  string id = 1;
+  uint64 local_height = 2;
+  uint64 target_height = 3;
+  bytes  data = 4; 
+  string prev_data_point_id = 5;
+}

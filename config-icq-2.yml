@@ -1,0 +1,18 @@
+accounts:
+  - name: bob
+    coins: [ "100000000000stake" ]
+    mnemonic: special shuffle drill bachelor hundred pelican cushion glove acoustic tag pull riot shock artefact supply chef silk panda aspect crowd buyer sauce gap gain
+    # address: icq1xprmyxmxhk3j7vl929famszskac8z8l84ljeak
+  - name: relayer
+    coins: [ "100000000000stake" ]
+    mnemonic: record gift you once hip style during joke field prize dust unique length more pencil transfer quit train device arrive energy sort steak upset
+    # address: icq17dtl0mjt3t77kpuhg2edqzjpszulwhgzp4faq3
+validator:
+  name: bob
+  staked: "100000000stake"
+init:
+  home: "./data/target-chain"
+  app:
+    minimum-gas-prices: "0.001stake"
+genesis:
+  chain_id: "target-chain"
