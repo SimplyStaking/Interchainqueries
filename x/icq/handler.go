@@ -18,7 +18,7 @@ func NewHandler(k keeper.Keeper) sdk.Handler {
 	return func(ctx sdk.Context, msg sdk.Msg) (*sdk.Result, error) {
 		ctx = ctx.WithEventManager(sdk.NewEventManager())
 		switch msg := msg.(type) {
-		case *types.MsgSubmitICQResult:
+		case *types.MsgSubmitICQResults:
 			res, err := msgServer.SubmitICQResult(sdk.WrapSDKContext(ctx), msg)
 			return sdk.WrapServiceResult(ctx, res, err)
 		// this line is used by starport scaffolding # 1

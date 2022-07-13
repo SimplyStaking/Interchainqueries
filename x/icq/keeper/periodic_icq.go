@@ -78,8 +78,6 @@ func (k Keeper) RemovePeriodicICQs(ctx sdk.Context, periodicId uint64) {
 
 	// Clean up all data dependant on the Periodic Query
 	k.RemoveAllICQInstancesForPeriodic(ctx, periodicId)
-	k.RemoveAllDataPoints(ctx, periodicId)
-	k.RemovePeriodicLastDataPointId(ctx, periodicId)
 	k.RemoveICQTimeouts(ctx, periodicId)
 
 	// Finally remove the periodic query itself

@@ -29542,7 +29542,7 @@ paths:
                     id:
                       type: string
                       format: uint64
-                    singleIcq:
+                    individualICQs:
                       type: array
                       items:
                         type: object
@@ -29856,7 +29856,7 @@ paths:
                   id:
                     type: string
                     format: uint64
-                  singleIcq:
+                  individualICQs:
                     type: array
                     items:
                       type: object
@@ -49890,7 +49890,7 @@ definitions:
       id:
         type: string
         format: uint64
-      singleIcq:
+      individualICQs:
         type: array
         items:
           type: object
@@ -50010,7 +50010,7 @@ definitions:
             id:
               type: string
               format: uint64
-            singleIcq:
+            individualICQs:
               type: array
               items:
                 type: object
@@ -50156,7 +50156,7 @@ definitions:
           id:
             type: string
             format: uint64
-          singleIcq:
+          individualICQs:
             type: array
             items:
               type: object

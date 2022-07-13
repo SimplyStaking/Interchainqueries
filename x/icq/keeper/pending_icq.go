@@ -121,14 +121,12 @@ func NewPendingICQsRequest(
 	periodicICQ types.PeriodicICQs,
 ) types.PendingICQsRequest {
 	return types.PendingICQsRequest{
-		Id:              pendingICQ.Id,
-		Path:            periodicICQ.Path,
-		TimeoutHeight:   pendingICQ.TimeoutHeight,
-		TargetHeight:    pendingICQ.TargetHeight,
-		ClientId:        periodicICQ.ClientId,
-		Creator:         periodicICQ.Creator,
-		QueryParameters: periodicICQ.QueryParameters,
-		PeriodicId:      periodicICQ.Id,
+		Id:             pendingICQ.Id,
+		IndividualICQs: periodicICQ.IndividualICQs,
+		TimeoutHeight:  pendingICQ.TimeoutHeight,
+		TargetHeight:   pendingICQ.TargetHeight,
+		ClientId:       periodicICQ.ClientId,
+		PeriodicId:     periodicICQ.Id,
 	}
 }
 

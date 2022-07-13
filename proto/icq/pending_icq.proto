@@ -18,7 +18,7 @@ message PendingICQInstance {
 // as the PendingICQs data, so that relayers can process the requests.
 message PendingICQsRequest {
   uint64 id = 1;
-  repeated IndividualICQ singleIcq = 2;
+  repeated IndividualICQ individualICQs = 2;
   uint64 timeout_height = 3;
   uint64 target_height = 4; 
   string client_id = 5; 

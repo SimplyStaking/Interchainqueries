@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"context"
+	"fmt"
 
 	ics23 "github.com/confio/ics23/go"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -106,8 +107,9 @@ func (k msgServer) SubmitICQResult(
 			)
 		}
 
-		// Verification passed we call the hooks
-
+		// Verification passed we call the hook
+		k.AfterDataIsValidated(ctx, *element)
+		fmt.Print(element.Result)
 	}
 
 	k.RemovePendingICQInstance(ctx, msg.QueryId)

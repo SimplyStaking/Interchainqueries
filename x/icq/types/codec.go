@@ -10,14 +10,14 @@ import (
 )
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
-	cdc.RegisterConcrete(&MsgSubmitICQResult{}, "icq/SubmitICQResult", nil)
+	cdc.RegisterConcrete(&MsgSubmitICQResults{}, "icq/SubmitICQResult", nil)
 	// this line is used by starport scaffolding # 2
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	// this line is used by starport scaffolding # 3
 	registry.RegisterImplementations((*sdk.Msg)(nil),
-		&MsgSubmitICQResult{},
+		&MsgSubmitICQResults{},
 	)
 
 	msgservice.RegisterMsgServiceDesc(registry, &_Msg_serviceDesc)

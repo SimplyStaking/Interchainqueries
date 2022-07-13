@@ -18,7 +18,7 @@ For a particular _src_/_dst_ chain pair, the `relayerMainLoop` in `relayer/strat
 **Relaying of unrelayed interchain queries, if any, involves**:
 
 1. Performing the actual query against the _dst_ chain using `QueryStateABCI` from the `CosmosProvider`.
-2. Constructing a `MsgSubmitICQResult` with the query result and proof.
+2. Constructing a `MsgSubmitICQResults` with the query result and proof.
 
 The list of messages are collected into a `*[]provider.RelayerMessage` array and broadcast to the _src_ chain using a standard `Send` function.
 

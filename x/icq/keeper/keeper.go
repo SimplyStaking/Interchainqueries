@@ -16,6 +16,7 @@ type (
 		cdc      codec.BinaryCodec
 		storeKey sdk.StoreKey
 		memKey   sdk.StoreKey
+		hooks    types.ICQHooks
 
 		clientKeeper clientType.Keeper
 	}
@@ -33,9 +34,20 @@ func NewKeeper(
 		storeKey:     storeKey,
 		memKey:       memKey,
 		clientKeeper: clientKeeper,
+		hooks:        nil,
 	}
 }
 
 func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 	return ctx.Logger().With("module", fmt.Sprintf("x/%s", types.ModuleName))
+}
+
+func (k *Keeper) SetHooks(icqHooks types.ICQHooks) *Keeper {
+	if k.hooks != nil {
+		panic("cannot set icq hooks twice")
+	}
+
+	k.hooks = icqHooks
+
+	return k
 }
