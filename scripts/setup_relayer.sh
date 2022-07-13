@@ -1,8 +1,10 @@
 # We pull and install the relayer
-cd ../../
-git clone https://github.com/SimplyVC/relayer
-cd relayer && make install
-cd ../ && rm -r relayer
+# cd ../../
+# git clone https://github.com/SimplyVC/relayer
+# cd relayer && make install
+# cd ../ && rm -r relayer
+
+rm -r ~/.relayer
 
 rly config init
 
