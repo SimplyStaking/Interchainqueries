@@ -13,8 +13,8 @@ service Msg {
     // this line is used by starport scaffolding # proto/tx/rpc
 }
 
-message IndividualResults {
-    uint64 query_id = 1;
+message IndividualResult {
+    uint64 id = 1;
     bytes result = 2;
     tendermint.crypto.ProofOps proof = 3; 
 }
@@ -23,7 +23,7 @@ message MsgSubmitICQResults {
     uint64 query_id = 1;
     ibc.core.client.v1.Height height = 2;
     string from_address = 3;
-    repeated IndividualResults individualResults = 4;
+    repeated IndividualResult individualResults = 4;
     uint64 periodic_id = 5;
 }
 

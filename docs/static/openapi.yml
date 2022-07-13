@@ -49852,10 +49852,10 @@ definitions:
       query_parameters:
         type: string
         format: byte
-  simplyvc.interchainqueries.icq.IndividualResults:
+  simplyvc.interchainqueries.icq.IndividualResult:
     type: object
     properties:
-      query_id:
+      id:
         type: string
         format: uint64
       result:

@@ -55,41 +55,59 @@ func (k msgServer) SubmitICQResult(
 			periodicICQ.ClientId, msg.Height.RevisionHeight)
 	}
 
-	merkleProof, err := commitmenttypes.ConvertProofs(msg.Proof)
-	if err != nil {
-		return nil, err
+	individualRequests := periodicICQ.IndividualICQs
+	individualICQs := msg.IndividualResults
+
+	if len(individualICQs) != len(individualRequests) {
+		return nil, sdkerrors.Wrapf(types.ErrIavlRootVerification, "elements are diff lengths")
 	}
 
-	// NOTE: merkleProof.Proofs[0] is the IavlSpec Proof
-	// 		 merkleProof.Proofs[1] is the TendermintSpec Proof
-	iavlRoot, err := merkleProof.Proofs[0].Calculate()
-	if err != nil {
-		return nil, err
-	}
+	for i, element := range individualICQs {
+		if element.Id != individualRequests[element.Id].Id {
+			// TODO: There is a missconfiguration in the way the list was setup
+			return nil, sdkerrors.Wrapf(types.ErrIavlRootVerification, "elements do not match up, not in order")
+		}
 
-	// Verify if the IavlSpec Root exists in the TendermintSpec Proof.
-	rootVerified := ics23.VerifyMembership(
-		ics23.TendermintSpec,
-		consensusState.GetRoot().GetHash(),
-		merkleProof.Proofs[1],
-		merkleProof.Proofs[1].GetExist().Key,
-		iavlRoot,
-	)
-	if !rootVerified {
-		return nil, sdkerrors.Wrapf(types.ErrIavlRootVerification, "root not verified")
-	}
+		merkleProof, err := commitmenttypes.ConvertProofs(element.Proof)
+		if err != nil {
+			return nil, err
+		}
 
-	// Verify that the value exists for the stored key using the verified iavlRoot
-	kvVerified := ics23.VerifyMembership(
-		ics23.IavlSpec,
-		iavlRoot,
-		merkleProof.Proofs[0],
-		periodicICQ.QueryParameters,
-		msg.Result,
-	)
-	if !kvVerified {
-		return nil, sdkerrors.Wrapf(types.ErrKVVerification, "value: (%s) not verified for key (%s)", msg.Result,
-			periodicICQ.QueryParameters)
+		// NOTE: merkleProof.Proofs[0] is the IavlSpec Proof
+		// 		 merkleProof.Proofs[1] is the TendermintSpec Proof
+		iavlRoot, err := merkleProof.Proofs[0].Calculate()
+		if err != nil {
+			return nil, err
+		}
+
+		// Verify if the IavlSpec Root exists in the TendermintSpec Proof.
+		rootVerified := ics23.VerifyMembership(
+			ics23.TendermintSpec,
+			consensusState.GetRoot().GetHash(),
+			merkleProof.Proofs[1],
+			merkleProof.Proofs[1].GetExist().Key,
+			iavlRoot,
+		)
+		if !rootVerified {
+			return nil, sdkerrors.Wrapf(types.ErrIavlRootVerification, "root not verified")
+		}
+
+		// Verify that the value exists for the stored key using the verified iavlRoot
+		kvVerified := ics23.VerifyMembership(
+			ics23.IavlSpec,
+			iavlRoot,
+			merkleProof.Proofs[0],
+			individualRequests[i].QueryParameters,
+			element.Result,
+		)
+		if !kvVerified {
+			return nil, sdkerrors.Wrapf(types.ErrKVVerification, "value: (%s) not verified for key (%s)",
+				element.Result, individualRequests[i].QueryParameters,
+			)
+		}
+
+		// Verification passed we call the hooks
+
 	}
 
 	k.RemovePendingICQInstance(ctx, msg.QueryId)
