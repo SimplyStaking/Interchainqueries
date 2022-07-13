@@ -22,32 +22,24 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-type PeriodicICQ struct {
-	Id                   uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Path                 string `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
-	TimeoutHeightPadding uint64 `protobuf:"varint,3,opt,name=timeout_height_padding,json=timeoutHeightPadding,proto3" json:"timeout_height_padding,omitempty"`
-	TargetHeight         uint64 `protobuf:"varint,4,opt,name=target_height,json=targetHeight,proto3" json:"target_height,omitempty"`
-	ClientId             string `protobuf:"bytes,5,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
-	Creator              string `protobuf:"bytes,6,opt,name=creator,proto3" json:"creator,omitempty"`
-	ChainId              string `protobuf:"bytes,7,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
-	QueryParameters      []byte `protobuf:"bytes,8,opt,name=query_parameters,json=queryParameters,proto3" json:"query_parameters,omitempty"`
-	BlockRepeat          uint64 `protobuf:"varint,9,opt,name=block_repeat,json=blockRepeat,proto3" json:"block_repeat,omitempty"`
-	LastHeightExecuted   uint64 `protobuf:"varint,10,opt,name=last_height_executed,json=lastHeightExecuted,proto3" json:"last_height_executed,omitempty"`
-	MaxResults           uint64 `protobuf:"varint,11,opt,name=max_results,json=maxResults,proto3" json:"max_results,omitempty"`
+type IndividualICQ struct {
+	Id              uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Path            string `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
+	QueryParameters []byte `protobuf:"bytes,3,opt,name=query_parameters,json=queryParameters,proto3" json:"query_parameters,omitempty"`
 }
 
-func (m *PeriodicICQ) Reset()         { *m = PeriodicICQ{} }
-func (m *PeriodicICQ) String() string { return proto.CompactTextString(m) }
-func (*PeriodicICQ) ProtoMessage()    {}
-func (*PeriodicICQ) Descriptor() ([]byte, []int) {
+func (m *IndividualICQ) Reset()         { *m = IndividualICQ{} }
+func (m *IndividualICQ) String() string { return proto.CompactTextString(m) }
+func (*IndividualICQ) ProtoMessage()    {}
+func (*IndividualICQ) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9516e531ba4184c9, []int{0}
 }
-func (m *PeriodicICQ) XXX_Unmarshal(b []byte) error {
+func (m *IndividualICQ) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *PeriodicICQ) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *IndividualICQ) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_PeriodicICQ.Marshal(b, m, deterministic)
+		return xxx_messageInfo_IndividualICQ.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -57,89 +49,141 @@ func (m *PeriodicICQ) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return b[:n], nil
 	}
 }
-func (m *PeriodicICQ) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PeriodicICQ.Merge(m, src)
+func (m *IndividualICQ) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IndividualICQ.Merge(m, src)
 }
-func (m *PeriodicICQ) XXX_Size() int {
+func (m *IndividualICQ) XXX_Size() int {
 	return m.Size()
 }
-func (m *PeriodicICQ) XXX_DiscardUnknown() {
-	xxx_messageInfo_PeriodicICQ.DiscardUnknown(m)
+func (m *IndividualICQ) XXX_DiscardUnknown() {
+	xxx_messageInfo_IndividualICQ.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_PeriodicICQ proto.InternalMessageInfo
+var xxx_messageInfo_IndividualICQ proto.InternalMessageInfo
 
-func (m *PeriodicICQ) GetId() uint64 {
+func (m *IndividualICQ) GetId() uint64 {
 	if m != nil {
 		return m.Id
 	}
 	return 0
 }
 
-func (m *PeriodicICQ) GetPath() string {
+func (m *IndividualICQ) GetPath() string {
 	if m != nil {
 		return m.Path
 	}
 	return ""
 }
 
-func (m *PeriodicICQ) GetTimeoutHeightPadding() uint64 {
-	if m != nil {
-		return m.TimeoutHeightPadding
-	}
-	return 0
-}
-
-func (m *PeriodicICQ) GetTargetHeight() uint64 {
-	if m != nil {
-		return m.TargetHeight
-	}
-	return 0
-}
-
-func (m *PeriodicICQ) GetClientId() string {
-	if m != nil {
-		return m.ClientId
-	}
-	return ""
-}
-
-func (m *PeriodicICQ) GetCreator() string {
-	if m != nil {
-		return m.Creator
-	}
-	return ""
-}
-
-func (m *PeriodicICQ) GetChainId() string {
-	if m != nil {
-		return m.ChainId
-	}
-	return ""
-}
-
-func (m *PeriodicICQ) GetQueryParameters() []byte {
+func (m *IndividualICQ) GetQueryParameters() []byte {
 	if m != nil {
 		return m.QueryParameters
 	}
 	return nil
 }
 
-func (m *PeriodicICQ) GetBlockRepeat() uint64 {
+type PeriodicICQs struct {
+	Id                   uint64           `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	IndividualICQs       []*IndividualICQ `protobuf:"bytes,2,rep,name=individualICQs,proto3" json:"individualICQs,omitempty"`
+	TimeoutHeightPadding uint64           `protobuf:"varint,3,opt,name=timeout_height_padding,json=timeoutHeightPadding,proto3" json:"timeout_height_padding,omitempty"`
+	TargetHeight         uint64           `protobuf:"varint,4,opt,name=target_height,json=targetHeight,proto3" json:"target_height,omitempty"`
+	ClientId             string           `protobuf:"bytes,5,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	ChainId              string           `protobuf:"bytes,6,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	BlockRepeat          uint64           `protobuf:"varint,7,opt,name=block_repeat,json=blockRepeat,proto3" json:"block_repeat,omitempty"`
+	LastHeightExecuted   uint64           `protobuf:"varint,8,opt,name=last_height_executed,json=lastHeightExecuted,proto3" json:"last_height_executed,omitempty"`
+	MaxResults           uint64           `protobuf:"varint,9,opt,name=max_results,json=maxResults,proto3" json:"max_results,omitempty"`
+}
+
+func (m *PeriodicICQs) Reset()         { *m = PeriodicICQs{} }
+func (m *PeriodicICQs) String() string { return proto.CompactTextString(m) }
+func (*PeriodicICQs) ProtoMessage()    {}
+func (*PeriodicICQs) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9516e531ba4184c9, []int{1}
+}
+func (m *PeriodicICQs) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *PeriodicICQs) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_PeriodicICQs.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *PeriodicICQs) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PeriodicICQs.Merge(m, src)
+}
+func (m *PeriodicICQs) XXX_Size() int {
+	return m.Size()
+}
+func (m *PeriodicICQs) XXX_DiscardUnknown() {
+	xxx_messageInfo_PeriodicICQs.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PeriodicICQs proto.InternalMessageInfo
+
+func (m *PeriodicICQs) GetId() uint64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *PeriodicICQs) GetIndividualICQs() []*IndividualICQ {
+	if m != nil {
+		return m.IndividualICQs
+	}
+	return nil
+}
+
+func (m *PeriodicICQs) GetTimeoutHeightPadding() uint64 {
+	if m != nil {
+		return m.TimeoutHeightPadding
+	}
+	return 0
+}
+
+func (m *PeriodicICQs) GetTargetHeight() uint64 {
+	if m != nil {
+		return m.TargetHeight
+	}
+	return 0
+}
+
+func (m *PeriodicICQs) GetClientId() string {
+	if m != nil {
+		return m.ClientId
+	}
+	return ""
+}
+
+func (m *PeriodicICQs) GetChainId() string {
+	if m != nil {
+		return m.ChainId
+	}
+	return ""
+}
+
+func (m *PeriodicICQs) GetBlockRepeat() uint64 {
 	if m != nil {
 		return m.BlockRepeat
 	}
 	return 0
 }
 
-func (m *PeriodicICQ) GetLastHeightExecuted() uint64 {
+func (m *PeriodicICQs) GetLastHeightExecuted() uint64 {
 	if m != nil {
 		return m.LastHeightExecuted
 	}
 	return 0
 }
 
-func (m *PeriodicICQ) GetMaxResults() uint64 {
+func (m *PeriodicICQs) GetMaxResults() uint64 {
 	if m != nil {
 		return m.MaxResults
 	}
@@ -147,40 +191,43 @@ func (m *PeriodicICQ) GetMaxResults() uint64 {
 }
 
 func init() {
-	proto.RegisterType((*PeriodicICQ)(nil), "simplyvc.interchainqueries.icq.PeriodicICQ")
+	proto.RegisterType((*IndividualICQ)(nil), "simplyvc.interchainqueries.icq.IndividualICQ")
+	proto.RegisterType((*PeriodicICQs)(nil), "simplyvc.interchainqueries.icq.PeriodicICQs")
 }
 
 func init() { proto.RegisterFile("icq/periodic_icq.proto", fileDescriptor_9516e531ba4184c9) }
 
 var fileDescriptor_9516e531ba4184c9 = []byte{
-	// 378 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x64, 0x91, 0xcb, 0x8e, 0xd3, 0x30,
-	0x18, 0x85, 0x9b, 0x50, 0x7a, 0x71, 0xca, 0x45, 0x56, 0x55, 0x19, 0x21, 0x85, 0x02, 0x9b, 0xb2,
-	0x49, 0x40, 0xf0, 0x04, 0x20, 0x24, 0x2a, 0x36, 0x25, 0x4b, 0x36, 0x91, 0x6b, 0xff, 0x4a, 0x7e,
-	0x91, 0x8b, 0xe3, 0x38, 0x28, 0x7d, 0x8b, 0x79, 0xac, 0x59, 0x76, 0x39, 0xcb, 0x51, 0xfb, 0x20,
-	0x33, 0x8a, 0x93, 0x76, 0x33, 0xbb, 0xfc, 0xe7, 0x3b, 0x47, 0xf1, 0xd1, 0x21, 0x2b, 0x14, 0x55,
-	0xa8, 0x40, 0x63, 0x29, 0x51, 0xc4, 0x28, 0xaa, 0x40, 0xe9, 0xd2, 0x94, 0xd4, 0xaf, 0x31, 0x57,
-	0xd9, 0xe1, 0xbf, 0x08, 0xb0, 0x30, 0xa0, 0x45, 0xca, 0xb1, 0xa8, 0x1a, 0xd0, 0x08, 0x75, 0x80,
-	0xa2, 0xfa, 0xf0, 0xe0, 0x12, 0x6f, 0x37, 0xc4, 0xb6, 0x3f, 0xfe, 0xd0, 0x97, 0xc4, 0x45, 0xc9,
-	0x9c, 0xb5, 0xb3, 0x19, 0x47, 0x2e, 0x4a, 0x4a, 0xc9, 0x58, 0x71, 0x93, 0x32, 0x77, 0xed, 0x6c,
-	0xe6, 0x91, 0xfd, 0xa6, 0xdf, 0xc8, 0xca, 0x60, 0x0e, 0x65, 0x63, 0xe2, 0x14, 0x30, 0x49, 0x4d,
-	0xac, 0xb8, 0x94, 0x58, 0x24, 0xec, 0x99, 0xcd, 0x2d, 0x07, 0xfa, 0xcb, 0xc2, 0x5d, 0xcf, 0xe8,
-	0x47, 0xf2, 0xc2, 0x70, 0x9d, 0xc0, 0x25, 0xc4, 0xc6, 0xd6, 0xbc, 0xe8, 0xc5, 0xde, 0x4b, 0xdf,
-	0x92, 0xb9, 0xc8, 0x10, 0x0a, 0x13, 0xa3, 0x64, 0xcf, 0xed, 0x3f, 0x67, 0xbd, 0xb0, 0x95, 0x94,
-	0x91, 0xa9, 0xd0, 0xc0, 0x4d, 0xa9, 0xd9, 0xc4, 0xa2, 0xcb, 0x49, 0xdf, 0x90, 0x99, 0x6d, 0xd6,
-	0xa5, 0xa6, 0x03, 0xea, 0xee, 0xad, 0xa4, 0x9f, 0xc8, 0xeb, 0xae, 0xef, 0x21, 0x56, 0x5c, 0xf3,
-	0x1c, 0x0c, 0xe8, 0x9a, 0xcd, 0xd6, 0xce, 0x66, 0x11, 0xbd, 0xb2, 0xfa, 0xee, 0x2a, 0xd3, 0xf7,
-	0x64, 0xb1, 0xcf, 0x4a, 0xf1, 0x2f, 0xd6, 0xa0, 0x80, 0x1b, 0x36, 0xb7, 0x0f, 0xf4, 0xac, 0x16,
-	0x59, 0x89, 0x7e, 0x26, 0xcb, 0x8c, 0xd7, 0xd7, 0xde, 0xd0, 0x82, 0x68, 0x0c, 0x48, 0x46, 0xac,
-	0x95, 0x76, 0xac, 0x6f, 0xf2, 0x73, 0x20, 0xf4, 0x1d, 0xf1, 0x72, 0xde, 0xc6, 0x1a, 0xea, 0x26,
-	0x33, 0x35, 0xf3, 0xac, 0x91, 0xe4, 0xbc, 0x8d, 0x7a, 0xe5, 0xfb, 0xef, 0xdb, 0x93, 0xef, 0x1c,
-	0x4f, 0xbe, 0x73, 0x7f, 0xf2, 0x9d, 0x9b, 0xb3, 0x3f, 0x3a, 0x9e, 0xfd, 0xd1, 0xdd, 0xd9, 0x1f,
-	0xfd, 0xfd, 0x92, 0xa0, 0x49, 0x9b, 0x7d, 0x20, 0xca, 0x3c, 0xbc, 0xcc, 0x18, 0x3e, 0x99, 0x31,
-	0x6c, 0xc3, 0x6e, 0x7b, 0x73, 0x50, 0x50, 0xef, 0x27, 0x76, 0xf5, 0xaf, 0x8f, 0x01, 0x00, 0x00,
-	0xff, 0xff, 0xab, 0xcb, 0x42, 0x3c, 0x0f, 0x02, 0x00, 0x00,
+	// 412 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xcb, 0x6e, 0xd3, 0x40,
+	0x14, 0x86, 0x63, 0x37, 0xb4, 0xc9, 0x24, 0x2d, 0x68, 0x54, 0x55, 0x83, 0x90, 0x4c, 0x28, 0x9b,
+	0xb0, 0xc0, 0xe6, 0xf6, 0x04, 0x54, 0x48, 0x58, 0x6c, 0x52, 0x4b, 0x6c, 0x58, 0x60, 0x4d, 0x66,
+	0x8e, 0xec, 0x23, 0x7c, 0x19, 0xcf, 0x8c, 0x2b, 0xe7, 0x2d, 0x78, 0x2c, 0x96, 0x5d, 0xb2, 0x44,
+	0xc9, 0x7b, 0x20, 0xe4, 0x71, 0x5a, 0x01, 0x95, 0xba, 0xb3, 0xff, 0xef, 0xcc, 0xaf, 0x4f, 0x47,
+	0x87, 0x9c, 0xa1, 0x68, 0x22, 0x05, 0x1a, 0x6b, 0x89, 0x22, 0x45, 0xd1, 0x84, 0x4a, 0xd7, 0xb6,
+	0xa6, 0x81, 0xc1, 0x52, 0x15, 0x9b, 0x2b, 0x11, 0x62, 0x65, 0x41, 0x8b, 0x9c, 0x63, 0xd5, 0xb4,
+	0xa0, 0x11, 0x4c, 0x88, 0xa2, 0x39, 0xff, 0x4a, 0x8e, 0xe3, 0x4a, 0xe2, 0x15, 0xca, 0x96, 0x17,
+	0xf1, 0xc5, 0x25, 0x3d, 0x21, 0x3e, 0x4a, 0xe6, 0x2d, 0xbc, 0xe5, 0x38, 0xf1, 0x51, 0x52, 0x4a,
+	0xc6, 0x8a, 0xdb, 0x9c, 0xf9, 0x0b, 0x6f, 0x39, 0x4d, 0xdc, 0x37, 0x7d, 0x41, 0x1e, 0xf5, 0x1d,
+	0x9b, 0x54, 0x71, 0xcd, 0x4b, 0xb0, 0xa0, 0x0d, 0x3b, 0x58, 0x78, 0xcb, 0x79, 0xf2, 0xd0, 0xe5,
+	0xab, 0xdb, 0xf8, 0xfc, 0xb7, 0x4f, 0xe6, 0xab, 0xbd, 0x56, 0x7c, 0x71, 0x69, 0xee, 0xf4, 0x7f,
+	0x26, 0x27, 0xf8, 0xb7, 0x80, 0x61, 0xfe, 0xe2, 0x60, 0x39, 0x7b, 0xf3, 0x32, 0xbc, 0xdf, 0x3c,
+	0xfc, 0x47, 0x3b, 0xf9, 0xaf, 0x84, 0xbe, 0x23, 0x67, 0x16, 0x4b, 0xa8, 0x5b, 0x9b, 0xe6, 0x80,
+	0x59, 0x6e, 0x53, 0xc5, 0xa5, 0xc4, 0x2a, 0x73, 0xa2, 0xe3, 0xe4, 0x74, 0x4f, 0x3f, 0x3a, 0xb8,
+	0x1a, 0x18, 0x7d, 0x4e, 0x8e, 0x2d, 0xd7, 0x19, 0xdc, 0x3c, 0x62, 0x63, 0x37, 0x3c, 0x1f, 0xc2,
+	0x61, 0x96, 0x3e, 0x21, 0x53, 0x51, 0x20, 0x54, 0x36, 0x45, 0xc9, 0x1e, 0xb8, 0xb5, 0x4c, 0x86,
+	0x20, 0x96, 0xf4, 0x31, 0x99, 0x38, 0xd3, 0x9e, 0x1d, 0x3a, 0x76, 0xe4, 0xfe, 0x63, 0x49, 0x9f,
+	0x91, 0xf9, 0xba, 0xa8, 0xc5, 0xb7, 0x54, 0x83, 0x02, 0x6e, 0xd9, 0x91, 0xeb, 0x9e, 0xb9, 0x2c,
+	0x71, 0x11, 0x7d, 0x45, 0x4e, 0x0b, 0x6e, 0x6e, 0x95, 0xa1, 0x03, 0xd1, 0x5a, 0x90, 0x6c, 0xe2,
+	0x46, 0x69, 0xcf, 0x06, 0x89, 0x0f, 0x7b, 0x42, 0x9f, 0x92, 0x59, 0xc9, 0xbb, 0x54, 0x83, 0x69,
+	0x0b, 0x6b, 0xd8, 0xd4, 0x0d, 0x92, 0x92, 0x77, 0xc9, 0x90, 0xbc, 0xff, 0xf4, 0x63, 0x1b, 0x78,
+	0xd7, 0xdb, 0xc0, 0xfb, 0xb5, 0x0d, 0xbc, 0xef, 0xbb, 0x60, 0x74, 0xbd, 0x0b, 0x46, 0x3f, 0x77,
+	0xc1, 0xe8, 0xcb, 0xeb, 0x0c, 0x6d, 0xde, 0xae, 0x43, 0x51, 0x97, 0xd1, 0xcd, 0xae, 0xa3, 0x3b,
+	0xbb, 0x8e, 0xba, 0xa8, 0x3f, 0x2d, 0xbb, 0x51, 0x60, 0xd6, 0x87, 0xee, 0xa8, 0xde, 0xfe, 0x09,
+	0x00, 0x00, 0xff, 0xff, 0xaa, 0x4e, 0xa0, 0xc8, 0x6e, 0x02, 0x00, 0x00,
 }
 
-func (m *PeriodicICQ) Marshal() (dAtA []byte, err error) {
+func (m *IndividualICQ) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -190,12 +237,54 @@ func (m *PeriodicICQ) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *PeriodicICQ) MarshalTo(dAtA []byte) (int, error) {
+func (m *IndividualICQ) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *PeriodicICQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *IndividualICQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.QueryParameters) > 0 {
+		i -= len(m.QueryParameters)
+		copy(dAtA[i:], m.QueryParameters)
+		i = encodeVarintPeriodicIcq(dAtA, i, uint64(len(m.QueryParameters)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.Path) > 0 {
+		i -= len(m.Path)
+		copy(dAtA[i:], m.Path)
+		i = encodeVarintPeriodicIcq(dAtA, i, uint64(len(m.Path)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.Id != 0 {
+		i = encodeVarintPeriodicIcq(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *PeriodicICQs) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *PeriodicICQs) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *PeriodicICQs) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -203,36 +292,22 @@ func (m *PeriodicICQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	if m.MaxResults != 0 {
 		i = encodeVarintPeriodicIcq(dAtA, i, uint64(m.MaxResults))
 		i--
-		dAtA[i] = 0x58
+		dAtA[i] = 0x48
 	}
 	if m.LastHeightExecuted != 0 {
 		i = encodeVarintPeriodicIcq(dAtA, i, uint64(m.LastHeightExecuted))
 		i--
-		dAtA[i] = 0x50
+		dAtA[i] = 0x40
 	}
 	if m.BlockRepeat != 0 {
 		i = encodeVarintPeriodicIcq(dAtA, i, uint64(m.BlockRepeat))
 		i--
-		dAtA[i] = 0x48
-	}
-	if len(m.QueryParameters) > 0 {
-		i -= len(m.QueryParameters)
-		copy(dAtA[i:], m.QueryParameters)
-		i = encodeVarintPeriodicIcq(dAtA, i, uint64(len(m.QueryParameters)))
-		i--
-		dAtA[i] = 0x42
+		dAtA[i] = 0x38
 	}
 	if len(m.ChainId) > 0 {
 		i -= len(m.ChainId)
 		copy(dAtA[i:], m.ChainId)
 		i = encodeVarintPeriodicIcq(dAtA, i, uint64(len(m.ChainId)))
-		i--
-		dAtA[i] = 0x3a
-	}
-	if len(m.Creator) > 0 {
-		i -= len(m.Creator)
-		copy(dAtA[i:], m.Creator)
-		i = encodeVarintPeriodicIcq(dAtA, i, uint64(len(m.Creator)))
 		i--
 		dAtA[i] = 0x32
 	}
@@ -253,12 +328,19 @@ func (m *PeriodicICQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x18
 	}
-	if len(m.Path) > 0 {
-		i -= len(m.Path)
-		copy(dAtA[i:], m.Path)
-		i = encodeVarintPeriodicIcq(dAtA, i, uint64(len(m.Path)))
-		i--
-		dAtA[i] = 0x12
+	if len(m.IndividualICQs) > 0 {
+		for iNdEx := len(m.IndividualICQs) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.IndividualICQs[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintPeriodicIcq(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x12
+		}
 	}
 	if m.Id != 0 {
 		i = encodeVarintPeriodicIcq(dAtA, i, uint64(m.Id))
@@ -279,7 +361,7 @@ func encodeVarintPeriodicIcq(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *PeriodicICQ) Size() (n int) {
+func (m *IndividualICQ) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -292,6 +374,28 @@ func (m *PeriodicICQ) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovPeriodicIcq(uint64(l))
 	}
+	l = len(m.QueryParameters)
+	if l > 0 {
+		n += 1 + l + sovPeriodicIcq(uint64(l))
+	}
+	return n
+}
+
+func (m *PeriodicICQs) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Id != 0 {
+		n += 1 + sovPeriodicIcq(uint64(m.Id))
+	}
+	if len(m.IndividualICQs) > 0 {
+		for _, e := range m.IndividualICQs {
+			l = e.Size()
+			n += 1 + l + sovPeriodicIcq(uint64(l))
+		}
+	}
 	if m.TimeoutHeightPadding != 0 {
 		n += 1 + sovPeriodicIcq(uint64(m.TimeoutHeightPadding))
 	}
@@ -302,15 +406,7 @@ func (m *PeriodicICQ) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovPeriodicIcq(uint64(l))
 	}
-	l = len(m.Creator)
-	if l > 0 {
-		n += 1 + l + sovPeriodicIcq(uint64(l))
-	}
 	l = len(m.ChainId)
-	if l > 0 {
-		n += 1 + l + sovPeriodicIcq(uint64(l))
-	}
-	l = len(m.QueryParameters)
 	if l > 0 {
 		n += 1 + l + sovPeriodicIcq(uint64(l))
 	}
@@ -332,7 +428,7 @@ func sovPeriodicIcq(x uint64) (n int) {
 func sozPeriodicIcq(x uint64) (n int) {
 	return sovPeriodicIcq(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *PeriodicICQ) Unmarshal(dAtA []byte) error {
+func (m *IndividualICQ) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -355,10 +451,10 @@ func (m *PeriodicICQ) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: PeriodicICQ: wiretype end group for non-group")
+			return fmt.Errorf("proto: IndividualICQ: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: PeriodicICQ: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: IndividualICQ: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -411,6 +507,143 @@ func (m *PeriodicICQ) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.Path = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field QueryParameters", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowPeriodicIcq
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthPeriodicIcq
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthPeriodicIcq
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.QueryParameters = append(m.QueryParameters[:0], dAtA[iNdEx:postIndex]...)
+			if m.QueryParameters == nil {
+				m.QueryParameters = []byte{}
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipPeriodicIcq(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthPeriodicIcq
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *PeriodicICQs) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowPeriodicIcq
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: PeriodicICQs: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: PeriodicICQs: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowPeriodicIcq
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field IndividualICQs", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowPeriodicIcq
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthPeriodicIcq
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthPeriodicIcq
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.IndividualICQs = append(m.IndividualICQs, &IndividualICQ{})
+			if err := m.IndividualICQs[len(m.IndividualICQs)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
 			iNdEx = postIndex
 		case 3:
 			if wireType != 0 {
@@ -484,38 +717,6 @@ func (m *PeriodicICQ) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 6:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPeriodicIcq
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthPeriodicIcq
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPeriodicIcq
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Creator = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 7:
-			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field ChainId", wireType)
 			}
 			var stringLen uint64
@@ -546,41 +747,7 @@ func (m *PeriodicICQ) Unmarshal(dAtA []byte) error {
 			}
 			m.ChainId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 8:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field QueryParameters", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowPeriodicIcq
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthPeriodicIcq
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthPeriodicIcq
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.QueryParameters = append(m.QueryParameters[:0], dAtA[iNdEx:postIndex]...)
-			if m.QueryParameters == nil {
-				m.QueryParameters = []byte{}
-			}
-			iNdEx = postIndex
-		case 9:
+		case 7:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field BlockRepeat", wireType)
 			}
@@ -599,7 +766,7 @@ func (m *PeriodicICQ) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-		case 10:
+		case 8:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field LastHeightExecuted", wireType)
 			}
@@ -618,7 +785,7 @@ func (m *PeriodicICQ) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-		case 11:
+		case 9:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field MaxResults", wireType)
 			}

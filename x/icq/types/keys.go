@@ -32,6 +32,6 @@ const (
 
 	ICQTimeoutsKey = "ICQTimeouts-value-"
 
-	PeriodicICQKey      = "PeriodicICQ-value-"
-	PeriodicICQCountKey = "PeriodicICQ-count-"
+	PeriodicICQsKey      = "PeriodicICQs-value-"
+	PeriodicICQsCountKey = "PeriodicICQs-count-"
 )

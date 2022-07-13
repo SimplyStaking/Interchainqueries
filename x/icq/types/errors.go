@@ -9,7 +9,7 @@ import (
 // x/icq module sentinel errors
 var (
 	ErrICQNotFound                = sdkerrors.Register(ModuleName, 1, "icq not found")
-	ErrPeriodicICQNotFound        = sdkerrors.Register(ModuleName, 2, "periodic icq not found")
+	ErrPeriodicICQsNotFound       = sdkerrors.Register(ModuleName, 2, "periodic icq not found")
 	ErrPeriodicIdNoMatch          = sdkerrors.Register(ModuleName, 3, "periodic ids do not match")
 	ErrIavlRootVerification       = sdkerrors.Register(ModuleName, 4, "failed to verify iavl root in ibc client")
 	ErrKVVerification             = sdkerrors.Register(ModuleName, 5, "failed to verify the kv from iavl proof")

@@ -9,20 +9,24 @@ option go_package = "github.com/simplyvc/interchainqueries/x/icq/types";
 
 // Msg defines the Msg service.
 service Msg {
-    rpc SubmitICQResult(MsgSubmitICQResult) returns (MsgSubmitICQResultResponse);
+    rpc SubmitICQResult(MsgSubmitICQResults) returns (MsgSubmitICQResultsResponse);
     // this line is used by starport scaffolding # proto/tx/rpc
 }
 
-// MsgSubmitICQResult represents a message type to fulfil a query request.
-message MsgSubmitICQResult {
+message IndividualResults {
     uint64 query_id = 1;
     bytes result = 2;
-    ibc.core.client.v1.Height height = 3;
-    string from_address = 4;
-    tendermint.crypto.ProofOps proof = 5; 
-    uint64 periodic_id = 6;
+    tendermint.crypto.ProofOps proof = 3; 
 }
 
-message MsgSubmitICQResultResponse {}
+message MsgSubmitICQResults {
+    uint64 query_id = 1;
+    ibc.core.client.v1.Height height = 2;
+    string from_address = 3;
+    repeated IndividualResults individualResults = 4;
+    uint64 periodic_id = 5;
+}
+
+message MsgSubmitICQResultsResponse {}
 
 // this line is used by starport scaffolding # proto/tx/message

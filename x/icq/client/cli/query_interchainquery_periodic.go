@@ -25,11 +25,11 @@ func CmdListPeriodicICQs() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			params := &types.QueryAllPeriodicICQRequest{
+			params := &types.QueryAllPeriodicICQsRequest{
 				Pagination: pageReq,
 			}
 
-			res, err := queryClient.PeriodicICQAll(context.Background(), params)
+			res, err := queryClient.PeriodicICQsAll(context.Background(), params)
 			if err != nil {
 				return err
 			}
@@ -44,7 +44,7 @@ func CmdListPeriodicICQs() *cobra.Command {
 	return cmd
 }
 
-func CmdShowPeriodicICQ() *cobra.Command {
+func CmdShowPeriodicICQs() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "show-periodic-icq [id]",
 		Short: "shows a periodic interchainquery for the specified id",
@@ -59,11 +59,11 @@ func CmdShowPeriodicICQ() *cobra.Command {
 				return err
 			}
 
-			params := &types.QueryGetPeriodicICQRequest{
+			params := &types.QueryGetPeriodicICQsRequest{
 				Id: id,
 			}
 
-			res, err := queryClient.PeriodicICQ(context.Background(), params)
+			res, err := queryClient.PeriodicICQs(context.Background(), params)
 			if err != nil {
 				return err
 			}

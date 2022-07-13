@@ -13,16 +13,16 @@ import (
 	"github.com/simplyvc/interchainqueries/x/icq/types"
 )
 
-func (k Keeper) PendingICQRequestAll(
+func (k Keeper) PendingICQsRequestAll(
 	c context.Context,
-	req *types.QueryAllPendingICQRequest,
-) (*types.QueryAllPendingICQRequestResponse, error) {
+	req *types.QueryAllPendingICQsRequest,
+) (*types.QueryAllPendingICQsRequestResponse, error) {
 
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "invalid request")
 	}
 
-	var pendingICQRequests []types.PendingICQRequest
+	var pendingICQRequests []types.PendingICQsRequest
 	ctx := sdk.UnwrapSDKContext(c)
 
 	store := ctx.KVStore(k.storeKey)
@@ -35,13 +35,13 @@ func (k Keeper) PendingICQRequestAll(
 			return err
 		}
 
-		periodicICQ, found := k.GetPeriodicICQ(ctx, pendingICQ.PeriodicId)
+		periodicICQ, found := k.GetPeriodicICQs(ctx, pendingICQ.PeriodicId)
 		if !found {
 			return status.Error(codes.Internal, "Periodic ICQ doesn't exist for this ICQ Request!")
 		}
 		pendingICQRequests = append(
 			pendingICQRequests,
-			NewPendingICQRequest(pendingICQ, periodicICQ),
+			NewPendingICQsRequest(pendingICQ, periodicICQ),
 		)
 		return nil
 	})
@@ -50,13 +50,13 @@ func (k Keeper) PendingICQRequestAll(
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 
-	return &types.QueryAllPendingICQRequestResponse{PendingICQRequest: pendingICQRequests, Pagination: pageRes}, nil
+	return &types.QueryAllPendingICQsRequestResponse{PendingICQsRequest: pendingICQRequests, Pagination: pageRes}, nil
 }
 
-func (k Keeper) PendingICQRequest(
+func (k Keeper) PendingICQsRequest(
 	c context.Context,
-	req *types.QueryGetPendingICQRequest,
-) (*types.QueryGetPendingICQRequestResponse, error) {
+	req *types.QueryGetPendingICQsRequest,
+) (*types.QueryGetPendingICQsRequestResponse, error) {
 
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "invalid request")
@@ -67,11 +67,11 @@ func (k Keeper) PendingICQRequest(
 	if !found {
 		return nil, sdkerrors.ErrKeyNotFound
 	}
-	periodicICQ, found := k.GetPeriodicICQ(ctx, pendingICQ.PeriodicId)
+	periodicICQ, found := k.GetPeriodicICQs(ctx, pendingICQ.PeriodicId)
 	if !found {
 		return nil, sdkerrors.ErrKeyNotFound
 	}
 
-	return &types.QueryGetPendingICQRequestResponse{
-		PendingICQRequest: NewPendingICQRequest(pendingICQ, periodicICQ)}, nil
+	return &types.QueryGetPendingICQsRequestResponse{
+		PendingICQsRequest: NewPendingICQsRequest(pendingICQ, periodicICQ)}, nil
 }

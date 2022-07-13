@@ -16,16 +16,16 @@ The Interchain Queries (ICQ) module leverages the existing relayer infrastructur
 
 ## Concepts
 
-- `PeriodicICQ`: describes a periodic data request and serves as a template for instances of such periodic queries. The _periodic_ includes all details about what data is required and which chain it should be queried from. It also specifies how often the query should take place (i.e. the period length) and timeout parameters.
+- `PeriodicICQs`: describes a periodic data request and serves as a template for instances of such periodic queries. The _periodic_ includes all details about what data is required and which chain it should be queried from. It also specifies how often the query should take place (i.e. the period length) and timeout parameters.
 - `PendingICQInstance`: an instance of a periodic query that can be seen as a pending query. An instance is created at every period, as specified by the _periodic_, and this instance is deleted once a result is submitted or it timesout. These query instances are picked up by the custom relayer and fulfilled according to the details in the request.
-- `PendingICQRequest`: This is the message that will be retrieved by the relayer. The data is a combination of the `PendingICQInstance` and `PeriodicICQ` to have the full message available to the relayer without storing duplicate data in the blockchain.
-- `PeriodicLastDataPointId`: stores the `last_result_id` of the last result submitted by the relayer in response to a specific periodic query. There is one `PeriodicLastDataPointId` per `PeriodicICQ` and its stored under the `periodic_id` as a `string` and doesn't have it's own `message` type. The `last_result_id` points to `DataPoint` unique `Id` which stores the last result.
+- `PendingICQsRequest`: This is the message that will be retrieved by the relayer. The data is a combination of the `PendingICQInstance` and `PeriodicICQs` to have the full message available to the relayer without storing duplicate data in the blockchain.
+- `PeriodicLastDataPointId`: stores the `last_result_id` of the last result submitted by the relayer in response to a specific periodic query. There is one `PeriodicLastDataPointId` per `PeriodicICQs` and its stored under the `periodic_id` as a `string` and doesn't have it's own `message` type. The `last_result_id` points to `DataPoint` unique `Id` which stores the last result.
 - `DataPoint`: Stores a result of a serviced `PendingICQInstance`.
-- `ICQTimeouts`: this is created per `PeriodicICQ` we increment the amount of timeouts that occur for that periodic query as well as the last source chain height that the timeout occured at. If the [BeginBlock](#beginblock) notices that the timeout height was reached it will expire a `PendingICQInstance`s. If the relayer submits a late result, this is completely ignored.
+- `ICQTimeouts`: this is created per `PeriodicICQs` we increment the amount of timeouts that occur for that periodic query as well as the last source chain height that the timeout occured at. If the [BeginBlock](#beginblock) notices that the timeout height was reached it will expire a `PendingICQInstance`s. If the relayer submits a late result, this is completely ignored.
 
 ## State
 
-List of `PeriodicICQ`, each with:
+List of `PeriodicICQs`, each with:
 
 - **Id** (`uint64`): basic unique identifier
 - **Path** (`string`): query path, e.g. `/store/bank/key`
@@ -37,16 +37,16 @@ List of `PeriodicICQ`, each with:
 - **QueryParameters** (`[]byte`): query parameters, e.g. `append(banktypes.CreateAccountBalancesPrefix(add1), []byte("stake")...)`
 - **BlockRepeat** (`uint64`): the period length, e.g. 10 blocks
 - **LastHeightExecuted** (`uint64`): the last local height at which this interchain query was invoked
-- **MaxResults** (`uint64`): the total number of concurrent results this `PeriodicICQ` should store. The results will be overwritten once exceeded. E.G `30` meaning the `31st` result will overwrite the `1st` result.
+- **MaxResults** (`uint64`): the total number of concurrent results this `PeriodicICQs` should store. The results will be overwritten once exceeded. E.G `30` meaning the `31st` result will overwrite the `1st` result.
 
-List of `PendingICQInstance`, each based on an `PeriodicICQ` instance:
+List of `PendingICQInstance`, each based on an `PeriodicICQs` instance:
 
 - **Id** (`uint64`): basic unique identifier
 - **TimeoutHeight** (`uint64`): height at which a result for this query will be considered invalid, calculated by adding _periodic_'s timeout height padding to the current height
 - **TargetHeight** (`uint64`): from _periodic_
 - **PeriodicId** (`uint64`): ID of _periodic_
 
-List of `PendingICQRequest`, each based on an `PeriodicICQ` and `PendingICQInstance`:
+List of `PendingICQsRequest`, each based on an `PeriodicICQs` and `PendingICQInstance`:
 
 - **Id** (`uint64`): basic unique identifier
 - **Path** (`uint64`): from _periodic_
@@ -57,7 +57,7 @@ List of `PendingICQRequest`, each based on an `PeriodicICQ` and `PendingICQInsta
 - **QueryParameters** (`uint64`): from _periodic_
 - **PeriodicId** (`uint64`): ID of _periodic_
 
-List of `PeriodicLastDataPointId`, each based on an `PeriodicICQ` instance, only stored as a string not struct:
+List of `PeriodicLastDataPointId`, each based on an `PeriodicICQs` instance, only stored as a string not struct:
 
 - **LastResultId** (`string`): matches the ID of the last _datapoint_ stored under the __periodic__ query id
 
@@ -70,7 +70,7 @@ List of `DataPoint`, each based on an `PendingICQInstance` and populated by `Msg
 - **Data** (`[]byte`): encoded query result from _MsgSubmitICQResult_
 - **PrevDataPointId**: (`string`): id of the previous _datapoint_ linking them all together
 
-List of `ICQTimeouts`, each based on an `PeriodicICQ` instance:
+List of `ICQTimeouts`, each based on an `PeriodicICQs` instance:
 
 - **PeriodicId** (`uint64`): identifier which points to the _periodic_ query
 - **Timeouts** (`uint64`): number of times pending query instances timed out for the _periodic_ query
@@ -99,7 +99,7 @@ n/a
 
 ## EndBlock
 
-- `ExecutePeriodicQueries`: iterates over all `PeriodicICQ`s and creates `PendingICQInstance`s if enough blocks have elapsed since the last time the query was invoked. This is the case when the sum of _LastHeightExecuted_ (e.g. 1,000,000) and _BlockRepeat_ (e.g. 5) is equal to the current block height (e.g. 1,000,005).
+- `ExecutePeriodicQueries`: iterates over all `PeriodicICQs`s and creates `PendingICQInstance`s if enough blocks have elapsed since the last time the query was invoked. This is the case when the sum of _LastHeightExecuted_ (e.g. 1,000,000) and _BlockRepeat_ (e.g. 5) is equal to the current block height (e.g. 1,000,005).
 
 ## Dependencies
 

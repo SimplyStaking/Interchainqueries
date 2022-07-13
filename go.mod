@@ -20,6 +20,7 @@ require (
 	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
 	google.golang.org/genproto v0.0.0-20220519153652-3a47de7e79bd
 	google.golang.org/grpc v1.46.2
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.33.2

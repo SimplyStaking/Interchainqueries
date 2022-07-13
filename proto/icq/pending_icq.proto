@@ -1,5 +1,6 @@
 syntax = "proto3";
 package simplyvc.interchainqueries.icq;
+import "icq/periodic_icq.proto";
 
 option go_package = "github.com/simplyvc/interchainqueries/x/icq/types";
 
@@ -13,15 +14,13 @@ message PendingICQInstance {
   uint64 periodic_id = 4;
 }
 
-// PendingICQRequest is the full request we combine Periodic Query Data as well
-// as the PendingICQ data, so that relayers can process the requests.
-message PendingICQRequest {
+// PendingICQsRequest is the full request we combine Periodic Query Data as well
+// as the PendingICQs data, so that relayers can process the requests.
+message PendingICQsRequest {
   uint64 id = 1;
-  string path = 2; 
+  repeated IndividualICQ singleIcq = 2;
   uint64 timeout_height = 3;
   uint64 target_height = 4; 
   string client_id = 5; 
-  string creator = 6;
-  bytes query_parameters = 7;
-  uint64 periodic_id = 8;
+  uint64 periodic_id = 6;
 }

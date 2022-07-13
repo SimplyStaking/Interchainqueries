@@ -11,7 +11,7 @@ import (
 	"github.com/simplyvc/interchainqueries/x/icq/types"
 )
 
-func CmdListPendingICQRequests() *cobra.Command {
+func CmdListPendingICQsRequests() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "list-pending-icq-requests",
 		Short: "list all pending interchainquery requests that are yet to be responded to.",
@@ -25,11 +25,11 @@ func CmdListPendingICQRequests() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			params := &types.QueryAllPendingICQRequest{
+			params := &types.QueryAllPendingICQsRequest{
 				Pagination: pageReq,
 			}
 
-			res, err := queryClient.PendingICQRequestAll(context.Background(), params)
+			res, err := queryClient.PendingICQsRequestAll(context.Background(), params)
 			if err != nil {
 				return err
 			}
@@ -44,7 +44,7 @@ func CmdListPendingICQRequests() *cobra.Command {
 	return cmd
 }
 
-func CmdShowPendingICQRequest() *cobra.Command {
+func CmdShowPendingICQsRequest() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "show-pending-icq [id]",
 		Short: "shows a pending interchainquery",
@@ -59,11 +59,11 @@ func CmdShowPendingICQRequest() *cobra.Command {
 				return err
 			}
 
-			params := &types.QueryGetPendingICQRequest{
+			params := &types.QueryGetPendingICQsRequest{
 				Id: id,
 			}
 
-			res, err := queryClient.PendingICQRequest(context.Background(), params)
+			res, err := queryClient.PendingICQsRequest(context.Background(), params)
 			if err != nil {
 				return err
 			}

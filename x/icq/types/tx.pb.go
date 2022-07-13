@@ -29,28 +29,24 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-// MsgSubmitICQResult represents a message type to fulfil a query request.
-type MsgSubmitICQResult struct {
-	QueryId     uint64           `protobuf:"varint,1,opt,name=query_id,json=queryId,proto3" json:"query_id,omitempty"`
-	Result      []byte           `protobuf:"bytes,2,opt,name=result,proto3" json:"result,omitempty"`
-	Height      *types.Height    `protobuf:"bytes,3,opt,name=height,proto3" json:"height,omitempty"`
-	FromAddress string           `protobuf:"bytes,4,opt,name=from_address,json=fromAddress,proto3" json:"from_address,omitempty"`
-	Proof       *crypto.ProofOps `protobuf:"bytes,5,opt,name=proof,proto3" json:"proof,omitempty"`
-	PeriodicId  uint64           `protobuf:"varint,6,opt,name=periodic_id,json=periodicId,proto3" json:"periodic_id,omitempty"`
+type IndividualResults struct {
+	QueryId uint64           `protobuf:"varint,1,opt,name=query_id,json=queryId,proto3" json:"query_id,omitempty"`
+	Result  []byte           `protobuf:"bytes,2,opt,name=result,proto3" json:"result,omitempty"`
+	Proof   *crypto.ProofOps `protobuf:"bytes,3,opt,name=proof,proto3" json:"proof,omitempty"`
 }
 
-func (m *MsgSubmitICQResult) Reset()         { *m = MsgSubmitICQResult{} }
-func (m *MsgSubmitICQResult) String() string { return proto.CompactTextString(m) }
-func (*MsgSubmitICQResult) ProtoMessage()    {}
-func (*MsgSubmitICQResult) Descriptor() ([]byte, []int) {
+func (m *IndividualResults) Reset()         { *m = IndividualResults{} }
+func (m *IndividualResults) String() string { return proto.CompactTextString(m) }
+func (*IndividualResults) ProtoMessage()    {}
+func (*IndividualResults) Descriptor() ([]byte, []int) {
 	return fileDescriptor_88a7c38f713329dd, []int{0}
 }
-func (m *MsgSubmitICQResult) XXX_Unmarshal(b []byte) error {
+func (m *IndividualResults) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgSubmitICQResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *IndividualResults) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgSubmitICQResult.Marshal(b, m, deterministic)
+		return xxx_messageInfo_IndividualResults.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -60,75 +56,59 @@ func (m *MsgSubmitICQResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return b[:n], nil
 	}
 }
-func (m *MsgSubmitICQResult) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgSubmitICQResult.Merge(m, src)
+func (m *IndividualResults) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IndividualResults.Merge(m, src)
 }
-func (m *MsgSubmitICQResult) XXX_Size() int {
+func (m *IndividualResults) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgSubmitICQResult) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgSubmitICQResult.DiscardUnknown(m)
+func (m *IndividualResults) XXX_DiscardUnknown() {
+	xxx_messageInfo_IndividualResults.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgSubmitICQResult proto.InternalMessageInfo
+var xxx_messageInfo_IndividualResults proto.InternalMessageInfo
 
-func (m *MsgSubmitICQResult) GetQueryId() uint64 {
+func (m *IndividualResults) GetQueryId() uint64 {
 	if m != nil {
 		return m.QueryId
 	}
 	return 0
 }
 
-func (m *MsgSubmitICQResult) GetResult() []byte {
+func (m *IndividualResults) GetResult() []byte {
 	if m != nil {
 		return m.Result
 	}
 	return nil
 }
 
-func (m *MsgSubmitICQResult) GetHeight() *types.Height {
-	if m != nil {
-		return m.Height
-	}
-	return nil
-}
-
-func (m *MsgSubmitICQResult) GetFromAddress() string {
-	if m != nil {
-		return m.FromAddress
-	}
-	return ""
-}
-
-func (m *MsgSubmitICQResult) GetProof() *crypto.ProofOps {
+func (m *IndividualResults) GetProof() *crypto.ProofOps {
 	if m != nil {
 		return m.Proof
 	}
 	return nil
 }
 
-func (m *MsgSubmitICQResult) GetPeriodicId() uint64 {
-	if m != nil {
-		return m.PeriodicId
-	}
-	return 0
+type MsgSubmitICQResults struct {
+	QueryId           uint64               `protobuf:"varint,1,opt,name=query_id,json=queryId,proto3" json:"query_id,omitempty"`
+	Height            *types.Height        `protobuf:"bytes,2,opt,name=height,proto3" json:"height,omitempty"`
+	FromAddress       string               `protobuf:"bytes,3,opt,name=from_address,json=fromAddress,proto3" json:"from_address,omitempty"`
+	IndividualResults []*IndividualResults `protobuf:"bytes,4,rep,name=individualResults,proto3" json:"individualResults,omitempty"`
+	PeriodicId        uint64               `protobuf:"varint,5,opt,name=periodic_id,json=periodicId,proto3" json:"periodic_id,omitempty"`
 }
 
-type MsgSubmitICQResultResponse struct {
-}
-
-func (m *MsgSubmitICQResultResponse) Reset()         { *m = MsgSubmitICQResultResponse{} }
-func (m *MsgSubmitICQResultResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgSubmitICQResultResponse) ProtoMessage()    {}
-func (*MsgSubmitICQResultResponse) Descriptor() ([]byte, []int) {
+func (m *MsgSubmitICQResults) Reset()         { *m = MsgSubmitICQResults{} }
+func (m *MsgSubmitICQResults) String() string { return proto.CompactTextString(m) }
+func (*MsgSubmitICQResults) ProtoMessage()    {}
+func (*MsgSubmitICQResults) Descriptor() ([]byte, []int) {
 	return fileDescriptor_88a7c38f713329dd, []int{1}
 }
-func (m *MsgSubmitICQResultResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgSubmitICQResults) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgSubmitICQResultResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgSubmitICQResults) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgSubmitICQResultResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgSubmitICQResults.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -138,51 +118,126 @@ func (m *MsgSubmitICQResultResponse) XXX_Marshal(b []byte, deterministic bool) (
 		return b[:n], nil
 	}
 }
-func (m *MsgSubmitICQResultResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgSubmitICQResultResponse.Merge(m, src)
+func (m *MsgSubmitICQResults) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSubmitICQResults.Merge(m, src)
 }
-func (m *MsgSubmitICQResultResponse) XXX_Size() int {
+func (m *MsgSubmitICQResults) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgSubmitICQResultResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgSubmitICQResultResponse.DiscardUnknown(m)
+func (m *MsgSubmitICQResults) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSubmitICQResults.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgSubmitICQResultResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgSubmitICQResults proto.InternalMessageInfo
+
+func (m *MsgSubmitICQResults) GetQueryId() uint64 {
+	if m != nil {
+		return m.QueryId
+	}
+	return 0
+}
+
+func (m *MsgSubmitICQResults) GetHeight() *types.Height {
+	if m != nil {
+		return m.Height
+	}
+	return nil
+}
+
+func (m *MsgSubmitICQResults) GetFromAddress() string {
+	if m != nil {
+		return m.FromAddress
+	}
+	return ""
+}
+
+func (m *MsgSubmitICQResults) GetIndividualResults() []*IndividualResults {
+	if m != nil {
+		return m.IndividualResults
+	}
+	return nil
+}
+
+func (m *MsgSubmitICQResults) GetPeriodicId() uint64 {
+	if m != nil {
+		return m.PeriodicId
+	}
+	return 0
+}
+
+type MsgSubmitICQResultsResponse struct {
+}
+
+func (m *MsgSubmitICQResultsResponse) Reset()         { *m = MsgSubmitICQResultsResponse{} }
+func (m *MsgSubmitICQResultsResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgSubmitICQResultsResponse) ProtoMessage()    {}
+func (*MsgSubmitICQResultsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_88a7c38f713329dd, []int{2}
+}
+func (m *MsgSubmitICQResultsResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgSubmitICQResultsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgSubmitICQResultsResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgSubmitICQResultsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSubmitICQResultsResponse.Merge(m, src)
+}
+func (m *MsgSubmitICQResultsResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgSubmitICQResultsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSubmitICQResultsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgSubmitICQResultsResponse proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*MsgSubmitICQResult)(nil), "simplyvc.interchainqueries.icq.MsgSubmitICQResult")
-	proto.RegisterType((*MsgSubmitICQResultResponse)(nil), "simplyvc.interchainqueries.icq.MsgSubmitICQResultResponse")
+	proto.RegisterType((*IndividualResults)(nil), "simplyvc.interchainqueries.icq.IndividualResults")
+	proto.RegisterType((*MsgSubmitICQResults)(nil), "simplyvc.interchainqueries.icq.MsgSubmitICQResults")
+	proto.RegisterType((*MsgSubmitICQResultsResponse)(nil), "simplyvc.interchainqueries.icq.MsgSubmitICQResultsResponse")
 }
 
 func init() { proto.RegisterFile("icq/tx.proto", fileDescriptor_88a7c38f713329dd) }
 
 var fileDescriptor_88a7c38f713329dd = []byte{
-	// 383 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x52, 0x3f, 0x8f, 0xd3, 0x30,
-	0x14, 0xaf, 0xb9, 0xbb, 0x00, 0x6e, 0x25, 0x24, 0x0f, 0x28, 0x04, 0xc8, 0x85, 0x9b, 0x32, 0xd9,
-	0x4a, 0xd8, 0xd8, 0x80, 0x85, 0x0a, 0x9d, 0x80, 0xb0, 0xb1, 0x54, 0x8d, 0xe3, 0x26, 0x4f, 0x6a,
-	0x62, 0xd7, 0x76, 0xaa, 0x66, 0x64, 0x64, 0xe3, 0x63, 0x31, 0x76, 0x64, 0x44, 0xed, 0x37, 0xe0,
-	0x13, 0xa0, 0x38, 0xa9, 0x90, 0xa8, 0x84, 0x74, 0x9b, 0xdf, 0xf3, 0xef, 0xfd, 0xfe, 0xf8, 0x19,
-	0xcf, 0x80, 0x6f, 0x98, 0xdd, 0x51, 0xa5, 0xa5, 0x95, 0x24, 0x34, 0x50, 0xab, 0x75, 0xb7, 0xe5,
-	0x14, 0x1a, 0x2b, 0x34, 0xaf, 0x96, 0xd0, 0x6c, 0x5a, 0xa1, 0x41, 0x18, 0x0a, 0x7c, 0x13, 0x3c,
-	0xb7, 0xa2, 0x29, 0x84, 0xae, 0xa1, 0xb1, 0x8c, 0xeb, 0x4e, 0x59, 0xc9, 0x94, 0x96, 0x72, 0x35,
-	0x8c, 0x07, 0xd7, 0x90, 0x73, 0xc6, 0xa5, 0x16, 0x8c, 0xaf, 0x41, 0x34, 0x96, 0x6d, 0x93, 0xf1,
-	0x34, 0x00, 0x6e, 0x7e, 0x23, 0x4c, 0x6e, 0x4d, 0xf9, 0xb9, 0xcd, 0x6b, 0xb0, 0xf3, 0xb7, 0x9f,
-	0x32, 0x61, 0xda, 0xb5, 0x25, 0x4f, 0xf0, 0x83, 0x5e, 0xa5, 0x5b, 0x40, 0xe1, 0xa3, 0x08, 0xc5,
-	0x97, 0xd9, 0x7d, 0x57, 0xcf, 0x0b, 0xf2, 0x18, 0x7b, 0xda, 0x81, 0xfc, 0x7b, 0x11, 0x8a, 0x67,
-	0xd9, 0x58, 0x91, 0x14, 0x7b, 0x95, 0x80, 0xb2, 0xb2, 0xfe, 0x45, 0x84, 0xe2, 0x69, 0x1a, 0x50,
-	0xc8, 0x39, 0xed, 0xb5, 0xe9, 0xa8, 0xb8, 0x4d, 0xe8, 0x3b, 0x87, 0xc8, 0x46, 0x24, 0x79, 0x81,
-	0x67, 0x2b, 0x2d, 0xeb, 0xc5, 0xb2, 0x28, 0xb4, 0x30, 0xc6, 0xbf, 0x8c, 0x50, 0xfc, 0x30, 0x9b,
-	0xf6, 0xbd, 0xd7, 0x43, 0x8b, 0x24, 0xf8, 0xca, 0x05, 0xf2, 0xaf, 0x1c, 0xeb, 0x53, 0xfa, 0x37,
-	0x30, 0x1d, 0x02, 0xd3, 0x8f, 0xfd, 0xfd, 0x07, 0x65, 0xb2, 0x01, 0x49, 0xae, 0xf1, 0x54, 0x09,
-	0x0d, 0xb2, 0x00, 0xde, 0xfb, 0xf7, 0x9c, 0x7f, 0x7c, 0x6a, 0xcd, 0x8b, 0x9b, 0x67, 0x38, 0x38,
-	0xcf, 0x9c, 0x09, 0xa3, 0x64, 0x63, 0x44, 0xfa, 0x0d, 0xe1, 0x8b, 0x5b, 0x53, 0x92, 0xaf, 0x08,
-	0x3f, 0xfa, 0xf7, 0x5d, 0x52, 0xfa, 0xff, 0x7d, 0xd0, 0x73, 0xde, 0xe0, 0xd5, 0xdd, 0x67, 0x4e,
-	0x5e, 0xde, 0xbc, 0xff, 0x71, 0x08, 0xd1, 0xfe, 0x10, 0xa2, 0x5f, 0x87, 0x10, 0x7d, 0x3f, 0x86,
-	0x93, 0xfd, 0x31, 0x9c, 0xfc, 0x3c, 0x86, 0x93, 0x2f, 0x49, 0x09, 0xb6, 0x6a, 0x73, 0xca, 0x65,
-	0xcd, 0x4e, 0xfc, 0xec, 0x8c, 0x9f, 0xed, 0x98, 0xfb, 0x4e, 0x9d, 0x12, 0x26, 0xf7, 0xdc, 0xca,
-	0x5f, 0xfe, 0x09, 0x00, 0x00, 0xff, 0xff, 0x98, 0x02, 0x05, 0x92, 0x62, 0x02, 0x00, 0x00,
+	// 418 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x52, 0x3f, 0x6f, 0x13, 0x31,
+	0x14, 0x8f, 0x9b, 0x36, 0x80, 0x2f, 0x12, 0xaa, 0x91, 0x50, 0x48, 0xd5, 0x6b, 0xc8, 0x94, 0xc9,
+	0xd6, 0x5d, 0x47, 0x26, 0x60, 0x21, 0x42, 0x15, 0x60, 0x36, 0x96, 0x28, 0x67, 0xbb, 0xc9, 0x93,
+	0x72, 0x67, 0xc7, 0xf6, 0x45, 0xbd, 0x99, 0x09, 0xb1, 0xf0, 0xb1, 0x18, 0x3b, 0x32, 0xa2, 0xe4,
+	0x8b, 0xa0, 0xf3, 0x5d, 0x84, 0xd4, 0x54, 0x80, 0xd8, 0xee, 0xbd, 0xfb, 0xbd, 0xf7, 0xfb, 0xe3,
+	0x87, 0xfb, 0x20, 0xd6, 0xcc, 0xdf, 0x50, 0x63, 0xb5, 0xd7, 0x24, 0x76, 0x90, 0x9b, 0x55, 0xb5,
+	0x11, 0x14, 0x0a, 0xaf, 0xac, 0x58, 0xce, 0xa1, 0x58, 0x97, 0xca, 0x82, 0x72, 0x14, 0xc4, 0x7a,
+	0x78, 0xee, 0x55, 0x21, 0x95, 0xcd, 0xa1, 0xf0, 0x4c, 0xd8, 0xca, 0x78, 0xcd, 0x8c, 0xd5, 0xfa,
+	0xba, 0x19, 0x1f, 0x5e, 0x40, 0x26, 0x98, 0xd0, 0x56, 0x31, 0xb1, 0x02, 0x55, 0x78, 0xb6, 0x49,
+	0xda, 0xaf, 0x06, 0x30, 0xae, 0xf0, 0xe9, 0xb4, 0x90, 0xb0, 0x01, 0x59, 0xce, 0x57, 0x5c, 0xb9,
+	0x72, 0xe5, 0x1d, 0x79, 0x86, 0x1f, 0xd6, 0x1c, 0xd5, 0x0c, 0xe4, 0x00, 0x8d, 0xd0, 0xe4, 0x98,
+	0x3f, 0x08, 0xf5, 0x54, 0x92, 0xa7, 0xb8, 0x67, 0x03, 0x6a, 0x70, 0x34, 0x42, 0x93, 0x3e, 0x6f,
+	0x2b, 0x92, 0xe0, 0x93, 0xc0, 0x3b, 0xe8, 0x8e, 0xd0, 0x24, 0x4a, 0xcf, 0xe8, 0x6f, 0x5d, 0xb4,
+	0xd1, 0x45, 0xdf, 0xd7, 0xff, 0xdf, 0x19, 0xc7, 0x1b, 0xe4, 0xf8, 0xcb, 0x11, 0x7e, 0x72, 0xe5,
+	0x16, 0x1f, 0xcb, 0x2c, 0x07, 0x3f, 0x7d, 0xfd, 0xe1, 0x1f, 0xd8, 0x53, 0xdc, 0x5b, 0x2a, 0x58,
+	0x2c, 0x1b, 0xf6, 0x28, 0x1d, 0x52, 0xc8, 0x04, 0xad, 0xfd, 0xd1, 0xd6, 0xd5, 0x26, 0xa1, 0x6f,
+	0x02, 0x82, 0xb7, 0x48, 0xf2, 0x1c, 0xf7, 0xaf, 0xad, 0xce, 0x67, 0x73, 0x29, 0xad, 0x72, 0x2e,
+	0x08, 0x7c, 0xc4, 0xa3, 0xba, 0xf7, 0xb2, 0x69, 0x91, 0x19, 0x3e, 0x85, 0xbb, 0x21, 0x0c, 0x8e,
+	0x47, 0xdd, 0x49, 0x94, 0x26, 0xf4, 0xcf, 0x0f, 0x40, 0x0f, 0xd2, 0xe3, 0x87, 0xbb, 0xc8, 0x05,
+	0x8e, 0x8c, 0xb2, 0xa0, 0x25, 0x88, 0xda, 0xd5, 0x49, 0x70, 0x85, 0xf7, 0xad, 0xa9, 0x1c, 0x9f,
+	0xe3, 0xb3, 0x7b, 0xa2, 0xe0, 0xca, 0x19, 0x5d, 0x38, 0x95, 0x7e, 0x45, 0xb8, 0x7b, 0xe5, 0x16,
+	0xe4, 0x33, 0xc2, 0x8f, 0xef, 0x80, 0xc8, 0xe5, 0xdf, 0x14, 0xde, 0xb3, 0x78, 0xf8, 0xe2, 0x3f,
+	0x86, 0xf6, 0x6a, 0x5e, 0xbd, 0xfd, 0xbe, 0x8d, 0xd1, 0xed, 0x36, 0x46, 0x3f, 0xb7, 0x31, 0xfa,
+	0xb6, 0x8b, 0x3b, 0xb7, 0xbb, 0xb8, 0xf3, 0x63, 0x17, 0x77, 0x3e, 0x25, 0x0b, 0xf0, 0xcb, 0x32,
+	0xa3, 0x42, 0xe7, 0x6c, 0x4f, 0xc0, 0x0e, 0x08, 0xd8, 0x0d, 0x0b, 0x37, 0x5e, 0x19, 0xe5, 0xb2,
+	0x5e, 0xb8, 0xc3, 0xcb, 0x5f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x05, 0x6e, 0x62, 0x9f, 0xf7, 0x02,
+	0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -197,7 +252,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
-	SubmitICQResult(ctx context.Context, in *MsgSubmitICQResult, opts ...grpc.CallOption) (*MsgSubmitICQResultResponse, error)
+	SubmitICQResult(ctx context.Context, in *MsgSubmitICQResults, opts ...grpc.CallOption) (*MsgSubmitICQResultsResponse, error)
 }
 
 type msgClient struct {
@@ -208,8 +263,8 @@ func NewMsgClient(cc grpc1.ClientConn) MsgClient {
 	return &msgClient{cc}
 }
 
-func (c *msgClient) SubmitICQResult(ctx context.Context, in *MsgSubmitICQResult, opts ...grpc.CallOption) (*MsgSubmitICQResultResponse, error) {
-	out := new(MsgSubmitICQResultResponse)
+func (c *msgClient) SubmitICQResult(ctx context.Context, in *MsgSubmitICQResults, opts ...grpc.CallOption) (*MsgSubmitICQResultsResponse, error) {
+	out := new(MsgSubmitICQResultsResponse)
 	err := c.cc.Invoke(ctx, "/simplyvc.interchainqueries.icq.Msg/SubmitICQResult", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -219,14 +274,14 @@ func (c *msgClient) SubmitICQResult(ctx context.Context, in *MsgSubmitICQResult,
 
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
-	SubmitICQResult(context.Context, *MsgSubmitICQResult) (*MsgSubmitICQResultResponse, error)
+	SubmitICQResult(context.Context, *MsgSubmitICQResults) (*MsgSubmitICQResultsResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
 type UnimplementedMsgServer struct {
 }
 
-func (*UnimplementedMsgServer) SubmitICQResult(ctx context.Context, req *MsgSubmitICQResult) (*MsgSubmitICQResultResponse, error) {
+func (*UnimplementedMsgServer) SubmitICQResult(ctx context.Context, req *MsgSubmitICQResults) (*MsgSubmitICQResultsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubmitICQResult not implemented")
 }
 
@@ -235,7 +290,7 @@ func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
 }
 
 func _Msg_SubmitICQResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgSubmitICQResult)
+	in := new(MsgSubmitICQResults)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -247,7 +302,7 @@ func _Msg_SubmitICQResult_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/simplyvc.interchainqueries.icq.Msg/SubmitICQResult",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).SubmitICQResult(ctx, req.(*MsgSubmitICQResult))
+		return srv.(MsgServer).SubmitICQResult(ctx, req.(*MsgSubmitICQResults))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -265,7 +320,7 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	Metadata: "icq/tx.proto",
 }
 
-func (m *MsgSubmitICQResult) Marshal() (dAtA []byte, err error) {
+func (m *IndividualResults) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -275,43 +330,19 @@ func (m *MsgSubmitICQResult) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgSubmitICQResult) MarshalTo(dAtA []byte) (int, error) {
+func (m *IndividualResults) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgSubmitICQResult) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *IndividualResults) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.PeriodicId != 0 {
-		i = encodeVarintTx(dAtA, i, uint64(m.PeriodicId))
-		i--
-		dAtA[i] = 0x30
-	}
 	if m.Proof != nil {
 		{
 			size, err := m.Proof.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintTx(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x2a
-	}
-	if len(m.FromAddress) > 0 {
-		i -= len(m.FromAddress)
-		copy(dAtA[i:], m.FromAddress)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.FromAddress)))
-		i--
-		dAtA[i] = 0x22
-	}
-	if m.Height != nil {
-		{
-			size, err := m.Height.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -336,7 +367,7 @@ func (m *MsgSubmitICQResult) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgSubmitICQResultResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgSubmitICQResults) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -346,12 +377,78 @@ func (m *MsgSubmitICQResultResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgSubmitICQResultResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgSubmitICQResults) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgSubmitICQResultResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgSubmitICQResults) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.PeriodicId != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.PeriodicId))
+		i--
+		dAtA[i] = 0x28
+	}
+	if len(m.IndividualResults) > 0 {
+		for iNdEx := len(m.IndividualResults) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.IndividualResults[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintTx(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x22
+		}
+	}
+	if len(m.FromAddress) > 0 {
+		i -= len(m.FromAddress)
+		copy(dAtA[i:], m.FromAddress)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.FromAddress)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.Height != nil {
+		{
+			size, err := m.Height.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintTx(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.QueryId != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.QueryId))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgSubmitICQResultsResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgSubmitICQResultsResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgSubmitICQResultsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -370,7 +467,7 @@ func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *MsgSubmitICQResult) Size() (n int) {
+func (m *IndividualResults) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -383,6 +480,22 @@ func (m *MsgSubmitICQResult) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
+	if m.Proof != nil {
+		l = m.Proof.Size()
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgSubmitICQResults) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.QueryId != 0 {
+		n += 1 + sovTx(uint64(m.QueryId))
+	}
 	if m.Height != nil {
 		l = m.Height.Size()
 		n += 1 + l + sovTx(uint64(l))
@@ -391,9 +504,11 @@ func (m *MsgSubmitICQResult) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
-	if m.Proof != nil {
-		l = m.Proof.Size()
-		n += 1 + l + sovTx(uint64(l))
+	if len(m.IndividualResults) > 0 {
+		for _, e := range m.IndividualResults {
+			l = e.Size()
+			n += 1 + l + sovTx(uint64(l))
+		}
 	}
 	if m.PeriodicId != 0 {
 		n += 1 + sovTx(uint64(m.PeriodicId))
@@ -401,7 +516,7 @@ func (m *MsgSubmitICQResult) Size() (n int) {
 	return n
 }
 
-func (m *MsgSubmitICQResultResponse) Size() (n int) {
+func (m *MsgSubmitICQResultsResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -416,7 +531,7 @@ func sovTx(x uint64) (n int) {
 func sozTx(x uint64) (n int) {
 	return sovTx(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *MsgSubmitICQResult) Unmarshal(dAtA []byte) error {
+func (m *IndividualResults) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -439,10 +554,10 @@ func (m *MsgSubmitICQResult) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgSubmitICQResult: wiretype end group for non-group")
+			return fmt.Errorf("proto: IndividualResults: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgSubmitICQResult: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: IndividualResults: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -500,74 +615,6 @@ func (m *MsgSubmitICQResult) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Height", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTx
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthTx
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthTx
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Height == nil {
-				m.Height = &types.Height{}
-			}
-			if err := m.Height.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field FromAddress", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowTx
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthTx
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthTx
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.FromAddress = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 5:
-			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Proof", wireType)
 			}
 			var msglen int
@@ -602,7 +649,178 @@ func (m *MsgSubmitICQResult) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			iNdEx = postIndex
-		case 6:
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgSubmitICQResults) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgSubmitICQResults: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgSubmitICQResults: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field QueryId", wireType)
+			}
+			m.QueryId = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.QueryId |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Height", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Height == nil {
+				m.Height = &types.Height{}
+			}
+			if err := m.Height.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field FromAddress", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.FromAddress = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field IndividualResults", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.IndividualResults = append(m.IndividualResults, &IndividualResults{})
+			if err := m.IndividualResults[len(m.IndividualResults)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 5:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field PeriodicId", wireType)
 			}
@@ -642,7 +860,7 @@ func (m *MsgSubmitICQResult) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgSubmitICQResultResponse) Unmarshal(dAtA []byte) error {
+func (m *MsgSubmitICQResultsResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -665,10 +883,10 @@ func (m *MsgSubmitICQResultResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgSubmitICQResultResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgSubmitICQResultsResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgSubmitICQResultResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgSubmitICQResultsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

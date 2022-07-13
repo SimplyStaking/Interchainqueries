@@ -9,10 +9,10 @@ import (
 	"github.com/simplyvc/interchainqueries/x/icq/types"
 )
 
-// GetPeriodicICQCount gets the total number of periodic interchainqueries
-func (k Keeper) GetPeriodicICQCount(ctx sdk.Context) uint64 {
+// GetPeriodicICQsCount gets the total number of periodic interchainqueries
+func (k Keeper) GetPeriodicICQsCount(ctx sdk.Context) uint64 {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), []byte{})
-	byteKey := types.KeyPrefix(types.PeriodicICQCountKey)
+	byteKey := types.KeyPrefix(types.PeriodicICQsCountKey)
 	bz := store.Get(byteKey)
 
 	// Count doesn't exist: no element
@@ -24,48 +24,48 @@ func (k Keeper) GetPeriodicICQCount(ctx sdk.Context) uint64 {
 	return binary.BigEndian.Uint64(bz)
 }
 
-func (k Keeper) SetPeriodicICQ(ctx sdk.Context, interchainquery types.PeriodicICQ) {
-	// TODO When setting a PeriodicICQ we need to clear all the Datapoints for it as well as an ICQ instances
+func (k Keeper) SetPeriodicICQs(ctx sdk.Context, interchainquery types.PeriodicICQs) {
+	// TODO When setting a PeriodicICQs we need to clear all the Datapoints for it as well as an ICQ instances
 	// this needs to happen in case of data changes.
-	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PeriodicICQKey))
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PeriodicICQsKey))
 	b := k.cdc.MustMarshal(&interchainquery)
-	store.Set(GetPeriodicICQIDBytes(interchainquery.Id), b)
+	store.Set(GetPeriodicICQsIDBytes(interchainquery.Id), b)
 }
 
-// setPeriodicICQCount sets the total number of Periodic ICQs, to be only used internally
-func (k Keeper) setPeriodicICQCount(ctx sdk.Context, count uint64) {
+// setPeriodicICQsCount sets the total number of Periodic ICQs, to be only used internally
+func (k Keeper) setPeriodicICQsCount(ctx sdk.Context, count uint64) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), []byte{})
-	byteKey := types.KeyPrefix(types.PeriodicICQCountKey)
+	byteKey := types.KeyPrefix(types.PeriodicICQsCountKey)
 	bz := make([]byte, 8)
 	binary.BigEndian.PutUint64(bz, count)
 	store.Set(byteKey, bz)
 }
 
-// AppendPeriodicICQ appends a periodic ICQ to the store and increases count
-func (k Keeper) AppendPeriodicICQ(
+// AppendPeriodicICQs appends a periodic ICQ to the store and increases count
+func (k Keeper) AppendPeriodicICQs(
 	ctx sdk.Context,
-	interchainquery types.PeriodicICQ,
+	interchainquery types.PeriodicICQs,
 ) uint64 {
 	// Create the interchainquery
-	count := k.GetPeriodicICQCount(ctx)
+	count := k.GetPeriodicICQsCount(ctx)
 
 	// Set the ID of the appended value
 	interchainquery.Id = count
 
-	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PeriodicICQKey))
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PeriodicICQsKey))
 	appendedValue := k.cdc.MustMarshal(&interchainquery)
-	store.Set(GetPeriodicICQIDBytes(interchainquery.Id), appendedValue)
+	store.Set(GetPeriodicICQsIDBytes(interchainquery.Id), appendedValue)
 
 	// Update pending interchainquery count
-	k.setPeriodicICQCount(ctx, count+1)
+	k.setPeriodicICQsCount(ctx, count+1)
 
 	return count
 }
 
-// GetPeriodicICQ returns a periodic ICQ from its id
-func (k Keeper) GetPeriodicICQ(ctx sdk.Context, id uint64) (val types.PeriodicICQ, found bool) {
-	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PeriodicICQKey))
-	b := store.Get(GetPeriodicICQIDBytes(id))
+// GetPeriodicICQs returns a periodic ICQ from its id
+func (k Keeper) GetPeriodicICQs(ctx sdk.Context, id uint64) (val types.PeriodicICQs, found bool) {
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PeriodicICQsKey))
+	b := store.Get(GetPeriodicICQsIDBytes(id))
 	if b == nil {
 		return val, false
 	}
@@ -73,8 +73,8 @@ func (k Keeper) GetPeriodicICQ(ctx sdk.Context, id uint64) (val types.PeriodicIC
 	return val, true
 }
 
-// RemovePeriodicICQ removes a periodic ICQ from the store as well as all ICQ instances and DataPoints
-func (k Keeper) RemovePeriodicICQ(ctx sdk.Context, periodicId uint64) {
+// RemovePeriodicICQs removes a periodic ICQ from the store as well as all ICQ instances and DataPoints
+func (k Keeper) RemovePeriodicICQs(ctx sdk.Context, periodicId uint64) {
 
 	// Clean up all data dependant on the Periodic Query
 	k.RemoveAllICQInstancesForPeriodic(ctx, periodicId)
@@ -83,19 +83,19 @@ func (k Keeper) RemovePeriodicICQ(ctx sdk.Context, periodicId uint64) {
 	k.RemoveICQTimeouts(ctx, periodicId)
 
 	// Finally remove the periodic query itself
-	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PeriodicICQKey))
-	store.Delete(GetPeriodicICQIDBytes(periodicId))
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PeriodicICQsKey))
+	store.Delete(GetPeriodicICQsIDBytes(periodicId))
 }
 
-// GetAllPeriodicICQ returns all periodic ICQs in store
-func (k Keeper) GetAllPeriodicICQ(ctx sdk.Context) (list []types.PeriodicICQ) {
-	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PeriodicICQKey))
+// GetAllPeriodicICQs returns all periodic ICQs in store
+func (k Keeper) GetAllPeriodicICQs(ctx sdk.Context) (list []types.PeriodicICQs) {
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.PeriodicICQsKey))
 	iterator := sdk.KVStorePrefixIterator(store, []byte{})
 
 	defer iterator.Close()
 
 	for ; iterator.Valid(); iterator.Next() {
-		var val types.PeriodicICQ
+		var val types.PeriodicICQs
 		k.cdc.MustUnmarshal(iterator.Value(), &val)
 		list = append(list, val)
 	}
@@ -103,15 +103,15 @@ func (k Keeper) GetAllPeriodicICQ(ctx sdk.Context) (list []types.PeriodicICQ) {
 	return
 }
 
-// GetPeriodicICQIDBytes returns the byte representation of the ID
-func GetPeriodicICQIDBytes(id uint64) []byte {
+// GetPeriodicICQsIDBytes returns the byte representation of the ID
+func GetPeriodicICQsIDBytes(id uint64) []byte {
 	bz := make([]byte, 8)
 	binary.BigEndian.PutUint64(bz, id)
 	return bz
 }
 
-// GetPeriodicICQIDFromBytes returns ID in uint64 format from a byte array
-func GetPeriodicICQIDFromBytes(bz []byte) uint64 {
+// GetPeriodicICQsIDFromBytes returns ID in uint64 format from a byte array
+func GetPeriodicICQsIDFromBytes(bz []byte) uint64 {
 	return binary.BigEndian.Uint64(bz)
 }
 
@@ -120,11 +120,11 @@ func GetPeriodicICQIDFromBytes(bz []byte) uint64 {
 func (k Keeper) ExecutePeriodicQueries(ctx sdk.Context) {
 	currHeight := uint64(ctx.BlockHeight())
 
-	for _, query := range k.GetAllPeriodicICQ(ctx) {
+	for _, query := range k.GetAllPeriodicICQs(ctx) {
 		if query.LastHeightExecuted+query.BlockRepeat == currHeight {
 			k.AppendPendingICQInstance(ctx, query, currHeight)
 			query.LastHeightExecuted = currHeight
-			k.SetPeriodicICQ(ctx, query)
+			k.SetPeriodicICQs(ctx, query)
 		}
 	}
 }

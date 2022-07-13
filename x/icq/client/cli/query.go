@@ -21,22 +21,14 @@ func GetQueryCmd(_ string) *cobra.Command {
 		RunE:                       client.ValidateCmd,
 	}
 
-	cmd.AddCommand(CmdListPendingICQRequests())
-	cmd.AddCommand(CmdShowPendingICQRequest())
+	cmd.AddCommand(CmdListPendingICQsRequests())
+	cmd.AddCommand(CmdShowPendingICQsRequest())
 
-	cmd.AddCommand(CmdListPeriodicICQLastDataPointIds())
-	cmd.AddCommand(CmdShowPeriodicICQLastDataPointId())
-
-	cmd.AddCommand(CmdListPendingICQRequestsTimeouts())
-	cmd.AddCommand(CmdShowPendingICQRequestTimeouts())
+	cmd.AddCommand(CmdListPendingICQsRequestsTimeouts())
+	cmd.AddCommand(CmdShowPendingICQsRequestTimeouts())
 
 	cmd.AddCommand(CmdListPeriodicICQs())
-	cmd.AddCommand(CmdShowPeriodicICQ())
-
-	cmd.AddCommand(CmdListDataPoints())
-	cmd.AddCommand(CmdShowDataPoint())
-
-	cmd.AddCommand(CmdListDataPointsForPeriodic())
+	cmd.AddCommand(CmdShowPeriodicICQs())
 
 	return cmd
 }

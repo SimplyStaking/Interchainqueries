@@ -30,7 +30,7 @@ An example periodic query which will query the balance of an account on the targ
   queryModuleAddress := "test_module_address"
 
   add1, _ := sdk.AccAddressFromBech32("icq17dtl0mjt3t77kpuhg2edqzjpszulwhgzp4faq3")
-  icqPeriodic := types.PeriodicICQ{
+  icqPeriodic := types.PeriodicICQs{
     Path:                 path,
     TimeoutHeightPadding: uint64(20),
     TargetHeight:         uint64(0),
@@ -42,7 +42,7 @@ An example periodic query which will query the balance of an account on the targ
     LastHeightExecuted:   uint64(ctx.BlockHeight()),
     MaxResults:         uint64(10),
   }
-  k.AppendPeriodicICQ(ctx, icqPeriodic)
+  k.AppendPeriodicICQs(ctx, icqPeriodic)
 ```
 
 Once the result is received one can convert the raw data to the exact type as such:

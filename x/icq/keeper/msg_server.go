@@ -2,8 +2,6 @@ package keeper
 
 import (
 	"context"
-	"strconv"
-	"strings"
 
 	ics23 "github.com/confio/ics23/go"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -28,11 +26,10 @@ var _ types.MsgServer = msgServer{}
 // SubmitICQResult submits a result for a given ICQ instance request
 func (k msgServer) SubmitICQResult(
 	goCtx context.Context,
-	msg *types.MsgSubmitICQResult,
-) (*types.MsgSubmitICQResultResponse, error) {
+	msg *types.MsgSubmitICQResults,
+) (*types.MsgSubmitICQResultsResponse, error) {
 
 	ctx := sdk.UnwrapSDKContext(goCtx)
-	currHeight := uint64(ctx.BlockHeight())
 
 	// Retrieve the given ICQ instance that we want to service to validate its existence
 	icqInstance, found := k.GetPendingICQInstance(ctx, msg.QueryId)
@@ -41,9 +38,9 @@ func (k msgServer) SubmitICQResult(
 	}
 
 	// Retrieve the periodic ICQ for the full details of the query
-	periodicICQ, found := k.GetPeriodicICQ(ctx, msg.PeriodicId)
+	periodicICQ, found := k.GetPeriodicICQs(ctx, msg.PeriodicId)
 	if !found {
-		return nil, sdkerrors.Wrapf(types.ErrPeriodicICQNotFound, "(%d) not found", msg.PeriodicId)
+		return nil, sdkerrors.Wrapf(types.ErrPeriodicICQsNotFound, "(%d) not found", msg.PeriodicId)
 	}
 
 	if icqInstance.PeriodicId != msg.PeriodicId {
@@ -95,46 +92,7 @@ func (k msgServer) SubmitICQResult(
 			periodicICQ.QueryParameters)
 	}
 
-	// Set this as the last dataPoint and overwrite later based on conditions
-	dataPointId := strconv.FormatUint(msg.PeriodicId, 10) + "/1"
-	prevDataPointId := dataPointId
-
-	// If the periodic result is not found, it means it's the first result
-	periodicResult, found := k.GetPeriodicLastDataPointId(ctx, msg.PeriodicId)
-	if found {
-
-		// This should be found otherwise the initial periodic query doesn't exist
-		prevDataPoint, _ := k.GetDataPoint(ctx, periodicResult)
-		if prevDataPoint.TargetHeight >= msg.Height.RevisionHeight {
-			return nil, sdkerrors.Wrapf(types.ErrDuplicateHeightSubmissions,
-				"height: (%d) already has a value submitted", msg.Height)
-		}
-		prevDataPointId = prevDataPoint.Id
-
-		// We create the new key to store the data point under
-		splitResult := strings.Split(periodicResult, "/")
-		prevResultId, err := strconv.ParseUint(splitResult[1], 10, 64)
-		if err != nil {
-			return nil, sdkerrors.Wrapf(types.ErrDataPointKeyBroken, "periodic id: (%s)", msg.PeriodicId)
-		}
-
-		// If the prevResultId is at the max amount of results for the periodic query we need to restart the loop
-		if prevResultId != periodicICQ.MaxResults {
-			dataPointId = strconv.FormatUint(msg.PeriodicId, 10) + "/" + strconv.FormatUint(prevResultId+1, 10)
-		}
-	}
-
-	k.SetDataPoint(ctx, types.DataPoint{
-		Id:              dataPointId,
-		LocalHeight:     currHeight,
-		TargetHeight:    msg.Height.RevisionHeight,
-		Data:            msg.Result,
-		PrevDataPointId: prevDataPointId,
-	})
-
-	k.SetPeriodicLastDataPointId(ctx, msg.PeriodicId, dataPointId)
-
 	k.RemovePendingICQInstance(ctx, msg.QueryId)
 
-	return &types.MsgSubmitICQResultResponse{}, nil
+	return &types.MsgSubmitICQResultsResponse{}, nil
 }

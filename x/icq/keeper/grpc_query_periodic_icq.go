@@ -13,23 +13,23 @@ import (
 	"github.com/simplyvc/interchainqueries/x/icq/types"
 )
 
-func (k Keeper) PeriodicICQAll(
+func (k Keeper) PeriodicICQsAll(
 	c context.Context,
-	req *types.QueryAllPeriodicICQRequest,
-) (*types.QueryAllPeriodicICQResponse, error) {
+	req *types.QueryAllPeriodicICQsRequest,
+) (*types.QueryAllPeriodicICQsResponse, error) {
 
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "invalid request")
 	}
 
-	var periodicICQs []types.PeriodicICQ
+	var periodicICQs []types.PeriodicICQs
 	ctx := sdk.UnwrapSDKContext(c)
 
 	store := ctx.KVStore(k.storeKey)
-	periodicICQStore := prefix.NewStore(store, types.KeyPrefix(types.PeriodicICQKey))
+	periodicICQStore := prefix.NewStore(store, types.KeyPrefix(types.PeriodicICQsKey))
 
 	pageRes, err := query.Paginate(periodicICQStore, req.Pagination, func(key []byte, value []byte) error {
-		var periodicICQ types.PeriodicICQ
+		var periodicICQ types.PeriodicICQs
 		if err := k.cdc.Unmarshal(value, &periodicICQ); err != nil {
 			return err
 		}
@@ -42,22 +42,22 @@ func (k Keeper) PeriodicICQAll(
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 
-	return &types.QueryAllPeriodicICQResponse{PeriodicICQ: periodicICQs, Pagination: pageRes}, nil
+	return &types.QueryAllPeriodicICQsResponse{PeriodicICQs: periodicICQs, Pagination: pageRes}, nil
 }
 
-func (k Keeper) PeriodicICQ(
+func (k Keeper) PeriodicICQs(
 	c context.Context,
-	req *types.QueryGetPeriodicICQRequest,
-) (*types.QueryGetPeriodicICQResponse, error) {
+	req *types.QueryGetPeriodicICQsRequest,
+) (*types.QueryGetPeriodicICQsResponse, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "invalid request")
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
-	interchainqueryResult, found := k.GetPeriodicICQ(ctx, req.Id)
+	interchainqueryResult, found := k.GetPeriodicICQs(ctx, req.Id)
 	if !found {
 		return nil, sdkerrors.ErrKeyNotFound
 	}
 
-	return &types.QueryGetPeriodicICQResponse{PeriodicICQ: interchainqueryResult}, nil
+	return &types.QueryGetPeriodicICQsResponse{PeriodicICQs: interchainqueryResult}, nil
 }

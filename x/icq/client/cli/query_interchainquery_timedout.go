@@ -11,7 +11,7 @@ import (
 	"github.com/simplyvc/interchainqueries/x/icq/types"
 )
 
-func CmdListPendingICQRequestsTimeouts() *cobra.Command {
+func CmdListPendingICQsRequestsTimeouts() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "list-interchainquery-timeouts",
 		Short: "list the timeout counts and last timeout heights for all periodic queries.",
@@ -44,7 +44,7 @@ func CmdListPendingICQRequestsTimeouts() *cobra.Command {
 	return cmd
 }
 
-func CmdShowPendingICQRequestTimeouts() *cobra.Command {
+func CmdShowPendingICQsRequestTimeouts() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "show-icq-timeouts [id]",
 		Short: "shows the timeouts of a periodic interchainquery",

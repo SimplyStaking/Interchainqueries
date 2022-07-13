@@ -36,7 +36,7 @@ func (k Keeper) setPendingICQInstanceCount(ctx sdk.Context, count uint64) {
 // AppendPendingICQInstance appends an icq instance in the store with a new id and update the count
 func (k Keeper) AppendPendingICQInstance(
 	ctx sdk.Context,
-	query types.PeriodicICQ,
+	query types.PeriodicICQs,
 	currHeight uint64,
 ) uint64 {
 
@@ -116,11 +116,11 @@ func (k Keeper) RemoveAllICQInstancesForPeriodic(ctx sdk.Context, periodicId uin
 	}
 }
 
-func NewPendingICQRequest(
+func NewPendingICQsRequest(
 	pendingICQ types.PendingICQInstance,
-	periodicICQ types.PeriodicICQ,
-) types.PendingICQRequest {
-	return types.PendingICQRequest{
+	periodicICQ types.PeriodicICQs,
+) types.PendingICQsRequest {
+	return types.PendingICQsRequest{
 		Id:              pendingICQ.Id,
 		Path:            periodicICQ.Path,
 		TimeoutHeight:   pendingICQ.TimeoutHeight,
